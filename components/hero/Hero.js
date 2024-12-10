@@ -5,6 +5,7 @@ import "swiper/css"; // Import Swiper styles
 import "swiper/css/pagination"; // Import Pagination styles
 import "swiper/css/navigation"; // Import Navigation styles
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 import HeroImage from "../../public/treecuttingone.jpg";
 import HeroImageTwo from "../../public/treecuttinghero.jpg";
@@ -100,6 +101,8 @@ const HeroSection = () => {
                       mt: 2,
                       fontSize: isSmallScreen ? 14 : 16,
                     }}
+
+                    endIcon={<FaLongArrowAltRight />}
                   >
                     Contact Us
                   </Button>
