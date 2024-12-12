@@ -8,15 +8,20 @@ import TreeTrimmingImage from '../../public/treetrimmingservice.jpg'
 import TreeRemovalImage from "../../public/treeremoval.jpg"
 import YardCleanupImage from '../../public/yardcleanupservice.jpg'
 import { MdOutlineArrowOutward } from "react-icons/md";
+import ServiceCard from './ServiceCard'
+import { FcMindMap } from "react-icons/fc";
+import { FcWorkflow } from "react-icons/fc";
+import { FcSupport } from "react-icons/fc";
+import { FcFullTrash } from "react-icons/fc";
+import { FcFeedIn } from "react-icons/fc";
 
 export default function Services() {
 
     const images = [
-        { src: TreeCuttingImage, title: "Tree Cutting" },
-        { src: TreePruningImage, title: "Tree Pruning" },
-        { src: TreeTrimmingImage, title: "Tree Trimming" },
-        { src: TreeRemovalImage, title: "Tree Removal" },
-        { src: YardCleanupImage, title: "Yard Cleanup" },
+        { src: <FcMindMap fontSize={80}/>, title: "Tree Pruning" },
+        { src: <FcSupport fontSize={80} />, title: "Tree Trimming" },
+        { src: <FcFullTrash fontSize={80} />, title: "Tree Removal" },
+        { src: <FcFeedIn fontSize={80} />, title: "Yard Cleanup" },
       ];
 
   return (
@@ -51,7 +56,7 @@ export default function Services() {
             </Typography>
         </Stack>
 
-            <ServiceImageGrid images={images} />
+            <ServiceCard images={images} />
             <Button
                 variant='contained'
                 sx={{

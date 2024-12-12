@@ -32,7 +32,8 @@ export default function TopBar() {
                 <IconButton>
                         <FaFacebookSquare
                             style={{
-                                fontSize: 20
+                                fontSize: 20,
+                                color: '#424242'
                             }}
                         />
                     </IconButton>
@@ -44,7 +45,8 @@ export default function TopBar() {
                 <IconButton>
                         <FaSquareInstagram
                             style={{
-                                fontSize: 20
+                                fontSize: 20,
+                                color: '#424242'
                             }}
                         />
                     </IconButton>
@@ -57,7 +59,8 @@ export default function TopBar() {
                 <IconButton>
                         <BsTwitterX
                             style={{
-                                fontSize: 20
+                                fontSize: 20,
+                                color: '#424242'
                             }}
                         />
                     </IconButton>
