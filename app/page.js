@@ -8,6 +8,7 @@ import TopBar from "@/components/header/TopBar";
 import AboutUs from "@/components/about/AboutUs";
 import Services from "@/components/services/Services";
 import PageLoader from "@/components/general/PageLoader";
+import ChatFloatingButton from "@/components/general/ChatButton";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
@@ -63,6 +64,7 @@ export default function Home() {
          <HeroSection />
          <AboutUs />
          <Services />
+         <ChatFloatingButton />
      </Stack>
    </Box>
   );

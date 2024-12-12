@@ -4,7 +4,7 @@ import LogoBrand from '../general/LogoBrand'
 import { MdOutlineCancelPresentation } from "react-icons/md"
 import MenuList from './MenuList'
 
-export default function SidebarDrawer({openDrawer, setOpenDrawer}) {
+export default function SidebarDrawer({openDrawer, setOpenDrawer, isTablet}) {
   return (
     <Drawer
         open={openDrawer}

@@ -17,7 +17,7 @@ export default function LogoBrand() {
           <Image 
             src={LogoImage}
             alt='Logo'
-            height={isMobile ? 40 : 70}
+            height={isMobile ? 40 : 60}
           />
         </Box>
     </Link>

@@ -5,18 +5,22 @@ import MenuList from './MenuList';
 import { TiThMenuOutline } from "react-icons/ti";
 import { LuSquareMenu } from "react-icons/lu";
 import SidebarDrawer from './SidebarDrawer';
+import UserAccount from './UserAccount';
 
 export default function CustomAppBar({ navBg }) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
+  const isTablet = useMediaQuery("(max-width:900px)");
+
   const [openDrawer, setOpenDrawer] = useState(false)
   return (
     <AppBar
       position="fixed"
       sx={{
         width: "100%",
-        py: 2,
+        py: 1,
         px: isSmallScreen ? 1 : 3,
         backgroundColor: "#ffffff",
         boxShadow: navBg ? 3 : 0,
@@ -33,8 +37,11 @@ export default function CustomAppBar({ navBg }) {
         <Box sx={{ flexGrow: 0 }}>
           <LogoBrand />
         </Box>
+        <Box sx={{ flexGrow: 0 }} display={!isTablet ? 'flex' : 'none'}>
+         <MenuList />
+        </Box >
         <Box sx={{ flexGrow: 0 }}>
-          {isSmallScreen ? <IconButton onClick={() => setOpenDrawer(true)}><LuSquareMenu style={{color: '#1c1e21', fontSize: 32}} /> </IconButton>: <MenuList />}
+          <UserAccount setOpenDrawer={setOpenDrawer} isTablet={isTablet}/>
         </Box>
         <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
       </Box>

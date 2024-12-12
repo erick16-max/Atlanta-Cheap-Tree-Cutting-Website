@@ -14,12 +14,15 @@ export default function TopBar() {
     <Box
         width={'100%'}
         height={"40px"}
-        bgcolor={'#1b5e20'}
         display={'flex'}
         justifyContent={'space-between'}
         alignItems={'center'}
-        px={5}
+        px={isSmallScreen ? 1 : 3}
         gap={1}
+        sx={{
+            borderBottom: '1px solid #e0e0e0',
+            boxShadow: 1,
+        }}
     >
             <Stack direction={'row'} gap={1} display={isSmallScreen ? "none" : 'flex'}>
                <Tooltip
@@ -29,7 +32,6 @@ export default function TopBar() {
                 <IconButton>
                         <FaFacebookSquare
                             style={{
-                                color: '#f5f5f5',
                                 fontSize: 20
                             }}
                         />
@@ -42,7 +44,6 @@ export default function TopBar() {
                 <IconButton>
                         <FaSquareInstagram
                             style={{
-                                color: '#f5f5f5',
                                 fontSize: 20
                             }}
                         />
@@ -56,7 +57,6 @@ export default function TopBar() {
                 <IconButton>
                         <BsTwitterX
                             style={{
-                                color: '#f5f5f5',
                                 fontSize: 20
                             }}
                         />
@@ -73,8 +73,7 @@ export default function TopBar() {
                 <Typography
                     variant='body2'
                     className='interFont'
-                    color={'#f5f5f5'}
-                >Call Us For A Qoute:</Typography>
+                >Call us for a qoute:</Typography>
                 <Link 
                     href="tel:770-589-4000"
                     style={{
@@ -85,11 +84,12 @@ export default function TopBar() {
                     <Typography
                     variant='body2'
                     className='interFont'
-                    color={'#fff'}
+                    color={'text.primary'}
                     sx={{
-                        textDecoration: 'underline'
+                        textDecoration: 'underline',
+                        fontWeight: 600
                     }}
-                >(770) 589-4000</Typography>
+                > (770) 589-4000</Typography>
                 </Link>
             </Stack>
     </Box>

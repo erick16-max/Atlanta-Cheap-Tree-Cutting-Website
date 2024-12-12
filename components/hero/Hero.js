@@ -1,4 +1,4 @@
-import { Box, Button, Card, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Card, Stack, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css"; // Import Swiper styles
@@ -9,11 +9,18 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 
 import HeroImage from "../../public/treecuttingone.jpg";
 import HeroImageTwo from "../../public/treecuttinghero.jpg";
+import HoverEffectButton from "../general/HoverEffectButton";
+import GoToDashboardBtn from "../general/GoToDashboardBtn";
+import { useState } from "react";
 
 const HeroSection = () => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isSmallScreen = useMediaQuery("(max-width:698px)");
+  const [user, setUser] = useState(false)
+
+
 
   return (
     <Box width="100%">
@@ -22,7 +29,7 @@ const HeroSection = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: isSmallScreen ? 300 : isMediumScreen ? 400 : 500, // Adjust height for smaller screens
+          height: isSmallScreen ? 400 : isMediumScreen ? 400 : 500, // Adjust height for smaller screens
           overflow: "hidden",
           borderRadius: "12px",
         }}
@@ -30,7 +37,7 @@ const HeroSection = () => {
         {/* Swiper Carousel */}
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 7000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           loop={true}
           style={{ width: "100%", height: "100%" }}
@@ -91,21 +98,14 @@ const HeroSection = () => {
                     We are dedicated to offering top-notch tree care and yard services
                     at affordable prices to North Atlanta and the surrounding areas.
                   </Typography>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      borderRadius: "16px",
-                      height: isSmallScreen ? 40 : 50,
-                      px: isSmallScreen ? 3 : 5,
-                      textTransform: "none",
-                      mt: 2,
-                      fontSize: isSmallScreen ? 14 : 16,
-                    }}
-
-                    endIcon={<FaLongArrowAltRight />}
-                  >
-                    Contact Us
-                  </Button>
+                    <Stack  
+                      direction={ isSmallScreen ? 'column' : 'row'} 
+                      gap={3}
+                      alignItems={'center'}
+                    >
+                      <HoverEffectButton />
+                     {user &&   <GoToDashboardBtn />}
+                    </Stack>
                 </Box>
               </Box>
             </SwiperSlide>

@@ -3,7 +3,9 @@ import React from 'react'
 
 export default function MenuList() {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTabletisSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery("(max-width:900px)");
+
   const menuItems = [
     {
       id: 1,
@@ -31,9 +33,9 @@ export default function MenuList() {
         display={'flex'}
         width={'100%'}
         alignItems={'center'}
-        flexDirection={isSmallScreen ? 'column' : 'row'}
-        gap={isSmallScreen ? 2 : 0}
-        mt={isSmallScreen ? 3 : 0}
+        flexDirection={isTablet ? 'column' : 'row'}
+        gap={isTablet ? 2 : 0}
+        mt={isTablet ? 3 : 0}
     >
        {
         menuItems.map(item => {
