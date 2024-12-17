@@ -6,7 +6,7 @@ import { TbMessage2 } from "react-icons/tb";
 
 export default function ChatFloatingButton() {
   return (
-    <Tooltip title="Chat with Host" arrow>
+    <Tooltip title="Message us" arrow>
       <Fab
         color="primary"
         aria-label="chat"

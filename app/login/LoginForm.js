@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Stack,
   TextField,
@@ -8,7 +8,7 @@ import {
   Typography,
   Box,
   Alert,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
@@ -21,7 +21,6 @@ import { auth } from "@/firebase.config";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/navigation";
 
-
 export default function LoginForm() {
   const [loading, setLoading] = React.useState(false);
   const [googleLoading, setGoogleLoading] = React.useState(false);
@@ -30,23 +29,22 @@ export default function LoginForm() {
   const [password, setPassword] = React.useState("");
   const [seePassword, setSeepassword] = React.useState(false);
 
-  const {isMobile} = React.useContext(ColorModeContext)
-  const {user, setUser} = React.useContext(AppContext)
-  const router = useRouter()
+  const { isMobile } = React.useContext(ColorModeContext);
+  const { user, setUser } = React.useContext(AppContext);
+  const router = useRouter();
 
   useEffect(() => {
     // Liten to authentication state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // Storse user in localStorage
-        localStorage.setItem('user', JSON.stringify(user));
-        const activeUser = JSON.parse(localStorage.getItem("user"))
+        localStorage.setItem("user", JSON.stringify(user));
+        const activeUser = JSON.parse(localStorage.getItem("user"));
         setUser(activeUser);
-        router.push("/")
-
+        router.push("/");
       } else {
         // Clear localStorage if no user is signed in
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
         setUser(null);
       }
     });
@@ -54,55 +52,53 @@ export default function LoginForm() {
     return unsubscribe; // Clean up on unmount
   }, []);
 
-
   // login with email/password
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true)
+      setLoading(true);
       await signIn(email, password);
-      router.push('/')
-      
+      router.push("/");
+
       // Redirect to the protected route or home page
     } catch (error) {
-      const cleanError = error.message.replace('Firebase:', '').trim();
+      const cleanError = error.message.replace("Firebase:", "").trim();
       setIsError(cleanError);
-    }finally{
-      setLoading(false)
+    } finally {
+      setLoading(false);
       setTimeout(() => {
-        setIsError("")
-      }, 4000)
+        setIsError("");
+      }, 4000);
     }
   };
 
-  console.log(user)
 
   // login with google auth
   const handleGoogleSignIn = async () => {
     try {
-      setGoogleLoading(true)
+      setGoogleLoading(true);
       await signInWithGoogle();
       // Redirect to the protected route or home page
-      router.push('/')
+      router.push("/");
     } catch (error) {
-      const cleanError = error.message.replace('Firebase:', '').trim();
+      const cleanError = error.message.replace("Firebase:", "").trim();
       setIsError(cleanError);
-    }finally{
-      setGoogleLoading(false)
+    } finally {
+      setGoogleLoading(false);
       setTimeout(() => {
-        setIsError("")
-      }, 3000)
-
+        setIsError("");
+      }, 3000);
     }
   };
 
   return (
     <Stack width={"100%"} component={"form"} gap={3} onSubmit={handleSubmit}>
-
-      { isError && <Alert variant="filled" severity="error">{isError || "Something went wrong -- try again!"}</Alert>}
-        <Stack>
-
-        </Stack>
+      {isError && (
+        <Alert variant="filled" severity="error">
+          {isError || "Something went wrong -- try again!"}
+        </Alert>
+      )}
+      <Stack></Stack>
       <TextField
         label="Email"
         placeholder="Enter email"
@@ -182,38 +178,58 @@ export default function LoginForm() {
           fontWeight: 600,
           height: 50,
           borderRadius: "12px",
+          "&.Mui-disabled": {
+            backgroundColor: "primary.light",
+          },
         }}
         type="submit"
-      >
-        { loading ? <CircularProgress thickness={4} size={25} sx={{color: '#f5f5f5'}} /> : "Login" }
+        disabled={loading || googleLoading}
 
+      >
+        {loading ? (
+          <CircularProgress thickness={4} size={25} sx={{ color: "#f5f5f5" }} />
+        ) : (
+          "Login"
+        )}
       </Button>
-        <Box
-            display={'flex'}
-            justifyContent={'space-between'}
-            alignItems={'center'}
-            width={'100%'}
-        > <Box
+      <Box
         display={"flex"}
+        justifyContent={"space-between"}
         alignItems={"center"}
-        gap={1}
+        width={"100%"}
       >
-        <Typography display={isMobile ? 'none' : 'block'} variant="body2" color={"text.secondary"} fontWeight={500}>
-          Don't have an account?
-        </Typography>
-        <Link style={{ textDecoration: "none" }} href={"/signup"}>
-          <Typography variant="body2" color={"text.primary"} fontWeight={500} sx={{textDecoration: 'underline'}}>
-            Create Account
+        {" "}
+        <Box display={"flex"} alignItems={"center"} gap={1}>
+          <Typography
+            display={isMobile ? "none" : "block"}
+            variant="body2"
+            color={"text.secondary"}
+            fontWeight={500}
+          >
+            Don't have an account?
           </Typography>
-        </Link>
-
-      </Box>
-
-      <Link style={{ textDecoration: "none" }} href={"/forgotpassword"}>
-          <Typography variant="body2" color={"text.primary"} fontWeight={500} sx={{textDecoration: 'underline'}}>
+          <Link style={{ textDecoration: "none" }} href={"/signup"}>
+            <Typography
+              variant="body2"
+              color={"text.primary"}
+              fontWeight={500}
+              sx={{ textDecoration: "underline" }}
+            >
+              Create Account
+            </Typography>
+          </Link>
+        </Box>
+        <Link style={{ textDecoration: "none" }} href={"/forgotpassword"}>
+          <Typography
+            variant="body2"
+            color={"text.primary"}
+            fontWeight={500}
+            sx={{ textDecoration: "underline" }}
+          >
             Forgot Password?
           </Typography>
-        </Link></Box>
+        </Link>
+      </Box>
 
       <Box
         display={"flex"}
@@ -242,6 +258,7 @@ export default function LoginForm() {
           border: "1px #bebebe solid",
         }}
         onClick={handleGoogleSignIn}
+        disabled={loading || googleLoading}
       >
         <Typography
           variant="body1"

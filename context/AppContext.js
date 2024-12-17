@@ -29,10 +29,16 @@ export const AppContextProvider = ({children}) => {
       }, []);
 
 
+      // get user
+    const isUser = user !== null && user && Object?.keys(user).length > 0 ? true : false
+
+
+
 
         const data = {
             user,
-            setUser
+            setUser,
+            isUser
         }
     return (
         <AppContext.Provider value={data}>

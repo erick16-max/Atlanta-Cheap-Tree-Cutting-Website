@@ -11,14 +11,15 @@ import HeroImage from "../../public/treecuttingone.jpg";
 import HeroImageTwo from "../../public/treecuttinghero.jpg";
 import HoverEffectButton from "../general/HoverEffectButton";
 import GoToDashboardBtn from "../general/GoToDashboardBtn";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AppContext from "@/context/AppContext";
 
 const HeroSection = () => {
   const theme = useTheme();
   // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery("(max-width:698px)");
-  const [user, setUser] = useState(false)
+  const {user} = useContext(AppContext)
 
 
 
@@ -104,7 +105,7 @@ const HeroSection = () => {
                       alignItems={'center'}
                     >
                       <HoverEffectButton />
-                     {user &&   <GoToDashboardBtn />}
+                     { Object.keys(user)?.length > 0 &&   <GoToDashboardBtn />}
                     </Stack>
                 </Box>
               </Box>

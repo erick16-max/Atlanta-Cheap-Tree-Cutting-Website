@@ -5,21 +5,22 @@ import ProfileImage from "../../public/gegepic.jpg"
 import { RiArrowDropDownFill } from "react-icons/ri";
 import AppContext from "@/context/AppContext";
 import MenuDropDown from "./MenuDropDown";
+import { truncateString } from "@/util/LogicFunctions";
 
 export default function AvatarButton() {
     const [profile, setProfile] = useState(false)
-    const {user} = useContext(AppContext)
+    const {user, isUser} = useContext(AppContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
 
-  
+  const topText = user?.displayName || user?.email || ""
 
 
   return (
-   <d>
+   <div>
        <Box
         display={'flex'}
         alignItems={'center'}
@@ -50,19 +51,19 @@ export default function AvatarButton() {
             ): (
 
             <Typography variant="body1" color={"text.primary"} fontWeight={500}>
-              {user?.displayName[0] || user?.email[0] }
+              {user?.displayName && isUser ? user?.displayName[0] : isUser && user?.email[0] ? user?.email[0] : "" }
             </Typography>
             )
         }
       </Avatar>
       <Stack direction={'row'} alignItems={'center'}>
         <Typography variant="body2" color={"text.primary"} fontSize={13}  fontWeight={400}>
-          {user?.displayName || user?.email}
+         {truncateString(topText, 10)}
         </Typography>
         {/* <Typography variant="body2" color={"text.secondary"} fontSize={12} fontWeight={400} >
           +1 720067228
         </Typography> */}
-        <RiArrowDropDownFill style={{color: '#242424'}}/>
+        <RiArrowDropDownFill style={{color: '#242424', fontSize: 16}}/>
       </Stack>
     </Box>
     <MenuDropDown
@@ -71,6 +72,6 @@ export default function AvatarButton() {
         handleClick={handleClick}
       />
 
-   </d>
+   </div>
   );
 }
