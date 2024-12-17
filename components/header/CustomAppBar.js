@@ -6,6 +6,8 @@ import { TiThMenuOutline } from "react-icons/ti";
 import { LuSquareMenu } from "react-icons/lu";
 import SidebarDrawer from './SidebarDrawer';
 import UserAccount from './UserAccount';
+import { FiMenu } from "react-icons/fi";
+
 
 export default function CustomAppBar({ navBg }) {
   const theme = useTheme();
@@ -34,7 +36,18 @@ export default function CustomAppBar({ navBg }) {
         alignItems="center"
         width="100%"
       >
-        <Box sx={{ flexGrow: 0 }}>
+        <Box sx={{ flexGrow: 0 }} display={'flex'} alignItems={'center'}>
+        <IconButton
+          sx={{
+            display: isTablet ?'block' : 'none',
+            width:50,
+            height: 50,
+            borderRadius: 25
+          }}
+          onClick={() => setOpenDrawer(true)}
+        >
+            <FiMenu fontSize={24}/>
+        </IconButton>
           <LogoBrand />
         </Box>
         <Box sx={{ flexGrow: 0 }} display={!isTablet ? 'flex' : 'none'}>
@@ -43,8 +56,8 @@ export default function CustomAppBar({ navBg }) {
         <Box sx={{ flexGrow: 0 }}>
           <UserAccount setOpenDrawer={setOpenDrawer} isTablet={isTablet}/>
         </Box>
-        <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
       </Box>
+        <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
     </AppBar>
   );
 }

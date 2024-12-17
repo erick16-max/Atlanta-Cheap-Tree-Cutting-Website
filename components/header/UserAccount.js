@@ -46,14 +46,7 @@ export default function UserAccount({isTablet, setOpenDrawer}) {
         >
           Sign Up
         </Button>
-        <IconButton
-          sx={{
-            display: isTablet ?'block' : 'none'
-          }}
-          onClick={() => setOpenDrawer(true)}
-        >
-            <FiMenu fontSize={24}/>
-        </IconButton>
+      
       </Stack>
       )
      }

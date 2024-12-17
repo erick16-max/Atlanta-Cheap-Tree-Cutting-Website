@@ -9,7 +9,6 @@ export default function SidebarDrawer({openDrawer, setOpenDrawer, isTablet}) {
     <Drawer
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
-        anchor='right'
     >
         <Box
             width={'280px'}
