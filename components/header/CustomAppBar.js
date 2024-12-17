@@ -7,6 +7,7 @@ import { LuSquareMenu } from "react-icons/lu";
 import SidebarDrawer from './SidebarDrawer';
 import UserAccount from './UserAccount';
 import { FiMenu } from "react-icons/fi";
+import AppContext from '@/context/AppContext';
 
 
 export default function CustomAppBar({ navBg }) {
@@ -15,6 +16,9 @@ export default function CustomAppBar({ navBg }) {
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
   const isTablet = useMediaQuery("(max-width:900px)");
+
+  const {user, setUser} = React.useContext(AppContext)
+
 
   const [openDrawer, setOpenDrawer] = useState(false)
   return (
@@ -54,7 +58,7 @@ export default function CustomAppBar({ navBg }) {
          <MenuList />
         </Box >
         <Box sx={{ flexGrow: 0 }}>
-          <UserAccount setOpenDrawer={setOpenDrawer} isTablet={isTablet}/>
+          <UserAccount setOpenDrawer={setOpenDrawer} isTablet={isTablet} user={user}/>
         </Box>
       </Box>
         <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>

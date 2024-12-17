@@ -1,10 +1,18 @@
 import { Box, Button,useMediaQuery, useTheme} from '@mui/material'
-import React from 'react'
+import { usePathname } from 'next/navigation';
+import React, { useContext } from 'react'
+import AppContext from '@/context/AppContext';
 
 export default function MenuList() {
   const theme = useTheme();
   const isTabletisSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery("(max-width:900px)");
+
+  const pathName = usePathname()
+
+  const {user} = useContext(AppContext)
+
+
 
   const menuItems = [
     {
@@ -13,18 +21,25 @@ export default function MenuList() {
     },
     {
       id: 2,
-      name: "About Us"
+      name: "Dashboard"
     },
     {
       id: 3,
-      name: "Services"
+      
+      name: "About Us"
     },
     {
       id: 4,
-      name: "Portfolio"
+
+      name: "Services"
     },
     {
       id: 5,
+
+      name: "Portfolio"
+    },
+    {
+      id: 6,
       name: "Contact Us"
     },
   ]
@@ -44,7 +59,8 @@ export default function MenuList() {
               key={item.id}
               color='secondary'
               sx={{
-                textTransform: 'none'
+                textTransform: 'none',
+                display: Object.keys(user)?.length < 1 && item.name === "Dashboard" ? 'none' : 'block'
               }}
               >{item.name}</Button>
           )

@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 import { deepOrange, amber, grey, common } from '@mui/material/colors';
 import CssBaseline from "@mui/material/CssBaseline";
 import { DARK_MODE, LIGHT_MODE } from '@/constants/ThemeConstants';
+import { AppContextProvider } from '@/context/AppContext';
 
 
 
@@ -116,12 +117,14 @@ export function CustomThemeProvider({children}) {
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
       
   return (
+    <AppContextProvider>
         <ColorModeContext.Provider value={themeData}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
             {children}
           </ThemeProvider>
       </ColorModeContext.Provider>
+    </AppContextProvider>
   )
 }
 

@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useContext } from "react";
 import CustomAppBar from "@/components/header/CustomAppBar";
 import { Box, Card, Stack, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
@@ -9,12 +9,14 @@ import AboutUs from "@/components/about/AboutUs";
 import Services from "@/components/services/Services";
 import PageLoader from "@/components/general/PageLoader";
 import ChatFloatingButton from "@/components/general/ChatButton";
+import AppContext from "@/context/AppContext";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [loading,setLoading]  = React.useState(true)
+  const {user} = useContext(AppContext)
 
   React.useEffect(() => {
         setLoading(false)
@@ -39,7 +41,7 @@ export default function Home() {
     });
   };
 
-  if(loading){
+  if(loading || user === null){
     return <PageLoader />
   }
   

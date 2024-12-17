@@ -4,9 +4,8 @@ import AvatarButton from "./AvatarButton";
 import { FiMenu } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
-export default function UserAccount({isTablet, setOpenDrawer}) {
+export default function UserAccount({isTablet, setOpenDrawer, user}) {
   const theme = useTheme()
-  const [user, setUser] = useState(false)
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isExtraMobileScreen = useMediaQuery("(max-width:446px)");
   const router = useRouter()
@@ -15,8 +14,8 @@ export default function UserAccount({isTablet, setOpenDrawer}) {
   return (
     <Box width={"100%"}>
      {
-      user ? (
-     <AvatarButton />
+      user !==null && user && JSON.stringify(user) !== "{}" ? (
+     <AvatarButton/>
       ):(
         <Stack direction={"row"} gap={1}>
         <Button

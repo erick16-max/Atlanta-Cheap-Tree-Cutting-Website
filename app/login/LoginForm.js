@@ -7,24 +7,99 @@ import {
   Button,
   Typography,
   Box,
+  Alert,
+  CircularProgress
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import ColorModeContext from "@/theme/CustomThemeProvider";
+import { signIn, signInWithGoogle } from "@/firebase/Firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase.config";
+import AppContext from "@/context/AppContext";
+import { useRouter } from "next/navigation";
+
 
 export default function LoginForm() {
   const [loading, setLoading] = React.useState(false);
-  const [isError, setIsError] = React.useState(false);
+  const [googleLoading, setGoogleLoading] = React.useState(false);
+  const [isError, setIsError] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [seePassword, setSeepassword] = React.useState(false);
 
   const {isMobile} = React.useContext(ColorModeContext)
+  const {user, setUser} = React.useContext(AppContext)
+  const router = useRouter()
+
+  useEffect(() => {
+    // Liten to authentication state changes
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Storse user in localStorage
+        localStorage.setItem('user', JSON.stringify(user));
+        const activeUser = JSON.parse(localStorage.getItem("user"))
+        setUser(activeUser);
+        router.push("/")
+
+      } else {
+        // Clear localStorage if no user is signed in
+        localStorage.removeItem('user');
+        setUser(null);
+      }
+    });
+
+    return unsubscribe; // Clean up on unmount
+  }, []);
+
+
+  // login with email/password
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true)
+      await signIn(email, password);
+      router.push('/')
+      
+      // Redirect to the protected route or home page
+    } catch (error) {
+      const cleanError = error.message.replace('Firebase:', '').trim();
+      setIsError(cleanError);
+    }finally{
+      setLoading(false)
+      setTimeout(() => {
+        setIsError("")
+      }, 4000)
+    }
+  };
+
+  console.log(user)
+
+  // login with google auth
+  const handleGoogleSignIn = async () => {
+    try {
+      setGoogleLoading(true)
+      await signInWithGoogle();
+      // Redirect to the protected route or home page
+      router.push('/')
+    } catch (error) {
+      const cleanError = error.message.replace('Firebase:', '').trim();
+      setIsError(cleanError);
+    }finally{
+      setGoogleLoading(false)
+      setTimeout(() => {
+        setIsError("")
+      }, 3000)
+
+    }
+  };
 
   return (
-    <Stack width={"100%"} component={"form"} gap={3}>
+    <Stack width={"100%"} component={"form"} gap={3} onSubmit={handleSubmit}>
+
+      { isError && <Alert variant="filled" severity="error">{isError || "Something went wrong -- try again!"}</Alert>}
         <Stack>
 
         </Stack>
@@ -110,7 +185,8 @@ export default function LoginForm() {
         }}
         type="submit"
       >
-        Login
+        { loading ? <CircularProgress thickness={4} size={25} sx={{color: '#f5f5f5'}} /> : "Login" }
+
       </Button>
         <Box
             display={'flex'}
@@ -165,6 +241,7 @@ export default function LoginForm() {
           borderRadius: "16px",
           border: "1px #bebebe solid",
         }}
+        onClick={handleGoogleSignIn}
       >
         <Typography
           variant="body1"
