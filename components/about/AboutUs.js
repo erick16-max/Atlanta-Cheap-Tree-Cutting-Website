@@ -9,7 +9,7 @@ export default function AboutUs() {
 
   return (
     <Card
-      variant="outlined"
+      // variant="outlined"
       sx={{
         width: "100%",
         height: isTablet ? '100%' : 400,
@@ -18,13 +18,14 @@ export default function AboutUs() {
         marginTop: 3,
         borderRadius: "12px",
         gap: 5,
+        boxShadow: 0,
       }}
     >
       <Image 
         src={AboutUsImage} 
         alt="about us image" 
         height={isTablet ? 600 : 400}
-        style={{display: isTablet ? 'none' : 'block'}}
+        style={{display: isTablet ? 'none' : 'block', borderRadius: "12px",}}
          />
       <Stack flex={1} p={3}>
         <Typography variant="h4" color={"text.primary"} fontWeight={900}>

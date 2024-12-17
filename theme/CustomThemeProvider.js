@@ -61,9 +61,9 @@ export function CustomThemeProvider({children}) {
             ? {
                 // palette values for light mode
                 primary:{
-                  light: '#e73b41',
-                  main: '#E10A12',
-                  dark: '#b4080e',
+                  light: '#5f8e63',
+                  main: '#326e36',
+                  dark: '#1b5e20',
                 },
                 secondary: {
                   main: '#1c1e21'
