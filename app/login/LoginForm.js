@@ -1,3 +1,4 @@
+"use client"
 import {
   Stack,
   TextField,
@@ -7,10 +8,11 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import ColorModeContext from "@/theme/CustomThemeProvider";
 
 export default function LoginForm() {
   const [loading, setLoading] = React.useState(false);
@@ -18,6 +20,8 @@ export default function LoginForm() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [seePassword, setSeepassword] = React.useState(false);
+
+  const {isMobile} = React.useContext(ColorModeContext)
 
   return (
     <Stack width={"100%"} component={"form"} gap={3}>
@@ -118,7 +122,7 @@ export default function LoginForm() {
         alignItems={"center"}
         gap={1}
       >
-        <Typography variant="body2" color={"text.secondary"} fontWeight={500}>
+        <Typography display={isMobile ? 'none' : 'block'} variant="body2" color={"text.secondary"} fontWeight={500}>
           Don't have an account?
         </Typography>
         <Link style={{ textDecoration: "none" }} href={"/signup"}>

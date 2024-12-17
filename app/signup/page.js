@@ -4,10 +4,20 @@ import { Box, Card, Stack, Typography} from '@mui/material'
 import React from 'react'
 import SignupForm from './SignupForm'
 import ColorModeContext from '@/theme/CustomThemeProvider'
+import PageLoader from '@/components/general/PageLoader'
 
 
 export default function Page() {
     const { isMobile} = React.useContext(ColorModeContext)
+    const [loading,setLoading]  = React.useState(true)
+        
+          React.useEffect(() => {
+                setLoading(false)
+          }, [])
+    
+          if(loading){
+              return <PageLoader />
+            }
  
   return (
     <Box
