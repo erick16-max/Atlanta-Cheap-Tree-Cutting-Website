@@ -1,14 +1,19 @@
-import { AppBar, Box, IconButton, useMediaQuery, useTheme} from '@mui/material';
-import React, { useState } from 'react';
-import LogoBrand from '../general/LogoBrand';
-import MenuList from './MenuList';
+import {
+  AppBar,
+  Box,
+  IconButton,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import React, { useState } from "react";
+import LogoBrand from "../general/LogoBrand";
+import MenuList from "./MenuList";
 import { TiThMenuOutline } from "react-icons/ti";
 import { LuSquareMenu } from "react-icons/lu";
-import SidebarDrawer from './SidebarDrawer';
-import UserAccount from './UserAccount';
+import SidebarDrawer from "./SidebarDrawer";
+import UserAccount from "./UserAccount";
 import { FiMenu } from "react-icons/fi";
-import AppContext from '@/context/AppContext';
-
+import AppContext from "@/context/AppContext";
 
 export default function CustomAppBar({ navBg }) {
   const theme = useTheme();
@@ -17,10 +22,9 @@ export default function CustomAppBar({ navBg }) {
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("lg"));
   const isTablet = useMediaQuery("(max-width:900px)");
 
-  const {user, setUser} = React.useContext(AppContext)
+  const { user, setUser } = React.useContext(AppContext);
 
-
-  const [openDrawer, setOpenDrawer] = useState(false)
+  const [openDrawer, setOpenDrawer] = useState(false);
   return (
     <AppBar
       position="fixed"
@@ -35,33 +39,44 @@ export default function CustomAppBar({ navBg }) {
       }}
     >
       <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        width="100%"
+        width={'100%'}
+        maxWidth={'1700px'}
+        display={'flex'}
+        margin={'auto'}
       >
-        <Box sx={{ flexGrow: 0 }} display={'flex'} alignItems={'center'}>
-        <IconButton
-          sx={{
-            display: isTablet ?'block' : 'none',
-            width:50,
-            height: 50,
-            borderRadius: 25
-          }}
-          onClick={() => setOpenDrawer(true)}
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          width="100%"
         >
-            <FiMenu fontSize={24}/>
-        </IconButton>
-          <LogoBrand />
+          <Box sx={{ flexGrow: 0 }} display={"flex"} alignItems={"center"}>
+            <IconButton
+              sx={{
+                display: isTablet ? "block" : "none",
+                width: 50,
+                height: 50,
+                borderRadius: 25,
+              }}
+              onClick={() => setOpenDrawer(true)}
+            >
+              <FiMenu fontSize={24} />
+            </IconButton>
+            <LogoBrand />
+          </Box>
+          <Box sx={{ flexGrow: 0 }} display={!isTablet ? "flex" : "none"}>
+            <MenuList />
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <UserAccount
+              setOpenDrawer={setOpenDrawer}
+              isTablet={isTablet}
+              user={user}
+            />
+          </Box>
         </Box>
-        <Box sx={{ flexGrow: 0 }} display={!isTablet ? 'flex' : 'none'}>
-         <MenuList />
-        </Box >
-        <Box sx={{ flexGrow: 0 }}>
-          <UserAccount setOpenDrawer={setOpenDrawer} isTablet={isTablet} user={user}/>
-        </Box>
+        <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
       </Box>
-        <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer}/>
     </AppBar>
   );
 }

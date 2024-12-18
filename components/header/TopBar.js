@@ -13,16 +13,20 @@ export default function TopBar() {
   return (
     <Box
         width={'100%'}
+        sx={{
+            borderBottom: '1px solid #e0e0e0',
+            boxShadow: 0,
+        }}
+    >
+     <Box
+        width={'100%'}
         height={"40px"}
         display={'flex'}
         justifyContent={'space-between'}
         alignItems={'center'}
         px={isSmallScreen ? 1 : 3}
         gap={1}
-        sx={{
-            borderBottom: '1px solid #e0e0e0',
-            boxShadow: 1,
-        }}
+        
     >
             <Stack direction={'row'} gap={1} display={isSmallScreen ? "none" : 'flex'}>
                <Tooltip
@@ -95,6 +99,7 @@ export default function TopBar() {
                 > (770) 589-4000</Typography>
                 </Link>
             </Stack>
+    </Box>
     </Box>
   )
 }

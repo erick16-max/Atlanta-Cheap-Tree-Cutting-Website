@@ -87,7 +87,7 @@ body {
    height: 14px;
    box-shadow: 0 3px 0 #326e36;
    position: relative;
-   clip-path: inset(-40px 0 -5px)
+   clip-path: inset(-40px 0 -5px);
  }
  .loader-two:before {
    content: "";

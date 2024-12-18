@@ -1,5 +1,8 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { FaRegCalendarPlus } from "react-icons/fa";
+import { MdOutlineEditCalendar } from "react-icons/md";
+
 
 export default function HoverEffectButton({ isSmallScreen }) {
   return (
@@ -18,7 +21,7 @@ export default function HoverEffectButton({ isSmallScreen }) {
         overflow: "hidden",
         zIndex: 0,
         backgroundColor: "#E10A12",
-        width: 200,
+        width: 220,
         "&::before": {
           content: '""',
           position: "absolute",
@@ -38,8 +41,10 @@ export default function HoverEffectButton({ isSmallScreen }) {
           backgroundColor: "#aa8c2c", // Prevents default hover flash
         },
       }}
+
+      endIcon={<FaRegCalendarPlus fontSize={16}/>}
     >
-      Book Us Now!
+      Book Us Now
     </Button>
   );
 }

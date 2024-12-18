@@ -20,7 +20,7 @@ export default function GoToDashboardBtn({ isSmallScreen }) {
         zIndex: 0,
         color: '#1c1e21',
         backgroundColor: "#f5f5f5",
-        width: 200,
+        width: 220,
         "&::before": {
           content: '""',
           position: "absolute",

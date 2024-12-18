@@ -52,9 +52,11 @@ export default function Home() {
 
   return (
    <Box
-    width={'100vw'}
+    width={'100%'}
     display={'flex'}
     flexDirection={'column'}
+    maxWidth={'1700px'}
+    margin={'auto'}
    >
       <TopBar />
      <Box
