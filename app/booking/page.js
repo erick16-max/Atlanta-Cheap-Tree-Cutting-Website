@@ -52,7 +52,7 @@ export default function page() {
       p={5}
     >
       <Alert severity='info' sx={{my:2}}>
-        Dashboard page is under development
+        Bookings page is under development
   </Alert>
         Hello, {isUser  && user?.displayName ? user?.displayName : user?.email},{" "}
     

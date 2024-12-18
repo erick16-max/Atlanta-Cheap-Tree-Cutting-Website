@@ -2,6 +2,7 @@ import { Box, Button,useMediaQuery, useTheme} from '@mui/material'
 import { usePathname } from 'next/navigation';
 import React, { useContext } from 'react'
 import AppContext from '@/context/AppContext';
+import Link from 'next/link';
 
 export default function MenuList() {
   const theme = useTheme();
@@ -17,30 +18,36 @@ export default function MenuList() {
   const menuItems = [
     {
       id: 1,
-      name: "Home"
+      name: "Home",
+      path: "/"
     },
     {
       id: 2,
-      name: "Dashboard"
+      name: "Dashboard",
+      path: "/dashboard"
     },
     {
       id: 3,
       
-      name: "About Us"
+      name: "About Us",
+      path: '/aboutus'
     },
     {
       id: 4,
 
-      name: "Services"
+      name: "Services",
+      path: '/services'
     },
     {
       id: 5,
 
-      name: "Portfolio"
+      name: "Portfolio",
+      path: '/portfolio'
     },
     {
       id: 6,
-      name: "Contact Us"
+      name: "Contact Us",
+      path: '/contactus'
     },
   ]
   return (
@@ -49,7 +56,7 @@ export default function MenuList() {
         width={'100%'}
         alignItems={'center'}
         flexDirection={isTablet ? 'column' : 'row'}
-        gap={isTablet ? 2 : 0}
+        gap={isTablet ? 2 : 1}
         mt={isTablet ? 3 : 0}
     >
        {
@@ -60,8 +67,12 @@ export default function MenuList() {
               color='secondary'
               sx={{
                 textTransform: 'none',
-                display: Object.keys(user)?.length < 1 && item.name === "Dashboard" ? 'none' : 'block'
+                display: Object.keys(user)?.length < 1 && item.name === "Dashboard" ? 'none' : 'block',
+                backgroundColor: item.path === pathName ? 'rgba(50, 110, 54, 0.4)' : ''
+                
               }}
+              LinkComponent={Link}
+              href={item.path}
               >{item.name}</Button>
           )
         })

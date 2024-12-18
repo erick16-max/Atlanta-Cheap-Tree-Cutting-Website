@@ -15,7 +15,7 @@ import UserAccount from "./UserAccount";
 import { FiMenu } from "react-icons/fi";
 import AppContext from "@/context/AppContext";
 
-export default function CustomAppBar({ navBg }) {
+export default function CustomAppBar({ navBg, mainPage }) {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -34,7 +34,7 @@ export default function CustomAppBar({ navBg }) {
         px: isSmallScreen ? 1 : 3,
         backgroundColor: "#ffffff",
         boxShadow: navBg ? 3 : 0,
-        mt: navBg ? 0 : "40px", // Adjust margin based on scroll
+        mt: navBg || mainPage ? 0 : "40px", // Adjust margin based on scroll
         transition: "margin-top 0.3s ease-in-out", // Smooth transition
       }}
     >

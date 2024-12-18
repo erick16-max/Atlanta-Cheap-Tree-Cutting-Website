@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 export default function GoToDashboardBtn({ isSmallScreen }) {
+  const router = useRouter()
   return (
     <Button
       variant="contained"
@@ -42,6 +44,7 @@ export default function GoToDashboardBtn({ isSmallScreen }) {
       }}
 
       endIcon={<FaLongArrowAltRight />}
+      onClick={() => router.push("/dashboard")}
     >
     Dashboard
     </Button>

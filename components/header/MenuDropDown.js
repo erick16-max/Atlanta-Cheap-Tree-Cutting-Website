@@ -44,14 +44,20 @@ export default function MenuDropDown({
         >
             <Box width={180}>
 
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => {
+                    router.push('/dashboard')
+                    handleClose()
+                }}>
                     <ListItemIcon>
                         <LuLayoutDashboard fontSize="small" />
                     </ListItemIcon>
                     <Typography variant="inherit">Dashboard</Typography>
                 </MenuItem>
                
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={() => {
+                     router.push('/settings')
+                     handleClose()
+                }}>
                     <ListItemIcon>
                         <IoSettingsOutline fontSize="small" />
                     </ListItemIcon>

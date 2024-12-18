@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "@mui/material";
 import { FaRegCalendarPlus } from "react-icons/fa";
 import { MdOutlineEditCalendar } from "react-icons/md";
+import AppContext from "@/context/AppContext";
+import { useRouter } from "next/navigation";
 
 
 export default function HoverEffectButton({ isSmallScreen }) {
+  const {isUser} = useContext(AppContext)
+  const router = useRouter()
   return (
     <Button
       variant="contained"
@@ -43,6 +47,13 @@ export default function HoverEffectButton({ isSmallScreen }) {
       }}
 
       endIcon={<FaRegCalendarPlus fontSize={16}/>}
+      onClick={() => {
+        if(isUser){
+          router.push('/booking')
+        }else{
+          router.push('/login')
+        }
+      }}
     >
       Book Us Now
     </Button>
