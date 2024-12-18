@@ -13,12 +13,16 @@ export const AppContextProvider = ({ children }) => {
 
   // get user profile
   const [finishAccount, setFinishAccount] = useState(() => {
-    const storedValue = localStorage.getItem("finishaccount");
-    return storedValue ? JSON.parse(storedValue) : { isProfile: false };
-  });
+    if (typeof window !== 'undefined') { 
+        const storedValue = localStorage.getItem("finishaccount");
+        return storedValue ? JSON.parse(storedValue) : { isProfile: false };
+    }
+    return { isProfile: false }; 
+});
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if(typeof window === 'undefined') return
       if (user) {
         localStorage.setItem("user", JSON.stringify(user));
         setUser(user);
