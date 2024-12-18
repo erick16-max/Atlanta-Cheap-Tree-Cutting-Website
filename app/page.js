@@ -10,13 +10,17 @@ import Services from "@/components/services/Services";
 import PageLoader from "@/components/general/PageLoader";
 import ChatFloatingButton from "@/components/general/ChatButton";
 import AppContext from "@/context/AppContext";
+import FinishAccountModal from "@/components/finishaccount/FinishAccountModal";
+import SuccessSnackbarAlert from "@/components/header/SuccessSnackbarAlert";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [loading,setLoading]  = React.useState(true)
-  const {user} = useContext(AppContext)
+  const {user, isUserProfile} = useContext(AppContext)
+
+  
 
   React.useEffect(() => {
         setLoading(false)
@@ -67,6 +71,8 @@ export default function Home() {
          <AboutUs />
          <Services />
          <ChatFloatingButton />
+         <FinishAccountModal />
+        <SuccessSnackbarAlert />
      </Stack>
    </Box>
   );

@@ -9,7 +9,7 @@ import { truncateString } from "@/util/LogicFunctions";
 
 export default function AvatarButton() {
     const [profile, setProfile] = useState(false)
-    const {user, isUser} = useContext(AppContext)
+    const {user, isUser, isUserProfile, userProfile} = useContext(AppContext)
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -17,6 +17,8 @@ export default function AvatarButton() {
     };
 
   const topText = user?.displayName || user?.email || ""
+  const topTextProfile = userProfile?.displayName || userProfile?.email || ""
+
 
 
   return (
@@ -46,19 +48,19 @@ export default function AvatarButton() {
         }}
       >
         {
-            !user ? (
-                <Image src={ProfileImage} height={40}  alt="profile image"/>
+            userProfile?.photoURL || user?.photoURL ? (
+                <Image src={userProfile?.photoURL || user?.photoURL} height={40} width={40}  alt="profile image"/>
             ): (
 
             <Typography variant="body1" color={"text.primary"} fontWeight={500}>
-              {user?.displayName && isUser ? user?.displayName[0] : isUser && user?.email[0] ? user?.email[0] : "" }
+              {isUserProfile ? topTextProfile[0] : topText[0]}
             </Typography>
             )
         }
       </Avatar>
       <Stack direction={'row'} alignItems={'center'}>
         <Typography variant="body2" color={"text.primary"} fontSize={13}  fontWeight={400}>
-         {truncateString(topText, 10)}
+         { isUserProfile ? truncateString(topTextProfile, 10) : truncateString(topText, 10)}
         </Typography>
         {/* <Typography variant="body2" color={"text.secondary"} fontSize={12} fontWeight={400} >
           +1 720067228
