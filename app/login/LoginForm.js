@@ -98,11 +98,10 @@ export default function LoginForm() {
           {isError || "Something went wrong -- try again!"}
         </Alert>
       )}
-      <Stack></Stack>
       <TextField
         label="Email"
         placeholder="Enter email"
-        type="text"
+        type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -187,7 +186,7 @@ export default function LoginForm() {
 
       >
         {loading ? (
-          <CircularProgress thickness={4} size={25} sx={{ color: "#f5f5f5" }} />
+          <CircularProgress thickness={4} size={22} sx={{ color: "#f5f5f5" }} />
         ) : (
           "Login"
         )}

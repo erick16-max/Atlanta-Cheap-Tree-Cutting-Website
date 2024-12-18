@@ -18,7 +18,7 @@ export default function Home() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [loading,setLoading]  = React.useState(true)
-  const {user, isUserProfile} = useContext(AppContext)
+  const {user, isUserProfile, successAlert, setSuccessAlert} = useContext(AppContext)
 
   
 
@@ -72,7 +72,11 @@ export default function Home() {
          <Services />
          <ChatFloatingButton />
          <FinishAccountModal />
-        <SuccessSnackbarAlert />
+        <SuccessSnackbarAlert 
+          open={successAlert}
+          setOpen={setSuccessAlert}
+          message={'Profile saved successfully!'}
+        />
      </Stack>
    </Box>
   );

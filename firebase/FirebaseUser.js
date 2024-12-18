@@ -23,7 +23,6 @@ export const getUserByEmail = async (email) => {
     // Retrieve and return the user object
     const userDoc = querySnapshot.docs[0]; // Assuming only one user per email
     const userData = { id: userDoc.id, ...userDoc.data() };
-    console.log("User found: ", userData);
 
     return userData;
   } catch (error) {

@@ -114,7 +114,7 @@ export default function SignupForm() {
       <TextField
         label="Email"
         placeholder="Enter email"
-        type="text"
+        type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -199,7 +199,7 @@ export default function SignupForm() {
         
       >
         {loading ? (
-          <CircularProgress thickness={4} size={25} sx={{ color: "#f5f5f5" }} />
+          <CircularProgress thickness={4} size={22} sx={{ color: "#f5f5f5" }} />
         ) : (
           "Create Account"
         )}

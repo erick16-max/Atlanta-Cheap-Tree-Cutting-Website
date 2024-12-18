@@ -2,17 +2,19 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
-import { MdClose } from "react-icons/md";
 import CloseIcon from '@mui/icons-material/Close';
 import { Alert } from '@mui/material';
 import AppContext from '@/context/AppContext';
+import { MdClose } from "react-icons/md";
 
 
-export default function SuccessSnackbarAlert() {
 
-  const {successAlert: open, setSuccessAlert: setOpen, isUserProfile, userProfile} = React.useContext(AppContext)
+export default function SuccessSnackbarAlert({
+  message, open, setOpen
+}) {
 
-console.log(userProfile)
+  const {isUserProfile, userProfile} = React.useContext(AppContext)
+
 
   const handleClick = () => {
     setOpen(true);
@@ -45,7 +47,7 @@ console.log(userProfile)
       open={open} 
       autoHideDuration={4000} 
       onClose={handleClose}
-      message={`Profile saved successfully!`}
+      message={message}
       action={action}
       />
     
