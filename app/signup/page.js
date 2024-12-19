@@ -26,7 +26,7 @@ export default function Page() {
         minHeight: '100vh',
         justifyContent: 'center',
         alignItems: 'center',
-        bgcolor: '#f5f5f5',
+        bgcolor: '#eeeeee',
         overflow: 'auto', // Allow scrolling if content overflows
         py: 3,
       }}

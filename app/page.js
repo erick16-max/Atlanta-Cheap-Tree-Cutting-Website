@@ -12,6 +12,8 @@ import ChatFloatingButton from "@/components/general/ChatButton";
 import AppContext from "@/context/AppContext";
 import FinishAccountModal from "@/components/finishaccount/FinishAccountModal";
 import SuccessSnackbarAlert from "@/components/header/SuccessSnackbarAlert";
+import { useInternetStatus } from "@/hooks/useInternetStatus";
+import OnlineStatusModal from "@/components/general/OnlineStatusModal";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
@@ -20,7 +22,10 @@ export default function Home() {
   const [loading,setLoading]  = React.useState(true)
   const {user, isUserProfile, successAlert, setSuccessAlert} = useContext(AppContext)
 
-  
+  const isOnline = useInternetStatus()
+
+  console.log(isOnline)
+
 
   React.useEffect(() => {
         setLoading(false)
@@ -79,6 +84,7 @@ export default function Home() {
           setOpen={setSuccessAlert}
           message={'Profile saved successfully!'}
         />
+        <OnlineStatusModal />
      </Stack>
    </Box>
   );

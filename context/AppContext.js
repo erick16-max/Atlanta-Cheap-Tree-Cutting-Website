@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/firebase.config";
 import { getUserByEmail } from "@/firebase/FirebaseUser";
+import { useInternetStatus } from "@/hooks/useInternetStatus";
 
 const AppContext = createContext();
 
@@ -9,6 +10,8 @@ export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [successAlert, setSuccessAlert] = useState(false)
+
+  const isOnline = useInternetStatus()
 
 
   // get user profile
@@ -21,6 +24,7 @@ export const AppContextProvider = ({ children }) => {
 });
 
   useEffect(() => {
+    if(!isOnline) return
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if(typeof window === 'undefined') return
       if (user) {

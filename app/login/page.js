@@ -6,6 +6,8 @@ import LoginForm from './LoginForm'
 import ColorModeContext from '@/theme/CustomThemeProvider'
 import PageLoader from '@/components/general/PageLoader'
 
+
+
 export default function Page() {
     const { isMobile} = React.useContext(ColorModeContext)
      const [loading,setLoading]  = React.useState(true)
@@ -26,7 +28,7 @@ export default function Page() {
         minHeight: '100vh',
         justifyContent: 'center',
         alignItems: 'center',
-        bgcolor: '#f5f5f5',
+        bgcolor: '#eeeeee',
         overflow: 'auto', // Allow scrolling if content overflows
         py: 3,
       }}

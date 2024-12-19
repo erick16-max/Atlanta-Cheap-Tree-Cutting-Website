@@ -58,9 +58,9 @@ export default function SignupForm() {
       setLoading(true);
       const user = await createUser(email, password);
       if (user) {
-        localStorage.setItem('finishaccount', JSON.stringify({
-          isProfile: true
-        }))
+        // localStorage.setItem('finishaccount', JSON.stringify({
+        //   isProfile: true
+        // }))
         router.push("/");
         setPassword("")
         setEmail("")
@@ -84,9 +84,9 @@ export default function SignupForm() {
         const user = await signInWithGoogle();
         // Redirect to the protected route or home page
         if (user) {
-          localStorage.setItem('finishaccount', JSON.stringify({
-            isProfile: true
-          }))
+          // localStorage.setItem('finishaccount', JSON.stringify({
+          //   isProfile: true
+          // }))
           router.push("/");
           setPassword("")
           setEmail("")
