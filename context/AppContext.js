@@ -38,6 +38,7 @@ export const AppContextProvider = ({ children }) => {
           }
         } catch (error) {
           console.error("Error fetching user profile: ", error.message);
+          
         }
       } else {
         localStorage.removeItem("user");

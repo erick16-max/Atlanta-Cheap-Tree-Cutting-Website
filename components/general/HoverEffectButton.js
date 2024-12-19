@@ -55,7 +55,7 @@ export default function HoverEffectButton({ isSmallScreen }) {
         }
       }}
     >
-      Book Us Now
+      Book us now
     </Button>
   );
 }

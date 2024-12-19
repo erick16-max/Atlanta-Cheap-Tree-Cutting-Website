@@ -22,6 +22,8 @@ export default function FinishAccountModal() {
 
     const finishAccount = JSON.parse(localStorage.getItem("finishaccount"))
 
+    console.log(finishAccount)
+
  
 
 
