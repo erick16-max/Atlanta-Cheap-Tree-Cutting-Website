@@ -2,7 +2,7 @@ import { Button, Card, Stack, Typography } from '@mui/material'
 import React from 'react'
 import ServiceImageGrid from './ServicesGrid'
 import ImagePic from '../../public/treecuttingone.jpg'
-import TreeCuttingImage from '../../public/treecuttingservice.jpg'
+import TreeCuttingImage from '../../public/treecuttingman.jpg'
 import TreePruningImage from '../../public/treepruningservice.jpg'
 import TreeTrimmingImage from '../../public/treetrimmingservice.jpg'
 import TreeRemovalImage from "../../public/treeremoval.jpg"
