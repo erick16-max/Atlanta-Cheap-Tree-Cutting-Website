@@ -71,7 +71,7 @@ export default function MenuList() {
               color='secondary'
               sx={{
                 textTransform: 'none',
-                display: isUser && item.name === "Dashboard" ? 'none' : 'block',
+                display: !isUser && item.name === "Dashboard" ? 'none' : 'block',
                 backgroundColor: item.path === pathName ? 'rgba(50, 110, 54, 0.6)' : ''
                 
               }}
