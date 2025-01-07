@@ -8,6 +8,9 @@ import { useRouter } from 'next/navigation'
 import React, { useContext } from 'react'
 import CustomAppBar from '@/components/header/CustomAppBar'
 import ChatFloatingButton from '@/components/general/ChatButton'
+import Footer from '@/components/footer/Footer'
+import CustomBreadcrumb from '@/components/general/CustomBreadcrumb'
+import ContactUsForm from './ContactUsForm'
 
 export default function page() {
     const {user} = useContext(AppContext)
@@ -24,7 +27,7 @@ export default function page() {
     const isUser = user !== null && user && Object?.keys(user).length > 0 ? true : false
 
 
-     if(loading || user === null){
+     if(loading ){
         return <PageLoader />
       }
       
@@ -38,6 +41,7 @@ export default function page() {
     flexDirection={'column'}
     maxWidth={'1700px'}
     margin={'auto'}
+    bgcolor={'#f5f5f5'}
    >
      <Box
       width={'100%'}
@@ -50,18 +54,15 @@ export default function page() {
       px={isSmallScreen ? 1 : 3}
      >
          <Box
-      p={5}
+      px={isSmallScreen ? 0 : 5}
+      width={'100%'}
     >
-      <Alert severity='info' sx={{my:2}}>
-        Contact us page is under development
-  </Alert>
-    
-        <Link href={'/'}>
-          Go home
-        </Link>
+        <CustomBreadcrumb current={'Contact Us'}/>
+        <ContactUsForm />
         <ChatFloatingButton />
     </Box>
      </Stack>
+     <Footer />
    </Box>
   )
 }
