@@ -27,18 +27,18 @@ export default function FooterGrid() {
                     alt='Atlatanta Cheap Tree cutting solution'
                     width={150}
                 />
-                <Stack direction={'row'} color={'#b1b1b1'} alignItems={'center'} gap={'4px'}>
+                <Stack direction={'row'} color={'#dedede'} alignItems={'center'} gap={'4px'}>
                     {/* <MdEmail fontSize={20}/>  */}
-                    <Typography variant='body2' color={'#b1b1b1'} fontWeight={500}>Email:</Typography>
+                    <Typography variant='body2' color={'#dedede'} fontWeight={500}>Email:</Typography>
                     <Link href={'mailto:atlantacheaptreesolutions@gmail.com'} style={{color: 'inherit'}}>
-                        <Typography variant='body2' color={'#dedede'} fontWeight={500}>atlantacheaptreesolutions@gmail.com</Typography>
+                        <Typography variant='body2' color={'#eeeeee'} fontWeight={500}>atlantacheaptreesolutions@gmail.com</Typography>
                     </Link>
                 </Stack>
-                <Stack direction={'row'} color={'#b1b1b1'} alignItems={'center'} gap={'4px'}>
+                <Stack direction={'row'} color={'#dedede'} alignItems={'center'} gap={'4px'}>
                     {/* <IoCall fontSize={20}/>  */}
-                    <Typography variant='body2' color={'#b1b1b1'} fontWeight={500}>Call:</Typography>
+                    <Typography variant='body2' color={'#dedede'} fontWeight={500}>Call:</Typography>
                     <Link href={"tel:770-589-4000"} style={{color: 'inherit'}}>
-                        <Typography variant='body2' color={'#dedede'} fontWeight={500}>770 589 4000</Typography>
+                        <Typography variant='body2' color={'#eeeeee'} fontWeight={500}>770 589 4000</Typography>
                     </Link>
                 </Stack>
                 <Box
@@ -48,13 +48,13 @@ export default function FooterGrid() {
       >
 
           <IconButton>
-              <FaSquareFacebook style={{fontSize: 20, color: '#dedede'}}/>
+              <FaSquareFacebook style={{fontSize: 20, color: '#eeeeee'}}/>
           </IconButton>
           <IconButton>
-              <FaInstagramSquare style={{fontSize: 20, color: '#dedede'}}/>
+              <FaInstagramSquare style={{fontSize: 20, color: '#eeeeee'}}/>
           </IconButton>
           <IconButton>
-              <FaSquareXTwitter style={{fontSize: 20, color: '#dedede'}}/>
+              <FaSquareXTwitter style={{fontSize: 20, color: '#eeeeee'}}/>
           </IconButton>
       </Box>
             </Stack>
@@ -62,7 +62,7 @@ export default function FooterGrid() {
        
         <Grid item lg={4}  md={4} sm={12} xs={12}>
             <Stack gap={1}>
-                <Typography variant='body1' fontWeight={600} color={'#dedede'} gutterBottom>Useful Links</Typography>
+                <Typography variant='body1' fontWeight={600} color={'#eeeeee'} gutterBottom>Useful Links</Typography>
 
                 {
                     menuItems.map(menu => {
@@ -76,7 +76,7 @@ export default function FooterGrid() {
                                     display: menu.name === "Dashboard" && !isUser ? 'none' : ''
                                     }}
                             >
-                                <Typography variant='body1' fontWeight={500} color={'#b1b1b1'}>
+                                <Typography variant='body1' fontWeight={500} color={'#dedede'}>
                                     {menu.name}
                                 </Typography>
                             </Link>
@@ -88,10 +88,10 @@ export default function FooterGrid() {
         </Grid>
         <Grid item lg={4} md={4} sm={12} xs={12}>
             <Stack>
-                <Typography variant='h6' fontWeight={600} color={'#dedede'} gutterBottom>
+                <Typography variant='h6' fontWeight={600} color={'#eeeeee'} gutterBottom>
                     Get In Touch
                 </Typography>
-                <Typography variant='body1' fontWeight={400} color={'#b1b1b1'} gutterBottom>
+                <Typography variant='body1' fontWeight={400} color={'#dedede'} gutterBottom>
                 Thank you for considering Atlanta Cheap Tree Solutions for your tree care and 
                 yard cleanup needs. Contact us today to schedule a consultation or to learn more
                  about how we can help you maintain a beautiful and safe outdoor environment.
