@@ -4,6 +4,8 @@ import React from 'react'
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
+import { FaSquareXTwitter } from "react-icons/fa6";
+
 
 export default function TopBar() {
     const theme = useTheme();
@@ -61,7 +63,7 @@ export default function TopBar() {
                 arrow
                >
                 <IconButton>
-                        <BsTwitterX
+                        <FaSquareXTwitter
                             style={{
                                 fontSize: 20,
                                 color: '#424242'

@@ -15,6 +15,7 @@ import SuccessSnackbarAlert from "@/components/header/SuccessSnackbarAlert";
 import { useInternetStatus } from "@/hooks/useInternetStatus";
 import OnlineStatusModal from "@/components/general/OnlineStatusModal";
 import WhyUs from "@/components/whyus/WhyUs";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
@@ -79,6 +80,8 @@ export default function Home() {
          <AboutUs />
          <Services />
          <WhyUs />
+     </Stack>
+         <Footer />
          <ChatFloatingButton />
          <FinishAccountModal />
         <SuccessSnackbarAlert 
@@ -87,7 +90,6 @@ export default function Home() {
           message={'Profile saved successfully!'}
         />
         <OnlineStatusModal />
-     </Stack>
    </Box>
   );
 }

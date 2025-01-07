@@ -4,6 +4,44 @@ import React, { useContext } from 'react'
 import AppContext from '@/context/AppContext';
 import Link from 'next/link';
 
+
+
+export const menuItems = [
+  {
+    id: 1,
+    name: "Home",
+    path: "/"
+  },
+  {
+    id: 2,
+    name: "Dashboard",
+    path: "/dashboard"
+  },
+  {
+    id: 3,
+    
+    name: "About Us",
+    path: '/aboutus'
+  },
+  {
+    id: 4,
+
+    name: "Services",
+    path: '/services'
+  },
+  {
+    id: 5,
+
+    name: "Portfolio",
+    path: '/portfolio'
+  },
+  {
+    id: 6,
+    name: "Contact Us",
+    path: '/contactus'
+  },
+]
+
 export default function MenuList() {
   const theme = useTheme();
   const isTabletisSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -15,41 +53,7 @@ export default function MenuList() {
 
 
 
-  const menuItems = [
-    {
-      id: 1,
-      name: "Home",
-      path: "/"
-    },
-    {
-      id: 2,
-      name: "Dashboard",
-      path: "/dashboard"
-    },
-    {
-      id: 3,
-      
-      name: "About Us",
-      path: '/aboutus'
-    },
-    {
-      id: 4,
-
-      name: "Services",
-      path: '/services'
-    },
-    {
-      id: 5,
-
-      name: "Portfolio",
-      path: '/portfolio'
-    },
-    {
-      id: 6,
-      name: "Contact Us",
-      path: '/contactus'
-    },
-  ]
+ 
   return (
     <Box
         display={'flex'}
