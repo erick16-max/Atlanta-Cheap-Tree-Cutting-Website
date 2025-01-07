@@ -49,7 +49,7 @@ export default function MenuList() {
 
   const pathName = usePathname()
 
-  const {user} = useContext(AppContext)
+  const {user, isUser} = useContext(AppContext)
 
 
 
@@ -71,7 +71,7 @@ export default function MenuList() {
               color='secondary'
               sx={{
                 textTransform: 'none',
-                display: Object.keys(user)?.length < 1 && item.name === "Dashboard" ? 'none' : 'block',
+                display: isUser && item.name === "Dashboard" ? 'none' : 'block',
                 backgroundColor: item.path === pathName ? 'rgba(50, 110, 54, 0.6)' : ''
                 
               }}

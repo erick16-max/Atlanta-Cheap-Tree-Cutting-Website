@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "@/firebase.config";
 import { getUserByEmail } from "@/firebase/FirebaseUser";
 import { useInternetStatus } from "@/hooks/useInternetStatus";
+import { useRouter } from "next/navigation";
 
 const AppContext = createContext();
 
@@ -12,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [successAlert, setSuccessAlert] = useState(false)
 
   const isOnline = useInternetStatus()
+  const router = useRouter()
 
 
   // get user profile
@@ -54,7 +56,7 @@ export const AppContextProvider = ({ children }) => {
     });
   
     return unsubscribe;
-  }, []);
+  }, [router]);
 
 
 

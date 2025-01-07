@@ -26,7 +26,7 @@ export default function Home() {
 
   const isOnline = useInternetStatus()
 
-  console.log(isOnline)
+  console.log(user, loading)
 
 
   React.useEffect(() => {
@@ -52,7 +52,7 @@ export default function Home() {
     });
   };
 
-  if(loading || user === null){
+  if(loading){
     return <PageLoader />
   }
   

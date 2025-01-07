@@ -6,15 +6,27 @@ import LoginForm from './LoginForm'
 import ColorModeContext from '@/theme/CustomThemeProvider'
 import PageLoader from '@/components/general/PageLoader'
 import ChatFloatingButton from '@/components/general/ChatButton'
+import AppContext from '@/context/AppContext'
+import { useRouter } from 'next/navigation'
 
 
 
 export default function Page() {
     const { isMobile} = React.useContext(ColorModeContext)
      const [loading,setLoading]  = React.useState(true)
+     const {isUser} = React.useContext(AppContext)
+     const router = useRouter()
+
+     
     
       React.useEffect(() => {
-            setLoading(false)
+        if(isUser){
+          router.push('/')
+          return
+       }else{
+
+         setLoading(false)
+       }
       }, [])
 
       if(loading){

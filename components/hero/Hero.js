@@ -19,7 +19,7 @@ const HeroSection = () => {
   // const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
   const isSmallScreen = useMediaQuery("(max-width:698px)");
-  const {user} = useContext(AppContext)
+  const {user, isUser} = useContext(AppContext)
 
 
 
@@ -105,7 +105,7 @@ const HeroSection = () => {
                       alignItems={'center'}
                     >
                       <HoverEffectButton />
-                     { Object.keys(user)?.length > 0 &&   <GoToDashboardBtn />}
+                     { isUser &&   <GoToDashboardBtn />}
                     </Stack>
                 </Box>
               </Box>
