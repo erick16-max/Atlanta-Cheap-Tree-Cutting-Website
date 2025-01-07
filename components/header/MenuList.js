@@ -72,7 +72,9 @@ export default function MenuList() {
               sx={{
                 textTransform: 'none',
                 display: !isUser && item.name === "Dashboard" ? 'none' : 'block',
-                backgroundColor: item.path === pathName ? 'rgba(50, 110, 54, 0.6)' : ''
+                backgroundColor: item.path === pathName ? 'rgba(50, 110, 54, 0.2)' : '',
+                color: item.path === pathName ? '#1b5e20' : '',
+                fontWeight: item.path === pathName ? 600 : 400,
                 
               }}
               LinkComponent={Link}
