@@ -18,10 +18,11 @@ import { FcFeedIn } from "react-icons/fc";
 export default function Services() {
 
     const images = [
-        { src: <FcMindMap fontSize={80}/>, title: "Tree Pruning" },
-        { src: <FcSupport fontSize={80} />, title: "Tree Trimming" },
-        { src: <FcFullTrash fontSize={80} />, title: "Tree Removal" },
-        { src: <FcFeedIn fontSize={80} />, title: "Yard Cleanup" },
+        { src: TreeCuttingImage, title: "Tree Cutting" },
+        { src: TreePruningImage, title: "Tree Pruning" },
+        { src: TreeTrimmingImage, title: "Tree Trimming" },
+        { src: TreeRemovalImage, title: "Tree Removal" },
+        { src: YardCleanupImage, title: "Yard Cleanup" },
       ];
 
   return (
@@ -29,7 +30,7 @@ export default function Services() {
         variant='outlined'
         sx={{
             width: '100%',
-            backgroundColor: '#f5f5f5',
+            backgroundColor: '#ffffff',
             mt: 3,
             display: 'flex',
             alignItems: 'center',
@@ -56,7 +57,7 @@ export default function Services() {
             </Typography>
         </Stack>
 
-            <ServiceCard images={images} />
+            <ServiceImageGrid images={images} />
             <Button
                 variant='contained'
                 sx={{

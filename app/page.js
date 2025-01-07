@@ -14,6 +14,7 @@ import FinishAccountModal from "@/components/finishaccount/FinishAccountModal";
 import SuccessSnackbarAlert from "@/components/header/SuccessSnackbarAlert";
 import { useInternetStatus } from "@/hooks/useInternetStatus";
 import OnlineStatusModal from "@/components/general/OnlineStatusModal";
+import WhyUs from "@/components/whyus/WhyUs";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
@@ -77,6 +78,7 @@ export default function Home() {
          <HeroSection />
          <AboutUs />
          <Services />
+         <WhyUs />
          <ChatFloatingButton />
          <FinishAccountModal />
         <SuccessSnackbarAlert 

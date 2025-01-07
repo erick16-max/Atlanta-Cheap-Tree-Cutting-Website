@@ -27,13 +27,26 @@ const ServiceImageGrid = ({ images }) => {
             objectFit="cover"
             priority
           />
-          <Box
+           <Box
             sx={{
               position: "absolute",
               top: 0,
-              left: 0,
+              bottom: 0,
               width: "100%",
               bgcolor: "rgba(0, 0, 0, 0.5)",
+              color: "white",
+              padding: 1,
+              textAlign: "center",
+            }}
+          >
+          </Box>
+          <Box
+            sx={{
+              position: "absolute",
+              // top: 0,
+              bottom: 0,
+              width: "100%",
+              bgcolor: "rgba(0, 0, 0, 0.0)",
               color: "white",
               padding: 1,
               textAlign: "center",
@@ -72,13 +85,27 @@ const ServiceImageGrid = ({ images }) => {
                   objectFit="cover"
                   priority
                 />
+                     <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              bottom: 0,
+              width: "100%",
+              bgcolor: "rgba(0, 0, 0, 0.5)",
+              color: "white",
+              padding: 1,
+              textAlign: "center",
+            }}
+          >
+          </Box>
+                
                 <Box
                   sx={{
                     position: "absolute",
-                    top: 0,
-                    left: 0,
+                    bottom: 0,
+                    // top: 0,
                     width: "100%",
-                    bgcolor: "rgba(0, 0, 0, 0.5)",
+                    bgcolor: "rgba(0, 0, 0, 0.0)",
                     color: "white",
                     padding: 1,
                     textAlign: "center",
