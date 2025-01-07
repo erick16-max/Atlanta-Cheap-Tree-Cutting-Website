@@ -5,6 +5,7 @@ import React from 'react'
 import SignupForm from './SignupForm'
 import ColorModeContext from '@/theme/CustomThemeProvider'
 import PageLoader from '@/components/general/PageLoader'
+import ChatFloatingButton from '@/components/general/ChatButton'
 
 
 export default function Page() {
@@ -26,13 +27,13 @@ export default function Page() {
         minHeight: '100vh',
         justifyContent: 'center',
         alignItems: 'center',
-        bgcolor: '#eeeeee',
+        bgcolor: '#f5f5f5',
         overflow: 'auto', // Allow scrolling if content overflows
         py: 3,
       }}
     >
       <Card
-        variant="outlined"
+        // variant="outlined"
         sx={{
           p: 3,
           display: 'flex',
@@ -49,6 +50,7 @@ export default function Page() {
             <Typography fontWeight={600} variant='body1' color={'text.primary'}>Create an account</Typography>
         </Stack>
         <SignupForm />
+        <ChatFloatingButton />
       </Card>
     </Box>
   )

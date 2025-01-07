@@ -31,14 +31,14 @@ export default function FooterGrid() {
                     {/* <MdEmail fontSize={20}/>  */}
                     <Typography variant='body2' color={'#b1b1b1'} fontWeight={500}>Email:</Typography>
                     <Link href={'mailto:atlantacheaptreesolutions@gmail.com'} style={{color: 'inherit'}}>
-                        <Typography variant='body2' color={'#b1b1b1'} fontWeight={500}>atlantacheaptreesolutions@gmail.com</Typography>
+                        <Typography variant='body2' color={'#dedede'} fontWeight={500}>atlantacheaptreesolutions@gmail.com</Typography>
                     </Link>
                 </Stack>
                 <Stack direction={'row'} color={'#b1b1b1'} alignItems={'center'} gap={'4px'}>
                     {/* <IoCall fontSize={20}/>  */}
                     <Typography variant='body2' color={'#b1b1b1'} fontWeight={500}>Call:</Typography>
                     <Link href={"tel:770-589-4000"} style={{color: 'inherit'}}>
-                        <Typography variant='body2' color={'#b1b1b1'} fontWeight={500}>770 589 4000</Typography>
+                        <Typography variant='body2' color={'#dedede'} fontWeight={500}>770 589 4000</Typography>
                     </Link>
                 </Stack>
                 <Box
@@ -62,7 +62,7 @@ export default function FooterGrid() {
        
         <Grid item lg={4}  md={4} sm={12} xs={12}>
             <Stack gap={1}>
-                <Typography variant='body1' fontWeight={600} color={'#b1b1b1'} gutterBottom>Useful Links</Typography>
+                <Typography variant='body1' fontWeight={600} color={'#dedede'} gutterBottom>Useful Links</Typography>
 
                 {
                     menuItems.map(menu => {
@@ -88,7 +88,7 @@ export default function FooterGrid() {
         </Grid>
         <Grid item lg={4} md={4} sm={12} xs={12}>
             <Stack>
-                <Typography variant='h6' fontWeight={600} color={'#b1b1b1'} gutterBottom>
+                <Typography variant='h6' fontWeight={600} color={'#dedede'} gutterBottom>
                     Get In Touch
                 </Typography>
                 <Typography variant='body1' fontWeight={400} color={'#b1b1b1'} gutterBottom>

@@ -16,6 +16,7 @@ import {
   import { resetPassword } from "@/firebase/Firebase";
 import { MdClose } from "react-icons/md";
 import SuccessSnackbarAlert from "@/components/header/SuccessSnackbarAlert";
+import ChatFloatingButton from "@/components/general/ChatButton";
 
   
   export default function ForgotPasswordForm() {
@@ -148,6 +149,7 @@ import SuccessSnackbarAlert from "@/components/header/SuccessSnackbarAlert";
           </Link>
   
         </Box>
+        <ChatFloatingButton />
 
       </Stack>
     );

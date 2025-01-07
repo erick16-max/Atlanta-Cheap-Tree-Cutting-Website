@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useContext } from 'react'
 import CustomAppBar from '@/components/header/CustomAppBar'
+import ChatFloatingButton from '@/components/general/ChatButton'
 
 export default function page() {
     const {user} = useContext(AppContext)
@@ -58,6 +59,7 @@ export default function page() {
         <Link href={'/'}>
           Go home
         </Link>
+        <ChatFloatingButton />
     </Box>
      </Stack>
    </Box>

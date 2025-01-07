@@ -31,7 +31,7 @@ export default function Page() {
       }}
     >
       <Card
-        variant="outlined"
+        // variant="outlined"
         sx={{
           p: 3,
           display: 'flex',

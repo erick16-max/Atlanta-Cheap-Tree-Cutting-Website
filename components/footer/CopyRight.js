@@ -28,9 +28,10 @@ export default function CopyRight() {
         display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
+        color={'#b1b1b1'}
       >
         <MdCopyright fontSize={15} />
-        <Typography variant="body2" color={'divider'} fontWeight={400} fontSize={11} mt={"1px"}>
+        <Typography variant="body2" color={'#b1b1b1'} fontWeight={400} fontSize={11} mt={"1px"}>
         2024 · Atlanta Cheap Tree Solution · All rights reserved
         </Typography>
       </Box>
@@ -39,8 +40,8 @@ export default function CopyRight() {
          alignItems={"center"}
          justifyContent={"center"}
       >
-        <Typography variant="body2" color={'#dedede'} fontWeight={400} fontSize={11} mt={"1px"}>
-            Made with <span><FaHeart fontSize={10} color="red"/></span>  by <Link target="__blank" href={'https://gegerick.com'} style={{color: '#ffffff', fontWeight: 500}}>gegerick.com</Link>
+        <Typography variant="body2" color={'#b1b1b1'} fontWeight={400} fontSize={11} mt={"1px"}>
+            Made with <span><FaHeart fontSize={10} color="red"/></span>  by <Link target="__blank" href={'https://gegerick.com'} style={{color: '#dedede', fontWeight: 500}}>gegerick.com</Link>
         </Typography>
           {/* <IconButton>
               <FaSquareFacebook style={{fontSize: 20, color: '#dedede'}}/>
