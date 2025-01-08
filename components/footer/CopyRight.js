@@ -24,7 +24,7 @@ export default function CopyRight() {
     justifyContent={"center"}
     color={"#f5f5f5"}
   >
-    <Stack>
+    <Stack p={'2px'} gap={1}>
       <Box
         display={"flex"}
         alignItems={"center"}
