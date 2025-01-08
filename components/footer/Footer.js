@@ -10,7 +10,7 @@ export default function Footer() {
         bgcolor={'secondary.dark'}
     >
         <FooterGrid />
-        <Box sx={{width: '100%', backgroundColor: '#555', height: '1px'}}>
+        <Box sx={{width: '100%', backgroundColor: '#353535', height: '1px'}}>
 
         </Box>
         <CopyRight />
