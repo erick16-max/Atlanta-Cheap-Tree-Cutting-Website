@@ -40,12 +40,17 @@ const ServiceCard = ({ images }) => {
                     borderRadius: isSmallScreen ? 50 : 75,
                 }}
             >
-                <FcDoNotMix fontSize={100}/>
+                 <Image 
+                src={images[0].src}
+                alt={images[0].title}
+                width={50}
+                height={50}
+              />
             </Box>
             <Typography
                 variant="h6"
                 fontWeight={600}
-                color={'text.secondary'}
+                color={'text.primary'}
             >Tree Cutting</Typography>
 
         </Card>
@@ -54,7 +59,7 @@ const ServiceCard = ({ images }) => {
       {/* Remaining images: grid layout */}
       <Grid item xs={12} md={6}>
         <Grid container spacing={1}>
-          {images.map((image, index) => (
+          {images.slice(1).map((image, index) => (
             <Grid
               item
               xs={12} // Half width on small screens
@@ -89,12 +94,17 @@ const ServiceCard = ({ images }) => {
                     borderRadius: 50,
                 }}
             >
-               {image.src}
+              <Image 
+                src={image.src}
+                alt={image.title}
+                width={50}
+                height={50}
+              />
             </Box>
             <Typography
                 variant="h6"
                 fontWeight={600}
-                color={'text.secondary'}
+                color={'text.primary'}
             >{image.title}</Typography>
 
                 </Card>

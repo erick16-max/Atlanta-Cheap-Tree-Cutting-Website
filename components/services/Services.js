@@ -15,6 +15,12 @@ import { FcSupport } from "react-icons/fc";
 import { FcFullTrash } from "react-icons/fc";
 import { FcFeedIn } from "react-icons/fc";
 
+import TreePrunningIcon from  '../../public/services/treeprunning.png'
+import TreeCuttingIcon from  '../../public/services/treecuttingtwo.png'
+import TreeRemovingIcon from  '../../public/services/treeremoving.png'
+import TreeTrimmingIcon from  '../../public/services/treetrimming.png'
+import YardCleaningIcon from  '../../public/services/sweeping.png'
+
 export default function Services() {
 
     const images = [
@@ -25,12 +31,20 @@ export default function Services() {
         { src: YardCleanupImage, title: "Yard Cleanup" },
       ];
 
+const icons = [
+    { src: TreeCuttingIcon, title: "Tree Cutting" },
+    { src: TreePrunningIcon, title: "Tree Pruning" },
+    { src: TreeTrimmingIcon, title: "Tree Trimming" },
+    { src: TreeRemovingIcon, title: "Tree Removal" },
+    { src: YardCleaningIcon, title: "Yard Cleanup" },
+]
+
   return (
     <Card
         variant='outlined'
         sx={{
             width: '100%',
-            backgroundColor: '#ffffff',
+            backgroundColor: '#f5f5f5',
             mt: 3,
             display: 'flex',
             alignItems: 'center',
@@ -57,7 +71,7 @@ export default function Services() {
             </Typography>
         </Stack>
 
-            <ServiceImageGrid images={images} />
+            <ServiceCard images={icons} />
             <Button
                 variant='contained'
                 sx={{
