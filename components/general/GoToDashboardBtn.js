@@ -10,7 +10,7 @@ export default function GoToDashboardBtn({ isSmallScreen }) {
       variant="contained"
       color="secondary"
       sx={{
-        borderRadius: "16px",
+        borderEndStartRadius: '12px',
         height: isSmallScreen ? 40 : 50,
         px: isSmallScreen ? 3 : 5,
         textTransform: "none",
