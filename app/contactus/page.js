@@ -54,7 +54,7 @@ export default function page() {
       px={isSmallScreen ? 1 : 3}
      >
          <Box
-      px={isSmallScreen ? 0 : 5}
+      px={isSmallScreen ? 1 : 5}
       width={'100%'}
     >
         <CustomBreadcrumb current={'Contact Us'}/>
