@@ -12,6 +12,7 @@ import Link from "next/link";
 
 export default function CopyRight() {
   const { isTablet, isMobile} = useContext(ColorModeContext)
+  const date = new Date()
 
   return (
     <Box
@@ -32,7 +33,7 @@ export default function CopyRight() {
       >
         <MdCopyright fontSize={15} />
         <Typography variant="body2" color={'#dedede'} fontWeight={400} fontSize={11} mt={"1px"}>
-        2024 · Atlanta Cheap Tree Solution · All rights reserved
+        {date.getFullYear()} · Atlanta Cheap Tree Solution · All rights reserved
         </Typography>
       </Box>
       <Box
