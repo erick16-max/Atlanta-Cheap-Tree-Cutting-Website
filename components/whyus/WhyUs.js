@@ -46,12 +46,11 @@ export default function WhyUs() {
           return (
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6} key={index}>
               <Card
-                variant="outlined"
                 sx={{
                   boxShadow: 0,
                   height: 300,
                   width: "100%",
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor: "rgba(170, 140, 44, 0.1)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

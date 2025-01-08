@@ -30,7 +30,7 @@ export default function GoToDashboardBtn({ isSmallScreen }) {
           left: "50%",
           width: "100%",
           height: "100%",
-          background: "linear-gradient(to bottom, #aa8c2c, #aa8c2c)",
+          background: "linear-gradient(to bottom,#aa8d2c, #aa8c2c)",
           transform: "translate(-50%, -100%)",
           zIndex: -1,
           transition: "transform 0.3s ease-in-out",
