@@ -27,27 +27,27 @@ export default function ServicePageCard() {
     {
       src: TreeCuttingIcon,
       title: "Tree Cutting",
-      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae libero placeat optio commodi, itaque porro doloribus quisquam tenetur qui soluta animi temporibus! Quas molestias doloremque vel animi quisquam molestiae vero.",
+      info: "Our tree cutting service focuses on safely and efficiently removing trees that are dead, diseased, or posing a risk to your property. Using advanced equipment and techniques, we ensure minimal impact on your surrounding landscape.",
     },
     {
       src: TreePrunningIcon,
       title: "Tree Pruning",
-      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae libero placeat optio commodi, itaque porro doloribus quisquam tenetur qui soluta animi temporibus! Quas molestias doloremque vel animi quisquam molestiae vero.",
+      info: "Tree pruning promotes healthy growth by removing dead or overgrown branches, improving the tree’s structure and appearance. This service helps reduce hazards and enhances air circulation and sunlight penetration for your trees.",
     },
     {
       src: TreeTrimmingIcon,
       title: "Tree Trimming",
-      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae libero placeat optio commodi, itaque porro doloribus quisquam tenetur qui soluta animi temporibus! Quas molestias doloremque vel animi quisquam molestiae vero.",
+      info: "Our tree trimming service is designed to maintain your trees’ shape and ensure proper growth patterns. By carefully cutting excess branches, we improve the overall aesthetic and structural integrity of your trees.",
     },
     {
       src: TreeRemovingIcon,
       title: "Tree Removal",
-      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae libero placeat optio commodi, itaque porro doloribus quisquam tenetur qui soluta animi temporibus! Quas molestias doloremque vel animi quisquam molestiae vero.",
+      info: "When a tree becomes a safety hazard or needs to make way for new projects, our expert tree removal service is here to help. We carefully assess and remove trees while ensuring safety and preventing damage to your property.",
     },
     {
       src: YardCleaningIcon,
       title: "Yard Cleanup",
-      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae libero placeat optio commodi, itaque porro doloribus quisquam tenetur qui soluta animi temporibus! Quas molestias doloremque vel animi quisquam molestiae vero.",
+      info: "We provide thorough yard cleaning services to leave your outdoor space spotless and well-maintained. From leaf removal to debris clearing, we help you reclaim a clean and inviting yard for relaxation or further landscaping.",
     },
   ];
 
