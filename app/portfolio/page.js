@@ -11,6 +11,7 @@ import ChatFloatingButton from "@/components/general/ChatButton";
 import PortfolioGrid from "./PortfolioGrid";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
 import {Typography} from "@mui/material";
+import Footer from "@/components/footer/Footer";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -59,6 +60,7 @@ export default function page() {
           <ChatFloatingButton />
         </Box>
       </Stack>
+      <Footer />
     </Box>
   );
 }
