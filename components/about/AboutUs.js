@@ -3,6 +3,7 @@ import React from "react";
 import AboutUsImage from "../../public/aboutus.jpg";
 import Image from "next/image";
 import { CgMore } from "react-icons/cg";
+import Link from "next/link";
 
 export default function AboutUs() {
   const isTablet = useMediaQuery("(max-width:1150px)");
@@ -62,6 +63,8 @@ export default function AboutUs() {
                 textTransform: 'none',
                 mt: 5,
             }}
+            LinkComponent={Link}
+            href="/aboutus"
         >
             Learm More
         </Button>

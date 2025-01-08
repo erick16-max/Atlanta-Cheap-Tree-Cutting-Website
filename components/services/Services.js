@@ -20,6 +20,7 @@ import TreeCuttingIcon from  '../../public/services/treecuttingtwo.png'
 import TreeRemovingIcon from  '../../public/services/treeremoving.png'
 import TreeTrimmingIcon from  '../../public/services/treetrimming.png'
 import YardCleaningIcon from  '../../public/services/sweeping.png'
+import Link from 'next/link'
 
 export default function Services() {
 
@@ -83,8 +84,10 @@ const icons = [
                     mt: 3
                 }}
                 endIcon={<MdOutlineArrowOutward />}
+                LinkComponent={Link}
+                href='/services'
             >
-                View All Services
+                More Services Info
             </Button>
 
     </Card>
