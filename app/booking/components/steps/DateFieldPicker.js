@@ -4,17 +4,19 @@ import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import AppContext from '@/context/AppContext';
+import dayjs from 'dayjs';
 
-export default function DateFieldPicker() {
-  const [value, setValue] = React.useState(null);
-
+export default function DateFieldPicker({value, setValue}) {
+ 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
         label="Date for Survey"
-        value={value}
+          value={value || null}
         onChange={(newValue) => {
-          setValue(newValue);
+          const formattedDate = dayjs(newValue).format('YYYY-MM-DD');
+          setValue(formattedDate);
         }}
         renderInput={(params) => <TextField 
             {...params} 

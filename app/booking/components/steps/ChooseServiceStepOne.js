@@ -21,6 +21,7 @@ import CustomLinearProgress from "./CustomLinearProgress";
 import AppContext from "@/context/AppContext";
 import { steps } from "@/constants/AppConstants";
 import ColorModeContext from "@/theme/CustomThemeProvider";
+import { isArray } from "@/util/LogicFunctions";
 
 const icons = [
   {
@@ -49,21 +50,35 @@ const icons = [
     info: "We provide thorough yard cleaning services to leave your outdoor space spotless and well-maintained. From leaf removal to debris clearing, we help you reclaim a clean and inviting yard for relaxation or further landscaping.",
   },
 ];
+
 export default function ChooseServiceStepOne() {
   const [progressValue, setProgressValue] = React.useState(40);
-  const { isMobile, isTablet,  } = React.useContext(ColorModeContext);
-  const {setActiveState} = React.useContext(AppContext)
+  const { isMobile } = React.useContext(ColorModeContext);
+  const { setActiveStep, borkingServiceList, setBorkingServiceList } =
+    React.useContext(AppContext);
 
-  const [selectedValue, setSelectedValue] = React.useState("a");
-
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+  // Handle checkbox change
+  const handleCheckboxChange = (service) => {
+    setBorkingServiceList((prevList) => {
+      // Check if the service is already selected
+      if (prevList.some((item) => item.title === service.title)) {
+        // If selected, remove it
+        return prevList.filter((item) => item.title !== service.title);
+      } else {
+        // Otherwise, add it
+        return [...prevList, service];
+      }
+    });
   };
 
+ 
   return (
     <Stack width={"100%"} component={"div"} gap={4}>
       <Grid container spacing={3}>
         {icons.map((icon, index) => {
+          const isSelected = borkingServiceList.some(
+            (item) => item.title === icon.title
+          );
           return (
             <Grid item xs={6} sm={6} md={6} lg={4} key={index}>
               <Card
@@ -81,8 +96,7 @@ export default function ChooseServiceStepOne() {
                   cursor: "pointer",
                   boxShadow: 0,
                   "&:hover": {
-                    backgroundColor: "",
-                    borderRadius: "",
+                    backgroundColor: "#e0e0e0",
                   },
                 }}
               >
@@ -100,7 +114,10 @@ export default function ChooseServiceStepOne() {
                     alt={`${icon.title} service`}
                   />
                 </Stack>
-                <Checkbox />
+                <Checkbox
+                  checked={isSelected}
+                  onChange={() => handleCheckboxChange(icon)}
+                />
               </Card>
             </Grid>
           );
@@ -108,7 +125,7 @@ export default function ChooseServiceStepOne() {
       </Grid>
       <Stack
         direction="row"
-        width="100%" // Ensure the parent has a width
+        width="100%"
         alignItems="center"
         justifyContent="space-between"
       >
@@ -122,7 +139,7 @@ export default function ChooseServiceStepOne() {
             textTransform: "none",
             fontWeight: 600,
           }}
-          disabled
+         disabled
         >
           Previous
         </Button>
@@ -136,7 +153,12 @@ export default function ChooseServiceStepOne() {
             fontWeight: 600,
           }}
           endIcon={<MdArrowRightAlt />}
-          onClick={() => setActiveState(steps.step2)}
+          onClick={() => setActiveStep(steps.step2)}
+          disabled={
+            isArray(borkingServiceList) && borkingServiceList?.length > 0
+              ? false
+              : true
+          }
         >
           Next
         </Button>

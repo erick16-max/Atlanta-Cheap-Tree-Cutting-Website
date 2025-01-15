@@ -18,13 +18,16 @@ import TimeFieldPicker from "./TimeFieldPicker";
 import AppContext from "@/context/AppContext";
 import { steps } from "@/constants/AppConstants";
 
+
 const CustomTextField = ({ label, type, setValue, value, placeholder }) => (
   <TextField
     label={label}
     placeholder={placeholder}
     type={type}
     value={value}
-    onChange={(e) => setValue(e.target.value)}
+    onChange={(e) => {
+      setValue(e.target.value)
+    }}
     required
     fullWidth
     sx={{
@@ -57,13 +60,17 @@ const CustomTextField = ({ label, type, setValue, value, placeholder }) => (
     }}
   />
 );
-
 export default function TakeBookingDetailsStepTwo() {
-  const [address, setAddress] = useState("");
-  const [notes, setNotes] = useState("");
-  const [budget, setBudget] = useState("");
 
-  const { setActiveState } = useContext(AppContext);
+  
+  const { setActiveStep, address, setAddress, budget, notes, setNotes, setBudget, surveyTime, setSurveyTime, surveyDate, setSurveyDate} = useContext(AppContext);
+  
+  const isDisabled = !address || !surveyTime || !surveyDate || !budget
+  
+  console.log(isDisabled)
+
+
+
 
   return (
     <Stack width={"100%"} component={"div"} gap={4}>
@@ -87,20 +94,22 @@ export default function TakeBookingDetailsStepTwo() {
           />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6}>
-          <DateFieldPicker />
+          <DateFieldPicker value={surveyDate} setValue={setSurveyDate} />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6}>
-          <TimeFieldPicker />
+          <TimeFieldPicker formattedTime={surveyTime} setFormattedTime={setSurveyTime} />
         </Grid>
         <Grid item xs={12}>
           <TextField
             label={"Additional Notes"}
             placeholder={
-              "Provide more information on what you need exactly, instructions, warning or addtional notes on the services."
+              "Provide more info , instructions or additional notes...."
             }
             type={"text"}
             value={notes}
-            onChange={(e) => setNotes(e.target.value)}
+            onChange={(e) => {
+              setNotes(e.target.value)
+            }}
             fullWidth
             multiline
             rows={3}
@@ -151,7 +160,7 @@ export default function TakeBookingDetailsStepTwo() {
             textTransform: "none",
             fontWeight: 600,
           }}
-          onClick={() => setActiveState(steps.step1)}
+          onClick={() => setActiveStep(steps.step1)}
         >
           Previous
         </Button>
@@ -165,8 +174,8 @@ export default function TakeBookingDetailsStepTwo() {
             fontWeight: 600,
           }}
           endIcon={<MdArrowRightAlt />}
-          onClick={() => setActiveState(steps.step4)}
-
+          onClick={() => setActiveStep(steps.step4)}
+          disabled={isDisabled}
         >
           Next
         </Button>

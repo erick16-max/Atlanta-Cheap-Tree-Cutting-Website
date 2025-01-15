@@ -4,6 +4,7 @@ import { auth, db } from "@/firebase.config";
 import { getUserByEmail } from "@/firebase/FirebaseUser";
 import { useInternetStatus } from "@/hooks/useInternetStatus";
 import { useRouter } from "next/navigation";
+import { steps } from "@/constants/AppConstants";
 
 const AppContext = createContext();
 
@@ -12,11 +13,78 @@ export const AppContextProvider = ({ children }) => {
   const [userProfile, setUserProfile] = useState(null);
   const [successAlert, setSuccessAlert] = useState(false)
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
-  const [activeStep, setActiveState] = useState("step1")
+  
+  const [borkingServiceList, setBorkingServiceList] = useState(() => {
+    if(typeof window === undefined) return
+    try {
+      const storedList = localStorage.getItem("borkingServiceList");
+      return storedList ? JSON.parse(storedList) : [];
+    } catch (error) {
+      console.error("Error parsing borkingServiceList from localStorage:", error);
+      return [];
+    }
+  });
+  
+  const [activeStep, setActiveStep] = useState(() => {
+    if(typeof window === undefined) return
+    return localStorage.getItem("activeStep") || steps.step1;
+  });
 
+  const [address, setAddress] = useState(() => {
+    if(typeof window === undefined) return
+    return localStorage.getItem("address") || "";
+  });
+
+  const [budget, setBudget] = useState(() => {
+    if(typeof window === undefined) return
+    return localStorage.getItem("budget") || "";
+  })
+
+  const [surveyTime, setSurveyTime] = useState(() => {
+    if(typeof window === undefined) return
+    return localStorage.getItem("surveyTime") || "";
+  })
+
+  const [surveyDate, setSurveyDate] = useState(() => {
+    if(typeof window === undefined) return
+    return localStorage.getItem("surveyDate") || "";
+  })
+
+  const [notes, setNotes] = useState(() => {
+    if(typeof window === undefined) return
+    return localStorage.getItem("notes") || "";
+  })
+
+
+
+
+  const [bookingDetails, setBookingDetails] = useState(() => {
+    try {
+      const storedObj = localStorage.getItem("bookingDetails");
+      return storedObj ? JSON.parse(storedObj) : {};
+    } catch (error) {
+      console.error("Error parsing borkingServiceList from localStorage:", error);
+      return {};
+    }
+  });
+
+  
   const isOnline = useInternetStatus()
   const router = useRouter()
+  
+  useEffect(() => {
+    
+    if(typeof  window === undefined) return
 
+    localStorage.setItem("activeStep", activeStep);
+    localStorage.setItem("borkingServiceList", JSON.stringify(borkingServiceList));
+    localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
+    localStorage.setItem("address", address);
+    localStorage.setItem("budget", budget);
+    localStorage.setItem("surveyTime", surveyTime);
+    localStorage.setItem("surveyDate", surveyDate);
+    localStorage.setItem("notes", notes);
+  }, [activeStep, borkingServiceList, bookingDetails, address, budget, surveyTime, surveyDate, notes]);
 
   //  get user profile
   const [finishAccount, setFinishAccount] = useState(() => {
@@ -79,7 +147,14 @@ export const AppContextProvider = ({ children }) => {
     setSuccessAlert,
     isBookingModalOpen, 
     setIsBookingModalOpen,
-    activeStep, setActiveState
+    activeStep, setActiveStep,
+    borkingServiceList, setBorkingServiceList,
+    bookingDetails, setBookingDetails,
+    setBudget, budget,
+    setAddress, address,
+    surveyTime, setSurveyTime,
+    surveyDate, setSurveyDate,
+    setNotes, notes
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
