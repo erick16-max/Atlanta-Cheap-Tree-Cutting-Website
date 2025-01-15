@@ -59,6 +59,7 @@ export const AppContextProvider = ({ children }) => {
 
 
   const [bookingDetails, setBookingDetails] = useState(() => {
+    if(typeof localStorage === undefined) return
     try {
       const storedObj = localStorage.getItem("bookingDetails");
       return storedObj ? JSON.parse(storedObj) : {};

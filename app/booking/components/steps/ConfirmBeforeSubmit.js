@@ -50,6 +50,7 @@ export default function ConfirmBeforeSubmit() {
   };
 
   const handleDone = () => {
+    if(typeof localStorage === undefined) return
     try {
       setShow(true)
       localStorage.removeItem("address")
