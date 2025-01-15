@@ -16,7 +16,7 @@ import AppContext from "@/context/AppContext";
 import { steps } from "@/constants/AppConstants";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 
-export default function SuccessBookingModal({open, setOpen, handleDone}) {
+export default function SuccessBookingModal({open, setOpen, handleDone, show}) {
   const { setActiveStep } = useContext(AppContext);
   const {isMobile} = useContext(ColorModeContext)
 
