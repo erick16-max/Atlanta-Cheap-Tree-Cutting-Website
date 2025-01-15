@@ -50,27 +50,29 @@ export default function ConfirmBeforeSubmit() {
   };
 
   const handleDone = () => {
-    if(typeof localStorage === undefined) return
-    try {
-      setShow(true)
-      localStorage.removeItem("address")
-      localStorage.removeItem("budget")
-      localStorage.removeItem("surveyDate")
-      localStorage.removeItem("surveyTime")
-      localStorage.removeItem("notes")
-      localStorage.removeItem("bookingDetails")
-      localStorage.removeItem("borkingServiceList")
-      localStorage.removeItem("rawTime")
-      setActiveStep(steps.step1)
-      setOpen(false)
-      router.push('/')
-    } catch (error) {
-      console.log(error)
-    }finally{
-      setTimeout(() => {
-        setShow(false)
-      }, 4000)
+    if(typeof window !== "undefined") {
+      try {
+        setShow(true)
+        localStorage.removeItem("address")
+        localStorage.removeItem("budget")
+        localStorage.removeItem("surveyDate")
+        localStorage.removeItem("surveyTime")
+        localStorage.removeItem("notes")
+        localStorage.removeItem("bookingDetails")
+        localStorage.removeItem("borkingServiceList")
+        localStorage.removeItem("rawTime")
+        setActiveStep(steps.step1)
+        setOpen(false)
+        router.push('/')
+      } catch (error) {
+        console.log(error)
+      }finally{
+        setTimeout(() => {
+          setShow(false)
+        }, 4000)
+      }
     }
+   
     
 
  }

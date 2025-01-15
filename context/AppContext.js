@@ -15,57 +15,73 @@ export const AppContextProvider = ({ children }) => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   
   const [borkingServiceList, setBorkingServiceList] = useState(() => {
-    if(typeof window === undefined) return
-    try {
-      const storedList = localStorage.getItem("borkingServiceList");
-      return storedList ? JSON.parse(storedList) : [];
-    } catch (error) {
-      console.error("Error parsing borkingServiceList from localStorage:", error);
-      return [];
+    if(typeof window !== "undefined") {
+
+      try {
+        const storedList = localStorage.getItem("borkingServiceList");
+        return storedList ? JSON.parse(storedList) : [];
+      } catch (error) {
+        console.error("Error parsing borkingServiceList from localStorage:", error);
+        return [];
+      }
     }
   });
   
   const [activeStep, setActiveStep] = useState(() => {
-    if(typeof window === undefined) return
-    return localStorage.getItem("activeStep") || steps.step1;
+    if(typeof window !== "undefined") {
+
+      return localStorage.getItem("activeStep") || steps.step1;
+    }
   });
 
   const [address, setAddress] = useState(() => {
-    if(typeof window === undefined) return
-    return localStorage.getItem("address") || "";
+    if(typeof window !== "undefined") {
+
+      return localStorage.getItem("address") || "";
+    }
   });
 
   const [budget, setBudget] = useState(() => {
-    if(typeof window === undefined) return
-    return localStorage.getItem("budget") || "";
+    if(typeof window !== "undefined") {
+
+      return localStorage.getItem("budget") || "";
+    }
   })
 
   const [surveyTime, setSurveyTime] = useState(() => {
-    if(typeof window === undefined) return
-    return localStorage.getItem("surveyTime") || "";
+    if(typeof window !== "undefined") {
+      return localStorage.getItem("surveyTime") || "";
+    }
+      
   })
 
   const [surveyDate, setSurveyDate] = useState(() => {
-    if(typeof window === undefined) return
-    return localStorage.getItem("surveyDate") || "";
+    if(typeof window !== "undefined") {
+
+      return localStorage.getItem("surveyDate") || "";
+    }
   })
 
   const [notes, setNotes] = useState(() => {
-    if(typeof window === undefined) return
-    return localStorage.getItem("notes") || "";
+    if(typeof window !== "undefined") {
+
+      return localStorage.getItem("notes") || "";
+    }
   })
 
 
 
 
   const [bookingDetails, setBookingDetails] = useState(() => {
-    if(typeof localStorage === undefined) return
-    try {
-      const storedObj = localStorage.getItem("bookingDetails");
-      return storedObj ? JSON.parse(storedObj) : {};
-    } catch (error) {
-      console.error("Error parsing borkingServiceList from localStorage:", error);
-      return {};
+    if(typeof localStorage !== "undefined") {
+
+      try {
+        const storedObj = localStorage.getItem("bookingDetails");
+        return storedObj ? JSON.parse(storedObj) : {};
+      } catch (error) {
+        console.error("Error parsing borkingServiceList from localStorage:", error);
+        return {};
+      }
     }
   });
 
@@ -75,16 +91,18 @@ export const AppContextProvider = ({ children }) => {
   
   useEffect(() => {
     
-    if(typeof  window === undefined) return
+    if(typeof  window !== "undefined") {
 
-    localStorage.setItem("activeStep", activeStep);
-    localStorage.setItem("borkingServiceList", JSON.stringify(borkingServiceList));
-    localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
-    localStorage.setItem("address", address);
-    localStorage.setItem("budget", budget);
-    localStorage.setItem("surveyTime", surveyTime);
-    localStorage.setItem("surveyDate", surveyDate);
-    localStorage.setItem("notes", notes);
+      localStorage.setItem("activeStep", activeStep);
+      localStorage.setItem("borkingServiceList", JSON.stringify(borkingServiceList));
+      localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
+      localStorage.setItem("address", address);
+      localStorage.setItem("budget", budget);
+      localStorage.setItem("surveyTime", surveyTime);
+      localStorage.setItem("surveyDate", surveyDate);
+      localStorage.setItem("notes", notes);
+    }
+
   }, [activeStep, borkingServiceList, bookingDetails, address, budget, surveyTime, surveyDate, notes]);
 
   //  get user profile
