@@ -66,85 +66,83 @@ export default function ServicePageCard() {
         gap: 5,
       }}
     >
-      {
-        icons.map((icon, index) =>(
-            <Card
-            key={index}
-        sx={{
-          p: 2,
-          width: "100%",
-          backgroundColor: "#ffffff",
-          boxShadow: 0,
-          height: isMobile ? "100%" : isTablet ? "100%" : 200,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Grid container spacing={2} height={"100%"}>
-          <Grid item lg={3} md={3} sm={12} xs={12} height={"100%"}>
-            <Box
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              sx={{
-                width: "100%",
-                height: isTablet ? 200 : "100%",
-                backgroundColor: "#f5f5f5",
-                borderRadius: "12px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <Image
-                src={icon.src}
-                alt={icon.title}
-                width={120}
-                height={120}
-              />
-            </Box>
-          </Grid>
-          <Grid item lg={9} md={9} sm={12} xs={12}>
-            <Stack>
-              <Typography
-                variant="h6"
-                fontWeight={600}
-                color={"text.primary"}
-                gutterBottom
-              >
-                {icon.title}
-              </Typography>
-              <Typography
-                variant="body2"
-                fontWeight={500}
-                color={"text.secondary"}
-                gutterBottom
-              >
-               {icon.info}
-              </Typography>
-              <Button
+      {icons.map((icon, index) => (
+        <Card
+          key={index}
+          sx={{
+            p: 2,
+            width: "100%",
+            backgroundColor: "#ffffff",
+            boxShadow: 0,
+            height: isMobile ? "100%" : isTablet ? "100%" : 200,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Grid container spacing={2} height={"100%"}>
+            <Grid item lg={3} md={3} sm={12} xs={12} height={"100%"}>
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
                 sx={{
-                  textTransform: "none",
-                  height: 50,
-                  color: "primary.dark",
-                  width: 150,
-                  fontWeight: 600,
-                  backgroundColor: "rgba(50, 110, 54, 0.15)",
-                  borderEndStartRadius: '12px',
-                  mt: 1,
+                  width: "100%",
+                  height: isTablet ? 200 : "100%",
+                  backgroundColor: "#f5f5f5",
+                  borderRadius: "12px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-                endIcon={<BsFillBookmarkPlusFill />}
               >
-                Book service
-              </Button>
-            </Stack>
+                <Image
+                  src={icon.src}
+                  alt={icon.title}
+                  width={120}
+                  height={120}
+                />
+              </Box>
+            </Grid>
+            <Grid item lg={9} md={9} sm={12} xs={12}>
+              <Stack>
+                <Typography
+                  variant="h6"
+                  fontWeight={600}
+                  color={"text.primary"}
+                  gutterBottom
+                >
+                  {icon.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  fontWeight={500}
+                  color={"text.secondary"}
+                  gutterBottom
+                >
+                  {icon.info}
+                </Typography>
+                <Button
+                  sx={{
+                    textTransform: "none",
+                    height: 50,
+                    color: "primary.dark",
+                    width: 150,
+                    fontWeight: 600,
+                    backgroundColor: "rgba(50, 110, 54, 0.15)",
+                    borderEndStartRadius: "12px",
+                    mt: 1,
+                  }}
+                  endIcon={<BsFillBookmarkPlusFill />}
+                >
+                  Book service
+                </Button>
+              </Stack>
+            </Grid>
           </Grid>
-        </Grid>
-      </Card>
-        ))
-      }
+        </Card>
+      ))}
     </Card>
   );
 }

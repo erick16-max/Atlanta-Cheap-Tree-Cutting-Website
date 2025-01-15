@@ -49,7 +49,7 @@ export default function page() {
         <CustomAppBar mainPage={true}/>
      </Box>
      <Stack
-      mt={'100px'}
+      mt={'80px'}
       py={2}
       px={isSmallScreen ? 1 : 3}
      >

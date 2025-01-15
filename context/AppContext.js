@@ -11,12 +11,14 @@ export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [successAlert, setSuccessAlert] = useState(false)
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
+  const [activeStep, setActiveState] = useState("step1")
 
   const isOnline = useInternetStatus()
   const router = useRouter()
 
 
-  // get user profile
+  //  get user profile
   const [finishAccount, setFinishAccount] = useState(() => {
     if (typeof window !== 'undefined') { 
         const storedValue = localStorage.getItem("finishaccount");
@@ -62,7 +64,7 @@ export const AppContextProvider = ({ children }) => {
 
   // Determine if a user is authenticated
   const isUser = user !== null && user && Object.keys(user).length > 0;
-  const isUserProfile = userProfile !== null && user && Object.keys(userProfile).length > 0;
+  const isUserProfile = userProfile !== null && isUser && Object.keys(userProfile).length > 0;
 
 
   const data = {
@@ -74,7 +76,10 @@ export const AppContextProvider = ({ children }) => {
     setUserProfile,
     finishAccount,
     successAlert, 
-    setSuccessAlert
+    setSuccessAlert,
+    isBookingModalOpen, 
+    setIsBookingModalOpen,
+    activeStep, setActiveState
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

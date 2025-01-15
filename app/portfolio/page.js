@@ -43,7 +43,7 @@ export default function page() {
       <Box width={"100%"}>
         <CustomAppBar mainPage={true} />
       </Box>
-      <Stack mt={"100px"} py={2} px={isSmallScreen ? 1 : 3}>
+      <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
         <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
           <CustomBreadcrumb current={"Portfolio"} />
           <Typography

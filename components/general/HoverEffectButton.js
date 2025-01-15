@@ -7,7 +7,7 @@ import { BsBookmarkPlus } from "react-icons/bs";
 
 
 export default function HoverEffectButton({ isSmallScreen }) {
-  const {isUser} = useContext(AppContext)
+  const {isUser, setIsBookingModalOpen} = useContext(AppContext)
   const router = useRouter()
   return (
     <Button
@@ -51,7 +51,7 @@ export default function HoverEffectButton({ isSmallScreen }) {
         if(isUser){
           router.push('/booking')
         }else{
-          router.push('/login')
+          setIsBookingModalOpen(true)
         }
       }}
     >

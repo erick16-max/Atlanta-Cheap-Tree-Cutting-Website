@@ -62,9 +62,6 @@ export default function AvatarButton() {
         <Typography variant="body2" color={"text.primary"} fontSize={13}  fontWeight={400}>
          { isUserProfile ? truncateString(topTextProfile, 10) : truncateString(topText, 10)}
         </Typography>
-        {/* <Typography variant="body2" color={"text.secondary"} fontSize={12} fontWeight={400} >
-          +1 720067228
-        </Typography> */}
         <RiArrowDropDownFill style={{color: '#242424', fontSize: 16}}/>
       </Stack>
     </Box>

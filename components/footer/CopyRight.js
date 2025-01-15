@@ -10,7 +10,7 @@ import ColorModeContext from "@/theme/CustomThemeProvider";
 import Link from "next/link";
 
 
-export default function CopyRight() {
+export default function CopyRight({bgColor}) {
   const { isTablet, isMobile} = useContext(ColorModeContext)
   const date = new Date()
 
@@ -18,7 +18,7 @@ export default function CopyRight() {
     <Box
     width={"100%"}
     py={1}
-    bgcolor={"secondary.dark"}
+    bgcolor={bgColor ? bgColor : "secondary.dark"}
     display={"flex"}
     alignItems={"center"}
     justifyContent={"center"}
@@ -29,10 +29,10 @@ export default function CopyRight() {
         display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
-        color={'#dedede'}
+        color={ bgColor ? '#555555' :'#dedede'}
       >
         <MdCopyright fontSize={15} />
-        <Typography variant="body2" color={'#dedede'} fontWeight={400} fontSize={11} mt={"1px"}>
+        <Typography variant="body2" color={bgColor ? '#555555' :'#dedede'} fontWeight={400} fontSize={11} mt={"1px"}>
         {date.getFullYear()} · Atlanta Cheap Tree Solution · All rights reserved
         </Typography>
       </Box>
@@ -41,18 +41,10 @@ export default function CopyRight() {
          alignItems={"center"}
          justifyContent={"center"}
       >
-        <Typography variant="body2" color={'#dedede'} fontWeight={400} fontSize={11} mt={"1px"}>
-            Made with <span><FaHeart fontSize={10} color="red"/></span>  by <Link target="__blank" href={'https://gegerick.com'} style={{color: '#dedede', fontWeight: 500}}>gegerick.com</Link>
+        <Typography variant="body2" color={bgColor ? '#555555' :'#dedede'} fontWeight={400} fontSize={11} mt={"1px"}>
+            Made with <span><FaHeart fontSize={10} color="red"/></span>  by <Link target="__blank" href={'https://gegerick.com'} style={{color: bgColor ? '#555555' :'#dedede', fontWeight: 500}}>gegerick.com</Link>
         </Typography>
-          {/* <IconButton>
-              <FaSquareFacebook style={{fontSize: 20, color: '#dedede'}}/>
-          </IconButton>
-          <IconButton>
-              <FaInstagramSquare style={{fontSize: 20, color: '#dedede'}}/>
-          </IconButton>
-          <IconButton>
-              <FaSquareXTwitter style={{fontSize: 20, color: '#dedede'}}/>
-          </IconButton> */}
+         
       </Box>
     </Stack>
   </Box>

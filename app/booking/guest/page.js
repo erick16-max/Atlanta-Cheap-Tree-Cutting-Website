@@ -7,7 +7,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useContext } from 'react'
 import CustomAppBar from '@/components/header/CustomAppBar'
-import ChatFloatingButton from '@/components/general/ChatButton'
 
 export default function page() {
     const {user} = useContext(AppContext)
@@ -53,14 +52,13 @@ export default function page() {
       p={5}
     >
       <Alert severity='info' sx={{my:2}}>
-        Settings page is under development
+        Guest Bookings page is under development
   </Alert>
         Hello, {isUser  && user?.displayName ? user?.displayName : user?.email},{" "}
     
         <Link href={'/'}>
           Go home
         </Link>
-        <ChatFloatingButton />
     </Box>
      </Stack>
    </Box>

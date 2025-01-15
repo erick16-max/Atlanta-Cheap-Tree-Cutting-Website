@@ -30,12 +30,13 @@ export default function FooterGrid() {
   return (
     <Grid container rowSpacing={5} columnSpacing={2} p={4}>
       <Grid item lg={4} md={4} sm={12} xs={12}>
-        <Stack width={"100%"} gap={1}>
+        <Stack width={"100%"} gap={4}>
           <Image
             src={LogoImage}
             alt="Atlatanta Cheap Tree cutting solution"
             width={150}
           />
+          <Stack gap={1}>
           <Stack
             direction={"row"}
             color={"#dedede"}
@@ -70,6 +71,7 @@ export default function FooterGrid() {
                 770 589 4000
               </Typography>
             </Link>
+          </Stack>
           </Stack>
           <Box display={"flex"} alignItems={"center"} gap={2}>
             <Tooltip title="facebook" arrow>
