@@ -22,6 +22,7 @@ import { SubmitBooking } from "@/firebase/Booking";
 import SuccessBookingModal from "./SuccessBookingModal";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/general/PageLoader";
+import { FaBedPulse } from "react-icons/fa6";
 
 export default function ConfirmBeforeSubmit() {
   const [error, setError] = useState("")
@@ -49,33 +50,42 @@ export default function ConfirmBeforeSubmit() {
     console.info("You clicked the Chip.");
   };
 
+ 
+
   const handleDone = () => {
-    if(typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       try {
-        setShow(true)
-        localStorage.removeItem("address")
-        localStorage.removeItem("budget")
-        localStorage.removeItem("surveyDate")
-        localStorage.removeItem("surveyTime")
-        localStorage.removeItem("notes")
-        localStorage.removeItem("bookingDetails")
-        localStorage.removeItem("borkingServiceList")
-        localStorage.removeItem("rawTime")
-        setActiveStep(steps.step1)
-        setOpen(false)
-        router.push('/')
-      } catch (error) {
-        console.log(error)
-      }finally{
+        setShow(true);
+        
+        // Clear all necessary localStorage items
+        localStorage.removeItem("address");
+        localStorage.removeItem("budget");
+        localStorage.removeItem("surveyDate");
+        localStorage.removeItem("surveyTime");
+        localStorage.removeItem("notes");
+        localStorage.removeItem("bookingDetails");
+        localStorage.removeItem("borkingServiceList");
+        localStorage.removeItem("rawTime");
+  
+        // Optionally reset any context or state
+        setActiveStep(steps.step1);
+  
+        // Delay the routing to ensure localStorage is cleared
         setTimeout(() => {
-          setShow(false)
-        }, 4000)
+          router.push('/');
+        }, 2500);  // Slight delay to ensure localStorage is cleared
+  
+      } catch (error) {
+        console.error("Error clearing localStorage:", error);
+      } finally {
+        setTimeout(() => {
+          setShow(false);
+          setOpen(FaBedPulse)
+        }, 10000);
       }
     }
-   
-    
-
- }
+  };
+  
 
 
   const handleSubmitBooking = async () => {
@@ -108,13 +118,12 @@ export default function ConfirmBeforeSubmit() {
       setLoading(false)
       setTimeout(() => {
         setError("")
-        setOpen(false)
         handleDone()
       }, 8000)
     }
   }
 
-  if(show) return <PageLoader />
+
 
   return (
     <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={3}>
@@ -336,6 +345,7 @@ export default function ConfirmBeforeSubmit() {
         open={open}
         setOpen={setOpen}
         handleDone={handleDone}
+        show={show}
       />
     </Box>
   );

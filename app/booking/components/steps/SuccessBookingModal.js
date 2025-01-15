@@ -78,7 +78,7 @@ export default function SuccessBookingModal({open, setOpen, handleDone}) {
               }}
               onClick={handleDone}
             >
-              Done
+              {show ? <CircularProgress size={20} thickness={4} sx={{color: '#f5f5f5'}} /> : 'Done'}
             </Button>
          
         </Box>
