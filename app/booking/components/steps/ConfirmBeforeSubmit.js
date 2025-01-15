@@ -1,17 +1,24 @@
-import { Box, Typography, Stack, Chip, Button, Divider } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Stack,
+  Chip,
+  Button,
+  Divider,
+  Alert,
+} from "@mui/material";
 import React, { useContext } from "react";
 import { SiTicktick } from "react-icons/si";
 import { TiTick } from "react-icons/ti";
 import { MdEditSquare } from "react-icons/md";
-import { MdLocationPin } from "react-icons/md";
+import { MdEmail, MdPhone } from "react-icons/md";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 
 export default function ConfirmBeforeSubmit() {
-    const {isMobile} = useContext(ColorModeContext)
+  const { isMobile } = useContext(ColorModeContext);
   const handleClick = () => {
     console.info("You clicked the Chip.");
   };
-
 
   return (
     <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={3}>
@@ -19,11 +26,64 @@ export default function ConfirmBeforeSubmit() {
         <Typography variant="h6" color={"text.primary"} fontWeight={700}>
           Confirm your Booking
         </Typography>
-        <Typography variant="body1" color={"text.secondary"} fontWeight={500}>
-          Please confirm everything before submitting the your booking details.
-        </Typography>
-        <Divider />
+        <Alert severity="warning">
+          Please confirm everything before submitting your booking details.
+        </Alert>
       </Stack>
+
+      {/* contanct info */}
+      <Stack>
+        <Typography
+          variant="body1"
+          fontWeight={600}
+          color={"text.primary"}
+          gutterBottom
+        >
+          Contact info:
+        </Typography>
+        <Typography
+          variant="body2"
+          fontWeight={400}
+          color={"text.secondary"}
+          component={"div"}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <MdPhone  />
+          +254720067228
+        </Typography>
+        <Typography
+          variant="body2"
+          fontWeight={400}
+          color={"text.secondary"}
+          component={"div"}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <MdEmail />
+          erickgege16@gmail.com
+        </Typography>
+        <Chip
+          label="Edit"
+          sx={{
+            maxWidth: 100,
+            mt: 2,
+            fontWeight: 500,
+          }}
+          onClick={handleClick}
+          icon={<MdEditSquare />}
+        />
+      </Stack>
+
+      <Divider />
+
+      {/* service info */}
       <Stack>
         <Typography
           variant="body1"
@@ -71,6 +131,7 @@ export default function ConfirmBeforeSubmit() {
         />
       </Stack>
       <Divider />
+      {/* booking info */}
       <Stack gap={1}>
         <Typography
           variant="body1"
@@ -92,7 +153,7 @@ export default function ConfirmBeforeSubmit() {
           gap={1}
           gutterBottom
         >
-         <strong> Address:</strong>
+          <strong> Address:</strong>
           822 Berne Street Unit 3, Atlanta
         </Typography>
         <Typography
@@ -140,23 +201,17 @@ export default function ConfirmBeforeSubmit() {
           <strong>Time for survey:</strong>
           10: 25 pm
         </Typography>
-          <Stack>
-          <Typography
-          variant="body2"
-          fontWeight={400}
-          color={"text.secondary"}
-          
-        >
-         <strong> Additional Notes:</strong>
-        </Typography>
-        <Typography
-          variant="body2"
-          fontWeight={400}
-          color={"text.secondary"}
-        >
-         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur autem quos rerum deserunt amet animi aut magni veniam, fugiat, provident quae, perferendis optio assumenda placeat saepe expedita commodi quibusdam suscipit!
-        </Typography>
-          </Stack>
+        <Stack>
+          <Typography variant="body2" fontWeight={400} color={"text.secondary"}>
+            <strong> Additional Notes:</strong>
+          </Typography>
+          <Typography variant="body2" fontWeight={400} color={"text.secondary"}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Consequatur autem quos rerum deserunt amet animi aut magni veniam,
+            fugiat, provident quae, perferendis optio assumenda placeat saepe
+            expedita commodi quibusdam suscipit!
+          </Typography>
+        </Stack>
 
         <Chip
           label="Edit"
@@ -172,11 +227,11 @@ export default function ConfirmBeforeSubmit() {
       <Button
         variant="contained"
         sx={{
-            width: isMobile ? '100%' : 250,
-            height: 50,
-            borderRadius: '16px',
-            textTransform: 'none',
-            fontWeight: 600
+          width: isMobile ? "100%" : 250,
+          height: 50,
+          borderRadius: "16px",
+          textTransform: "none",
+          fontWeight: 600,
         }}
       >
         Submit Booking

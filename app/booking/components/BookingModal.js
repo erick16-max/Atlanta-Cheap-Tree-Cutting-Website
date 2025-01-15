@@ -9,10 +9,12 @@ import BookingImage from "../../../public/booking.svg"
 import { MdArrowRightAlt } from "react-icons/md";
 import CopyRight from '@/components/footer/CopyRight'
 import Link from 'next/link'
+import ColorModeContext from '@/theme/CustomThemeProvider'
 
 
 export default function BookingModal() {
     const {isBookingModalOpen, setIsBookingModalOpen} = useContext(AppContext)
+    const {isMobile} = useContext(ColorModeContext)
   
    
     
@@ -34,8 +36,8 @@ export default function BookingModal() {
                 borderRadius: '12px',
                 backgroundColor: '#ffffff',
                 py: 3,
-                px: 10,
-                minWidth: 250,
+                px: isMobile ? 3 : 10,
+                minWidth: 260,
                 maxWidth: 500,
                 display: 'flex',
                 justifyContent: 'center',
@@ -54,7 +56,8 @@ export default function BookingModal() {
             <Typography
                 variant='body1'
                 fontWeight={600}
-                color={'text.secondary'}
+                color={'text.primary'}
+                textAlign={'center'}
             >
                 Choose one to start your booking.
             </Typography>
