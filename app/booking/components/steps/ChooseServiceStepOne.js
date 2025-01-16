@@ -54,7 +54,7 @@ const icons = [
 export default function ChooseServiceStepOne() {
   const [progressValue, setProgressValue] = React.useState(40);
   const { isMobile } = React.useContext(ColorModeContext);
-  const { setActiveStep, borkingServiceList, setBorkingServiceList } =
+  const { setActiveStep, borkingServiceList, setBorkingServiceList, fullname } =
     React.useContext(AppContext);
 
   // Handle checkbox change

@@ -91,7 +91,7 @@ export default function BookingModal() {
             color='secondary'
             fullWidth
             LinkComponent={Link}
-            href='/booking/guest'
+            href='/booking'
             onClick={() => setIsBookingModalOpen(false)}
             >
                 Continue as Guest User

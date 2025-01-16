@@ -7,9 +7,10 @@ import { steps } from "@/constants/AppConstants";
 import CustomLinearProgress from "./steps/CustomLinearProgress";
 import ChooseImagesStepThree from "./steps/ChooseImagesStepThree";
 import ConfirmBeforeSubmit from "./steps/ConfirmBeforeSubmit";
+import GuestUserAccountModal from "@/components/finishaccount/GuestUserModal";
 
 export default function BoorkingSteps() {
-  const { userProfile, activeStep, setActiveState } = useContext(AppContext);
+  const { userProfile, activeStep, setActiveState, fullname } = useContext(AppContext);
 
   return (
     <Card
@@ -28,14 +29,14 @@ export default function BoorkingSteps() {
         <Stack>
           <Typography variant="h6" color={"text.primary"} fontWeight={700}>
             {activeStep === steps.step1
-              ? `Hey, ${userProfile?.displayName || userProfile?.email} 👋`
+              ? `Hey, ${userProfile?.displayName || userProfile?.email || fullname} 👋`
               : activeStep === steps.step2
               ? `Provide more details, ${
-                  userProfile?.displayName || userProfile?.email
+                  userProfile?.displayName || userProfile?.email || fullname
                 }!`
               : activeStep === steps.step3
               ? `Almost there, ${
-                  userProfile?.displayName || userProfile?.email
+                  userProfile?.displayName || userProfile?.email || fullname
                 }!`
               : ""}
           </Typography>
@@ -72,6 +73,7 @@ export default function BoorkingSteps() {
       ) : steps.step4 === activeStep ? (
         <ConfirmBeforeSubmit />
       ) : null}
+      <GuestUserAccountModal />
     </Card>
   );
 }

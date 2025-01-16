@@ -23,6 +23,8 @@ import SuccessBookingModal from "./SuccessBookingModal";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/general/PageLoader";
 import { FaBedPulse } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
+import { serverTimestamp } from "firebase/firestore";
 
 export default function ConfirmBeforeSubmit() {
   const [error, setError] = useState("");
@@ -48,6 +50,10 @@ export default function ConfirmBeforeSubmit() {
     userProfile,
     borkingServiceList,
     setBorkingServiceList,
+    fullname, setFullname,
+    email, setEmail,
+    phoneNumber, setPhoneNumber,
+    isUserProfile
   } = useContext(AppContext);
 
   const serviceCount = isArray(borkingServiceList)
@@ -61,9 +67,9 @@ export default function ConfirmBeforeSubmit() {
   const handleSubmitBooking = async () => {
     const bookingData = {
       contactInfo: {
-        phoneNumber: userProfile?.phoneNumber,
-        email: userProfile?.email,
-        fullname: userProfile?.displayName,
+        phoneNumber: isUserProfile ? userProfile?.phoneNumber : phoneNumber,
+        email: isUserProfile ? userProfile?.email : email,
+        fullname: isUserProfile ? userProfile?.displayName : fullname,
       },
       bookingInfo: {
         address,
@@ -73,7 +79,9 @@ export default function ConfirmBeforeSubmit() {
         budget,
       },
       services: borkingServiceList?.map((item) => item.title),
-      status: 'pending'
+      status: 'pending',
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp(),
     };
   
     try {
@@ -141,8 +149,22 @@ export default function ConfirmBeforeSubmit() {
             gap: 1,
           }}
         >
+          <FaUser />
+          {isUserProfile ? userProfile?.displayName : fullname}
+        </Typography>
+        <Typography
+          variant="body2"
+          fontWeight={400}
+          color={"text.secondary"}
+          component={"div"}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
           <MdPhone />
-          {`+${userProfile?.phoneNumber}`}
+          {isUserProfile ? `+${userProfile?.phoneNumber}` : phoneNumber}
         </Typography>
         <Typography
           variant="body2"
@@ -156,7 +178,7 @@ export default function ConfirmBeforeSubmit() {
           }}
         >
           <MdEmail />
-          {userProfile?.email}
+          {isUserProfile ? userProfile?.email : email}
         </Typography>
         <Chip
           label="Edit"
