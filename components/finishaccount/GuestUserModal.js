@@ -30,35 +30,42 @@ import { steps } from "@/constants/AppConstants";
 import { useRouter } from "next/navigation";
 
 export default function GuestUserAccountModal() {
-    const [error, setError] = useState("");
-    const [phoneError, setPhoneError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const { isMobile } = useContext(ColorModeContext);
-    const {
-        user,
-        isUser,
-        successAlert,
-        setSuccessAlert,
-        guestUserModal,
-        setGuestUserModal,
-        fullname, setFullname,
-        email, setEmail,
-        phoneNumber, setPhoneNumber,
-        setActiveStep
-    } = useContext(AppContext);
-    
-  const router = useRouter()
+  const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { isMobile } = useContext(ColorModeContext);
+  const {
+    user,
+    isUser,
+    successAlert,
+    setSuccessAlert,
+    guestUserModal,
+    setGuestUserModal,
+    fullname,
+    setFullname,
+    email,
+    setEmail,
+    phoneNumber,
+    setPhoneNumber,
+    setActiveStep,
+  } = useContext(AppContext);
+
+  const router = useRouter();
 
   useEffect(() => {
-    if(!email || !fullname || ! phoneNumber || phoneError || !isUser){
-        setGuestUserModal(true)
-        setActiveStep(steps.step1)
+    if (isUser) {
+        setGuestUserModal(false);
+    }else{
+        if (!email || !fullname || !phoneNumber || phoneError) {
+          setGuestUserModal(true);
+          setActiveStep(steps.step1);
+        }
     }
-  }, [phoneNumber, fullname, email])
+  }, [phoneNumber, fullname, email, router]);
 
   const handleNext = () => {
-    setGuestUserModal(false)
-  }
+    setGuestUserModal(false);
+  };
 
   return (
     <Modal open={guestUserModal}>
@@ -82,26 +89,26 @@ export default function GuestUserAccountModal() {
           gap={3}
           borderRadius={"12px"}
         >
-            <Box
-                display={'flex'}
-                width={'100%'}
-                justifyContent={'flex-end'}
-                alignItems={'center'}
+          <Box
+            display={"flex"}
+            width={"100%"}
+            justifyContent={"flex-end"}
+            alignItems={"center"}
+          >
+            <IconButton
+              onClick={() => router.push("/")}
+              sx={{
+                backgroundColor: "#eee",
+                width: 30,
+                height: 30,
+                borderRadius: "6px",
+                p: "2px,",
+                fontSize: 22,
+              }}
             >
-                <IconButton 
-                onClick={() => router.push('/')}
-                sx={{
-                    backgroundColor: '#eee',
-                    width: 30,
-                    height: 30,
-                    borderRadius: '6px',
-                    p: '2px,',
-                    fontSize: 22,
-                }}
-                >
-                    x
-                </IconButton>
-            </Box>
+              x
+            </IconButton>
+          </Box>
           <Stack
             width={"100%"}
             justifyContent={"center"}
@@ -119,7 +126,7 @@ export default function GuestUserAccountModal() {
               fontWeight={700}
               color={"text.primary"}
               gutterBottom
-              textAlign={'center'}
+              textAlign={"center"}
             >
               Fill in your contact information
             </Typography>
