@@ -82,6 +82,7 @@ export default function ConfirmBeforeSubmit() {
       status: 'pending',
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
+      user: isUserProfile ? 'authenticated' : 'guest'
     };
   
     try {
