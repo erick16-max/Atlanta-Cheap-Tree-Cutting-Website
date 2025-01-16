@@ -98,6 +98,9 @@ export default function ConfirmBeforeSubmit() {
         setBudget("");
         setSurveyDate(null);
         setSurveyTime(null);
+        setEmail("")
+        setPhoneNumber("")
+        setFullname("")
       } else {
         console.log("Error response:", response);
         setError(`${response}`);
