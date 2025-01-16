@@ -50,7 +50,7 @@ export default function GuestUserAccountModal() {
   const router = useRouter()
 
   useEffect(() => {
-    if(!email || !fullname || ! phoneNumber || phoneError){
+    if(!email || !fullname || ! phoneNumber || phoneError || !isUser){
         setGuestUserModal(true)
         setActiveStep(steps.step1)
     }
