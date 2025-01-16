@@ -9,20 +9,14 @@ import dayjs from 'dayjs';
 
 export default function TimeFieldPicker({formattedTime, setFormattedTime}) {
 
-  const [rawTime, setRawTime] = React.useState(() => {
-     if(typeof window === undefined) return
-     return localStorage.getItem("rawTime") || "";
-   })
+  const [rawTime, setRawTime] = React.useState()
 
   React.useEffect(() => {
     if (rawTime) {
       setFormattedTime(dayjs(rawTime).format('h:mm A'));
-      localStorage.setItem("rawTime", rawTime);
-
     }
   }, [rawTime]);
 
-  console.log(rawTime)
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

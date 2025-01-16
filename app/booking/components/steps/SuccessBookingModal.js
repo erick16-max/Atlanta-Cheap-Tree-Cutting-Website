@@ -16,7 +16,7 @@ import AppContext from "@/context/AppContext";
 import { steps } from "@/constants/AppConstants";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 
-export default function SuccessBookingModal({open, setOpen, handleDone, show}) {
+export default function SuccessBookingModal({open, setOpen}) {
   const { setActiveStep } = useContext(AppContext);
   const {isMobile} = useContext(ColorModeContext)
 
@@ -76,9 +76,9 @@ export default function SuccessBookingModal({open, setOpen, handleDone, show}) {
                   backgroundColor: "primary.light",
                 },
               }}
-              onClick={handleDone}
+              onClick={() => router.push("/")}
             >
-              {show ? <CircularProgress size={20} thickness={4} sx={{color: '#f5f5f5'}} /> : 'Done'}
+               Done
             </Button>
          
         </Box>

@@ -14,96 +14,30 @@ export const AppContextProvider = ({ children }) => {
   const [successAlert, setSuccessAlert] = useState(false)
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
   
-  const [borkingServiceList, setBorkingServiceList] = useState(() => {
-    if(typeof window !== "undefined") {
-
-      try {
-        const storedList = localStorage.getItem("borkingServiceList");
-        return storedList ? JSON.parse(storedList) : [];
-      } catch (error) {
-        console.error("Error parsing borkingServiceList from localStorage:", error);
-        return [];
-      }
-    }
-  });
+  const [borkingServiceList, setBorkingServiceList] = useState([]);
   
-  const [activeStep, setActiveStep] = useState(() => {
-    if(typeof window !== "undefined") {
+  const [activeStep, setActiveStep] = useState(steps.step1);
 
-      return localStorage.getItem("activeStep") || steps.step1;
-    }
-  });
+  const [address, setAddress] = useState("");
 
-  const [address, setAddress] = useState(() => {
-    if(typeof window !== "undefined") {
+  const [budget, setBudget] = useState()
 
-      return localStorage.getItem("address") || "";
-    }
-  });
+  const [surveyTime, setSurveyTime] = useState(null)
 
-  const [budget, setBudget] = useState(() => {
-    if(typeof window !== "undefined") {
+  const [surveyDate, setSurveyDate] = useState(null)
 
-      return localStorage.getItem("budget") || "";
-    }
-  })
-
-  const [surveyTime, setSurveyTime] = useState(() => {
-    if(typeof window !== "undefined") {
-      return localStorage.getItem("surveyTime") || "";
-    }
-      
-  })
-
-  const [surveyDate, setSurveyDate] = useState(() => {
-    if(typeof window !== "undefined") {
-
-      return localStorage.getItem("surveyDate") || "";
-    }
-  })
-
-  const [notes, setNotes] = useState(() => {
-    if(typeof window !== "undefined") {
-
-      return localStorage.getItem("notes") || "";
-    }
-  })
+  const [notes, setNotes] = useState("")
 
 
 
 
-  const [bookingDetails, setBookingDetails] = useState(() => {
-    if(typeof localStorage !== "undefined") {
-
-      try {
-        const storedObj = localStorage.getItem("bookingDetails");
-        return storedObj ? JSON.parse(storedObj) : {};
-      } catch (error) {
-        console.error("Error parsing borkingServiceList from localStorage:", error);
-        return {};
-      }
-    }
-  });
+  const [bookingDetails, setBookingDetails] = useState({});
 
   
   const isOnline = useInternetStatus()
   const router = useRouter()
   
-  useEffect(() => {
-    
-    if(typeof  window !== "undefined") {
-
-      localStorage.setItem("activeStep", activeStep);
-      localStorage.setItem("borkingServiceList", JSON.stringify(borkingServiceList));
-      localStorage.setItem("bookingDetails", JSON.stringify(bookingDetails));
-      localStorage.setItem("address", address);
-      localStorage.setItem("budget", budget);
-      localStorage.setItem("surveyTime", surveyTime);
-      localStorage.setItem("surveyDate", surveyDate);
-      localStorage.setItem("notes", notes);
-    }
-
-  }, [activeStep, borkingServiceList, bookingDetails, address, budget, surveyTime, surveyDate, notes]);
+  
 
   //  get user profile
   const [finishAccount, setFinishAccount] = useState(() => {
