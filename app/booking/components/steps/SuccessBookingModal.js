@@ -20,6 +20,8 @@ export default function SuccessBookingModal({open, setOpen}) {
   const { setActiveStep } = useContext(AppContext);
   const {isMobile} = useContext(ColorModeContext)
 
+  console.log("Modal open state:", open);
+
 
   return (
     <Modal open={open}>
@@ -76,7 +78,12 @@ export default function SuccessBookingModal({open, setOpen}) {
                   backgroundColor: "primary.light",
                 },
               }}
-              onClick={() => router.push("/")}
+              onClick={() => {
+                setOpen(false)
+                setActiveStep(steps.step1)
+                router.push("/")
+
+              }}
             >
                Done
             </Button>

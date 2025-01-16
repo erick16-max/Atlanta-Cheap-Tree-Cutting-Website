@@ -27,8 +27,6 @@ export default function Home() {
 
   const isOnline = useInternetStatus()
 
-  console.log(user, loading)
-
 
   React.useEffect(() => {
         setLoading(false)

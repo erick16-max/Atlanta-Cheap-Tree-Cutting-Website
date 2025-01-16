@@ -73,40 +73,41 @@ export default function ConfirmBeforeSubmit() {
         budget,
       },
       services: borkingServiceList?.map((item) => item.title),
+      status: 'pending'
     };
-
+  
     try {
       setLoading(true);
       const response = await SubmitBooking(bookingData);
+      console.log("SubmitBooking response:", response); // Log response
       if (response === "success") {
         setOpen(true);
+        console.log("Modal open state set to true");
+        // Clear other states
         setAddress("");
         setNotes("");
         setBorkingServiceList([]);
         setBudget("");
         setSurveyDate(null);
         setSurveyTime(null);
-        setActiveStep(steps.step1);
-        setTimeout(() => {
-          setOpen(false)
-        }, 8000)
       } else {
-        console.log(response);
+        console.log("Error response:", response);
         setError(`${response}`);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Catch error:", error);
       setError(`${error}`);
     } finally {
       setLoading(false);
       setTimeout(() => {
-        setError("");
-        router.push("/");
-      }, 10000);
+        setActiveStep(steps.step1);
+        router.push("/")
+        setOpen(false)
+      }, 5000)
     }
   };
+  
 
-  console.log(open)
 
   return (
     <Box width={"100%"} display={"flex"} flexDirection={"column"} gap={3}>
