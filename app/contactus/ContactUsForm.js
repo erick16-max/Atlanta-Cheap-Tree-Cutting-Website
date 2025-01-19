@@ -27,9 +27,6 @@ export default function ContactUsForm() {
       }}
     >
       <Stack>
-        <Typography variant="h6" color={"text.primary"} fontWeight={600}>
-          Contact Us <br></br>
-        </Typography>
         <span
           style={{
             color: "#666",

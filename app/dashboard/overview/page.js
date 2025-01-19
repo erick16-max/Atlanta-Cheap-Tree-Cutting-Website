@@ -2,13 +2,15 @@
 
 import PageLoader from "@/components/general/PageLoader";
 import AppContext from "@/context/AppContext";
-import { Alert, Box, useMediaQuery, Stack, useTheme } from "@mui/material";
+import { Alert, Box, useMediaQuery, Stack, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import CustomAppBar from "@/components/header/CustomAppBar";
 import ChatFloatingButton from "@/components/general/ChatButton";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
+import OverviewGrid from "./components/OverviewGrid";
+import Footer from "@/components/footer/Footer";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -35,21 +37,21 @@ export default function page() {
       flexDirection={"column"}
       maxWidth={"1700px"}
       margin={"auto"}
+    bgcolor={'#f9f9f9'}
     >
       <Box width={"100%"}>
         <CustomAppBar mainPage={true} />
       </Box>
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
         <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
-             <CustomBreadcrumb current={'overview'} nestedPath={'dashboard'} />
-          <Alert severity="info" sx={{ my: 2 }}>
-            Overview page is under development
-          </Alert>
-          Hello, {isUser && user?.displayName ? user?.displayName : user?.email}
-          , <Link href={"/"}>Go home</Link>
+            <CustomBreadcrumb current={'overview'} nestedPath={'dashboard'} />
+            <Stack my={2}>
+             <OverviewGrid />
+            </Stack>
           <ChatFloatingButton />
         </Box>
       </Stack>
+      <Footer />
     </Box>
   );
 }

@@ -23,6 +23,7 @@ import GetQuoteButton from "./GetQuoteButton";
 import InstagramLogo from "../../public/instagram.png";
 import FacebookLogo from "../../public/facebook.png";
 import TwitterLogo from "../../public/twitter.png";
+import HoverEffectButton from "../general/HoverEffectButton";
 
 export default function FooterGrid() {
   const { isUser } = useContext(AppContext);
@@ -147,7 +148,7 @@ export default function FooterGrid() {
         </Stack>
       </Grid>
       <Grid item lg={4} md={4} sm={12} xs={12}>
-        <Stack>
+        <Stack gap={1}>
           <Typography
             variant="h6"
             fontWeight={600}
@@ -157,7 +158,7 @@ export default function FooterGrid() {
             Get In Touch
           </Typography>
           <Typography
-            variant="body1"
+            variant="body2"
             fontWeight={400}
             color={"#dedede"}
             gutterBottom
@@ -167,7 +168,7 @@ export default function FooterGrid() {
             consultation or to learn more about how we can help you maintain a
             beautiful and safe outdoor environment.
           </Typography>
-          <GetQuoteButton />
+          <HoverEffectButton />
         </Stack>
       </Grid>
     </Grid>
