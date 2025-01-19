@@ -57,7 +57,7 @@ export default function page() {
       px={isSmallScreen ? 1 : 5}
       width={'100%'}
     >
-        <CustomBreadcrumb current={'Contact Us'}/>
+        <CustomBreadcrumb current={'contact-us'}/>
         <ContactUsForm />
         <ChatFloatingButton />
     </Box>

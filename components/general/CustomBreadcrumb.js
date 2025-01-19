@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Typography } from '@mui/material';
 import ColorModeContext from '@/theme/CustomThemeProvider';
 
-export default function CustomBreadcrumb({current, isMobiles}) {
+export default function CustomBreadcrumb({current, nestedPath}) {
   const {isMobile} = React.useContext(ColorModeContext)
   return (
     <div role="presentation" >
@@ -24,6 +24,24 @@ export default function CustomBreadcrumb({current, isMobiles}) {
             Home
           </Typography>
         </Link>
+       {nestedPath && (
+         <Link  
+         href="/dashboard"
+         style={{
+             textDecoration: "none"
+         }}
+         className='link'
+         >
+         <Typography
+             color={'text.primary'}
+             variant={isMobile ? 'body2' : 'body1'}
+             textTransform={'lowercase'}
+ 
+           >
+             dashboard
+           </Typography>
+         </Link>
+       )}
         <Link
           href="#"
           style={{
@@ -34,6 +52,8 @@ export default function CustomBreadcrumb({current, isMobiles}) {
           <Typography
             color={'text.secondary'}
             variant={isMobile ? 'body2' : 'body1'}
+            textTransform={'lowercase'}
+
 
           >
             {current}

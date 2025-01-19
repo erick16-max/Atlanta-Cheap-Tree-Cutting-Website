@@ -44,7 +44,7 @@ export default function page() {
       </Box>
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
         <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
-           <CustomBreadcrumb current={'About Us'}/>
+           <CustomBreadcrumb current={'about-us'}/>
           <AboutUsCard />
           <ChatFloatingButton />
         </Box>

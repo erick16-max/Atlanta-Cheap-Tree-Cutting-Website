@@ -8,10 +8,7 @@ import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import CustomAppBar from "@/components/header/CustomAppBar";
 import ChatFloatingButton from "@/components/general/ChatButton";
-import PortfolioGrid from "./PortfolioGrid";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
-import {Typography} from "@mui/material";
-import Footer from "@/components/footer/Footer";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -38,29 +35,21 @@ export default function page() {
       flexDirection={"column"}
       maxWidth={"1700px"}
       margin={"auto"}
-      bgcolor={"#f5f5f5"}
     >
       <Box width={"100%"}>
         <CustomAppBar mainPage={true} />
       </Box>
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
         <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
-          <CustomBreadcrumb current={"portfolio"} />
-          <Typography
-            variant="h5"
-            color={"text.primary"}
-            fontWeight={600}
-            gutterBottom
-            my={1}
-          >
-            View Our Portfolio
-          </Typography>
-          <PortfolioGrid />
-
+             <CustomBreadcrumb current={'overview'} nestedPath={'dashboard'} />
+          <Alert severity="info" sx={{ my: 2 }}>
+            Overview page is under development
+          </Alert>
+          Hello, {isUser && user?.displayName ? user?.displayName : user?.email}
+          , <Link href={"/"}>Go home</Link>
           <ChatFloatingButton />
         </Box>
       </Stack>
-      <Footer />
     </Box>
   );
 }

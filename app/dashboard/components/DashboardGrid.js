@@ -1,4 +1,5 @@
 import { Card, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 import React from "react";
 import { GrOverview } from "react-icons/gr";
 import { MdOutlineSettings, MdOutlineLibraryBooks  } from "react-icons/md";
@@ -31,7 +32,7 @@ export default function DashboardGrid() {
     <Grid container spacing={2} py={2}>
       {dashboardList.map((item) => {
         return (
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6} md={6} lg={6}>
             <Card
                 variant="outlined"
               sx={{
@@ -48,6 +49,8 @@ export default function DashboardGrid() {
                   boxShadow: 1,
                 },
               }}
+              component={Link}
+              href={item.path}
             >
                     {item.icon}
                     <Typography

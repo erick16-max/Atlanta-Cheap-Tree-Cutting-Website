@@ -55,7 +55,7 @@ export default function MenuDropDown({
                 </MenuItem>
                
                 <MenuItem onClick={() => {
-                     router.push('/settings')
+                     router.push('/dashboard/settings')
                      handleClose()
                 }}>
                     <ListItemIcon>
