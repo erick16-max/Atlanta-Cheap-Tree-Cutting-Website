@@ -41,6 +41,18 @@ export default function BookingDataTable() {
         checkboxSelection
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
+        disableColumnMenu
+        sx={{
+          "& .MuiDataGrid-root": {
+            border: "1px solid #e0e0e0", // Outer border for the DataGrid
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "1px solid #e0e0e0", // Horizontal lines between rows
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            borderBottom: "1px solid #e0e0e0", // Line below column headers
+          },
+        }}
       />
   </Box>
   );
