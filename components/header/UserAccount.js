@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AvatarButton from "./AvatarButton";
 import { FiMenu } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import NotificationButton from "./NotificationButton";
 
 export default function UserAccount({isTablet, setOpenDrawer, user}) {
   const theme = useTheme()
@@ -15,9 +16,12 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
     <Box width={"100%"}>
      {
       user !==null && user && JSON.stringify(user) !== "{}" ? (
-     <AvatarButton/>
+        <Stack direction={"row"} gap={1} alignItems={'center'}>
+          <NotificationButton />
+          <AvatarButton/>
+        </Stack>
       ):(
-        <Stack direction={"row"} gap={1}>
+        <Stack direction={"row"} gap={1} alignItems={'center'}>
         <Button
           color="secondary"
           sx={{

@@ -33,6 +33,7 @@ export const AppContextProvider = ({ children }) => {
   const [fullname, setFullname] = useState("");
 
   const [bookingDetails, setBookingDetails] = useState({});
+  const [notifications, setNotifications] = useState([])
 
   const isOnline = useInternetStatus();
   const router = useRouter();
@@ -118,7 +119,8 @@ export const AppContextProvider = ({ children }) => {
     setGuestUserModal,
     fullname, setFullname,
     phoneNumber, setPhoneNumber,
-    email, setEmail
+    email, setEmail,
+    notifications, setNotifications
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
