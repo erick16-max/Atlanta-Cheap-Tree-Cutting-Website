@@ -11,6 +11,7 @@ import ChatFloatingButton from "@/components/general/ChatButton";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
 import OverviewGrid from "./components/OverviewGrid";
 import Footer from "@/components/footer/Footer";
+import BookingTableGrid from "./components/BookingTableGrid";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -45,8 +46,9 @@ export default function page() {
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
         <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
             <CustomBreadcrumb current={'overview'} nestedPath={'dashboard'} />
-            <Stack my={2}>
+            <Stack my={2} width={'100%'} gap={3}>
              <OverviewGrid />
+             <BookingTableGrid />
             </Stack>
           <ChatFloatingButton />
         </Box>
