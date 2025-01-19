@@ -69,7 +69,7 @@ export default function AboutUsCard() {
             fontWeight={600}
             className="interFont"
           >
-            My Story
+            Our Story
           </Typography>
           <BsClockHistory fontSize={32} />
         </Box>
