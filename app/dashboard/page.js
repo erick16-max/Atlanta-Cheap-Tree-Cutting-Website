@@ -7,6 +7,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useContext } from 'react'
 import CustomAppBar from '@/components/header/CustomAppBar'
+import DashboardGrid from './components/DashboardGrid'
+import ChatFloatingButton from '@/components/general/ChatButton'
+import CustomBreadcrumb from '@/components/general/CustomBreadcrumb'
+import Footer from '@/components/footer/Footer'
 
 export default function page() {
     const {user} = useContext(AppContext)
@@ -37,6 +41,7 @@ export default function page() {
     flexDirection={'column'}
     maxWidth={'1700px'}
     margin={'auto'}
+    bgcolor={'#f9f9f9'}
    >
      <Box
       width={'100%'}
@@ -49,18 +54,15 @@ export default function page() {
       px={isSmallScreen ? 1 : 3}
      >
          <Box
-      p={5}
-    >
-      <Alert severity='info' sx={{my:2}}>
-        Dashboard page is under development
-  </Alert>
-        Hello, {isUser  && user?.displayName ? user?.displayName : user?.email},{" "}
-    
-        <Link href={'/'}>
-          Go home
-        </Link>
-    </Box>
+              px={isSmallScreen ? 1 : 5}
+              width={'100%'}
+            >
+                <CustomBreadcrumb current={'Dashboard'}/>
+                <DashboardGrid />
+                <ChatFloatingButton />
+            </Box>
      </Stack>
+     <Footer />
    </Box>
   )
 }

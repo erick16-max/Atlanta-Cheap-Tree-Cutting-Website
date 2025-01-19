@@ -27,19 +27,19 @@ import ColorModeContext from "@/theme/CustomThemeProvider";
   
     const handleClick = async (event) => {
       setAnchorEl(event.currentTarget);
-      if (
-        Object.keys(userProfile)?.length > 0 &&
-        Object.keys(notification)?.length
-      ) {
-        const docRef = doc(
-          db,
-          "notifications",
-          `254${userProfile?.phoneNumber?.slice(1)}`
-        );
-        await updateDoc(docRef, {
-          read: true,
-        });
-      }
+      // if (
+      //   Object.keys(userProfile)?.length > 0 &&
+      //   Object.keys(notification)?.length
+      // ) {
+      //   const docRef = doc(
+      //     db,
+      //     "notifications",
+      //     `254${userProfile?.phoneNumber?.slice(1)}`
+      //   );
+      //   await updateDoc(docRef, {
+      //     read: true,
+      //   });
+      // }
     };
     const handleClose = () => {
       setAnchorEl(null);

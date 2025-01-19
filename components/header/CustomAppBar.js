@@ -33,9 +33,10 @@ export default function CustomAppBar({ navBg, mainPage }) {
         py: 1,
         px: isSmallScreen ? 1 : 3,
         backgroundColor: "#ffffff",
-        boxShadow: navBg ? 3 : 0,
+        boxShadow: navBg  ? 3 : 0,
         mt: navBg || mainPage ? 0 : "40px", // Adjust margin based on scroll
         transition: "margin-top 0.3s ease-in-out", // Smooth transition
+        border: mainPage ? "1px solid #eeeeee" : "none"
       }}
     >
       <Box
