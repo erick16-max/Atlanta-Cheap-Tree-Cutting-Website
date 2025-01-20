@@ -2,13 +2,17 @@
 
 import PageLoader from "@/components/general/PageLoader";
 import AppContext from "@/context/AppContext";
-import { Alert, Box, useMediaQuery, Stack, useTheme } from "@mui/material";
+import { Alert, Box, useMediaQuery, Stack, useTheme, Button } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import CustomAppBar from "@/components/header/CustomAppBar";
 import ChatFloatingButton from "@/components/general/ChatButton";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
+import HoverEffectButton from "@/components/general/HoverEffectButton";
+import BookingDataTable from "../overview/components/bookinggrid/GridTable";
+import BookingTableGrid from "../overview/components/BookingTableGrid";
+import Footer from "@/components/footer/Footer";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -35,21 +39,35 @@ export default function page() {
       flexDirection={"column"}
       maxWidth={"1700px"}
       margin={"auto"}
+      bgcolor={'#f9f9f9'}
     >
       <Box width={"100%"}>
         <CustomAppBar mainPage={true} />
       </Box>
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
         <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
-             <CustomBreadcrumb current={'bookings'} nestedPath={'dashboard'} />
-          <Alert severity="info" sx={{ my: 2 }}>
-            Bookings page is under development
-          </Alert>
-          Hello, {isUser && user?.displayName ? user?.displayName : user?.email}
-          , <Link href={"/"}>Go home</Link>
+           <Stack
+            width={'100%'}
+            gap={3}
+            py={2}
+           >
+           <Box
+              display={'flex'}
+              width={'100%'}
+              justifyContent={'space-between'}
+              alignItems={'center'}
+              gap={2}
+             >
+              <CustomBreadcrumb current={'bookings'} nestedPath={'dashboard'} />
+              <HoverEffectButton dashboardText={'Add'}/>
+             </Box>
+             <BookingTableGrid />
+           </Stack>
+         
           <ChatFloatingButton />
         </Box>
       </Stack>
+      <Footer />
     </Box>
   );
 }

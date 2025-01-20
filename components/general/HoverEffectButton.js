@@ -3,11 +3,13 @@ import { Button } from "@mui/material";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/navigation";
 import { BsBookmarkPlus } from "react-icons/bs";
+import ColorModeContext from "@/theme/CustomThemeProvider";
 
 
 
-export default function HoverEffectButton({ isSmallScreen }) {
+export default function HoverEffectButton({ isSmallScreen, dashboardText }) {
   const {isUser, setIsBookingModalOpen} = useContext(AppContext)
+  const {isMobile} = useContext(ColorModeContext)
   const router = useRouter()
   return (
     <Button
@@ -15,7 +17,7 @@ export default function HoverEffectButton({ isSmallScreen }) {
       sx={{
         borderEndStartRadius: '12px',
         height: isSmallScreen ? 40 : 50,
-        px: isSmallScreen ? 3 : 5,
+        px: isSmallScreen && !dashboardText ? 3 : isMobile && dashboardText ? 2 : 5,
         textTransform: "none",
         mt: 2,
         fontSize: isSmallScreen ? 14 : 16,
@@ -25,7 +27,7 @@ export default function HoverEffectButton({ isSmallScreen }) {
         overflow: "hidden",
         zIndex: 0,
         backgroundColor: "#E10A12",
-        width: 220,
+        width: isMobile && dashboardText ? 120 : 220,
         "&::before": {
           content: '""',
           position: "absolute",
@@ -55,7 +57,7 @@ export default function HoverEffectButton({ isSmallScreen }) {
         }
       }}
     >
-      Book us now
+      {dashboardText && isMobile ? dashboardText : "Book us now"}
     </Button>
   );
 }
