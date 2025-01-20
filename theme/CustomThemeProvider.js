@@ -79,7 +79,7 @@ export function CustomThemeProvider({children}) {
                 
               },
               success: {
-                main: '#26c3a6',
+                main: '#326e36',
               },
               divider: "#eeeeee"
               

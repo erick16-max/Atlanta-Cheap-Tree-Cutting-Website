@@ -1,5 +1,6 @@
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where, } from "firebase/firestore";
 import { db } from "@/firebase.config";
+
 
 export const SubmitBooking = async(bookingData) => {
     try {
@@ -11,3 +12,32 @@ export const SubmitBooking = async(bookingData) => {
         return error.message || "Failed to save booking information";
     }
 }
+
+
+
+// get user bookings
+export const GetUserBookings = async (email) => {
+    try {
+      // Reference the 'bookings' collection
+      const collectionRef = collection(db, "bookings");
+  
+      // Create a query to filter bookings by email
+      const q = query(collectionRef, where("contactInfo.email", "==", email));
+  
+      // Execute the query
+      const querySnapshot = await getDocs(q);
+  
+      // Map over the snapshot to get the booking data
+      const bookings = querySnapshot.docs.map((doc) => ({
+        id: doc.id, // Include the document ID if needed
+        ...doc.data(), // Spread the document data
+      }));
+  
+      return bookings;
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+      return [];
+    }
+  };
+
+  

@@ -1,40 +1,65 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { bookingsColumns } from "./GridColumn";
 import { DataGrid } from "@mui/x-data-grid";
+import { GetUserBookings } from "@/firebase/Booking";
+import AppContext from "@/context/AppContext";
+import { user } from "@/constants/AppConstants";
 
 
 export default function BookingDataTable() {
-  const [tableData, setTableData ] = React.useState([
-    {
-      id: 1,
-      budget: 150,
-      address: "812 Biene Streets, Atlanta",
-      surveyDate: "20/05/2025",
-      surveyTime: '10:30 AM',
-    },
-    {
-      id: 2,
-      budget: 120,
-      address: "201 Rock Streets",
-      surveyDate: "12/04/2025",
-      surveyTime: '1:30 PM',
-    },
-    {
-      id: 3,
-      budget: 250,
-      address: "1st Avenue Streets",
-      surveyDate: "02/03/2025",
-      surveyTime: '12:25 PM',
+  
+  const [loading, setLoading] = useState(false)
+  const {userProfile, bookingTableData, setBookingTableData} = useContext(AppContext)
+
+
+  const fetchBookings = async () => {
+    try {
+      setLoading(true)
+      if(userProfile){
+        
+        const bookings = await GetUserBookings(userProfile?.email);
+        if(bookings){
+        const transformedBookings = bookings.map((booking, index) => {
+          if(booking.user === user.AUTHENTICATED){
+            const bookingObj = {
+              id: index + 1, 
+              uid: booking.id,
+              budget: parseInt(booking.bookingInfo.budget, 10),
+              address: booking.bookingInfo.address,
+              surveyDate: booking.bookingInfo.surveyDate,
+              surveyTime: booking.bookingInfo.surveyTime,
+              status: booking.status
+            }
+  
+            return bookingObj
+          }else{
+            return {}
+          }
+          
+        });
+        setBookingTableData(transformedBookings)
+       }
+  
+      }
+    } catch (error) {
+      console.log(error)
+    }finally{
+      setLoading(false)
     }
-  ])
+  }
+
+  useEffect(() => {
+      fetchBookings()
+      console.log("User Bookings")
+  },[userProfile])
 
  
 
   return (
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={tableData}
+        rows={bookingTableData}
         columns={bookingsColumns}
         pageSize={5}
         rowsPerPageOptions={[5]}
@@ -42,6 +67,7 @@ export default function BookingDataTable() {
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
         disableColumnMenu
+        loading={loading}
         sx={{
           "& .MuiDataGrid-root": {
             border: "1px solid #e0e0e0", // Outer border for the DataGrid

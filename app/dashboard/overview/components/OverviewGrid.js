@@ -1,31 +1,36 @@
+import { bookingStatus } from "@/constants/AppConstants";
+import AppContext from "@/context/AppContext";
+import { isArray } from "@/util/LogicFunctions";
 import { Box, Card, Grid, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { FaThList } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa";
 import { MdDoNotDisturbAlt } from "react-icons/md";
 import { TiTick} from "react-icons/ti";
 
 export default function OverviewGrid() {
+  const {bookingTableData} = useContext(AppContext)
+  console.log(bookingTableData)
   const overviewList = [
     {
       icon: <FaThList fontSize={28} />,
       title: "Total Bookings",
-      count: 23,
+      count: isArray(bookingTableData) ? bookingTableData.length : 0,
     },
     {
         icon: <FaRegClock fontSize={28} />,
         title: "Pending Bookings",
-        count: 3,
+        count: bookingTableData.filter(booking => booking.status === bookingStatus.PENDING)?.length,
       },
       {
         icon: <MdDoNotDisturbAlt fontSize={28} />,
         title: "Rejected Bookings",
-        count: 2,
+        count:  bookingTableData.filter(booking => booking.status === bookingStatus.REJECTED)?.length,
       },
       {
         icon: <TiTick fontSize={28} />,
         title: "Completed Bookings",
-        count: 18,
+        count:  bookingTableData.filter(booking => booking.status === bookingStatus.COMPLETED)?.length,
       },
   ];
   return (

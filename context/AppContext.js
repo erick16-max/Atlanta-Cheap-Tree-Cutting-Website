@@ -14,6 +14,7 @@ export const AppContextProvider = ({ children }) => {
   const [successAlert, setSuccessAlert] = useState(false);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [guestUserModal, setGuestUserModal] = useState(false);
+   const [bookingTableData, setBookingTableData ] = useState([])
 
   const [borkingServiceList, setBorkingServiceList] = useState([]);
 
@@ -120,7 +121,8 @@ export const AppContextProvider = ({ children }) => {
     fullname, setFullname,
     phoneNumber, setPhoneNumber,
     email, setEmail,
-    notifications, setNotifications
+    notifications, setNotifications,
+    bookingTableData, setBookingTableData
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

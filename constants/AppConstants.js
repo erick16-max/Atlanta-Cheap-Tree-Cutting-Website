@@ -7,3 +7,14 @@ export const steps = {
     step4: 'step4',
 
   }
+
+export const user = {
+  GUEST: 'guest',
+  AUTHENTICATED: 'authenticated'
+}
+
+export const bookingStatus = {
+  PENDING: 'pending',
+  REJECTED: 'rejected',
+  COMPLETED: 'completed'
+}

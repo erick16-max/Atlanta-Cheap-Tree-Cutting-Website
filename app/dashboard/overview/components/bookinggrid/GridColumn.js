@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { IoIosMore } from "react-icons/io";
+import { bookingStatus } from "@/constants/AppConstants";
 
 export const bookingsColumns = [
   {
@@ -50,10 +51,46 @@ export const bookingsColumns = [
     sortable: false,
     width: 180,
   },
+  {
+    field: "status",
+    renderHeader: () => (
+      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+        Status
+      </Typography>
+    ),
+    sortable: false,
+    width: 180,
+    renderCell: (params) => {
+      console.log("params", params.value)
+      const chipColor = params.value === bookingStatus.PENDING 
+                          ? "warning.main" 
+                          : params.value === bookingStatus.COMPLETED
+                          ? "success.main"
+                          : params.value === bookingStatus.REJECTED
+                          ? "error.main" : "secondary.main"
+      return (
+        <Chip 
+        label={params?.value}
+         size="small"
+        sx={{
+          borderRadius: 1,
+          backgroundColor: '#f5f5f5',
+          color: chipColor,
+          fontWeight: 500,
+        }}
+        />
+      );
+    },
+  },
+
 
   {
     field: "action",
-    headerName: "Action",
+    renderHeader: () => (
+      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+        Action
+      </Typography>
+    ),
     width: 180,
     renderCell: (params) => {
       return (
