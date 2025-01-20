@@ -31,7 +31,6 @@ export default function UserProfileCard() {
       <Card
         sx={{
           width: isMobile ? "100%" : 600,
-          p: 3,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
