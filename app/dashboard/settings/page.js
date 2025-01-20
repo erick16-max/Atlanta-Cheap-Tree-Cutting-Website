@@ -9,6 +9,8 @@ import React, { useContext } from "react";
 import CustomAppBar from "@/components/header/CustomAppBar";
 import ChatFloatingButton from "@/components/general/ChatButton";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
+import UserProfileCard from "./components/UserProfileCard";
+import Footer from "@/components/footer/Footer";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -35,21 +37,21 @@ export default function page() {
       flexDirection={"column"}
       maxWidth={"1700px"}
       margin={"auto"}
+      bgcolor={'#f9f9f9'}
     >
       <Box width={"100%"}>
         <CustomAppBar mainPage={true} />
       </Box>
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
          <CustomBreadcrumb current={'settings'} nestedPath={'dashboard'} />
-        <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
-          <Alert severity="info" sx={{ my: 2 }}>
-            Settings page is under development
-          </Alert>
-          Hello, {isUser && user?.displayName ? user?.displayName : user?.email}
-          , <Link href={"/"}>Go home</Link>
+        <Box  width={"100%"}>
+         <Stack py={2}>
+         <UserProfileCard />
+         </Stack>
           <ChatFloatingButton />
         </Box>
       </Stack>
+      <Footer />
     </Box>
   );
 }

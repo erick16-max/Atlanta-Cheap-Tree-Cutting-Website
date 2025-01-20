@@ -10,15 +10,15 @@ import ColorModeContext from "@/theme/CustomThemeProvider";
 
 export default function AvatarButton() {
   const [profile, setProfile] = useState(false);
-  const { user, isUser, isUserProfile, userProfile } = useContext(AppContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  
+  const { user, isUser, isUserProfile, userProfile } = useContext(AppContext);
   const { isMobile, isExtraMobile } = useContext(ColorModeContext);
-
+  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  
   const topText = user?.displayName || user?.email || "";
   const topTextProfile = userProfile?.displayName || userProfile?.email || "";
   const truncatedNumber = isMobile ? 5 : 10;

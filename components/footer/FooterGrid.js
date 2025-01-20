@@ -29,7 +29,7 @@ export default function FooterGrid() {
   const { isUser } = useContext(AppContext);
   const pathName = usePathname();
   return (
-    <Grid container rowSpacing={5} columnSpacing={2} p={4}>
+    <Grid container rowSpacing={5} columnSpacing={2} py={2}>
       <Grid item lg={4} md={4} sm={12} xs={12}>
         <Stack width={"100%"} gap={4}>
           <Image
