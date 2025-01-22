@@ -5,8 +5,11 @@ import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { TbMessage2 } from "react-icons/tb";
 import Link from "next/link";
 import { RiWhatsappLine } from "react-icons/ri";
+import { MdOutlineCall } from "react-icons/md";
 
-export default function ChatFloatingButton() {
+
+
+export default function CallUsButton() {
   return (
     <Tooltip title="Message us" arrow>
       <Fab
@@ -15,7 +18,7 @@ export default function ChatFloatingButton() {
         sx={{
           position: "fixed",
           bottom: 16,
-          right: 16,
+          left: 16,
           zIndex: 1000,
           width: 120,
           height: 48,
@@ -23,16 +26,16 @@ export default function ChatFloatingButton() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#075E54",
+          backgroundColor: "#1b5e20",
         }}
         LinkComponent={Link}
-        href="https://wa.me/17705894000?text=Hello%20there!%20I%20would%20like%20to%20inquire%20about%20your%20tree%20services."
+        href="tel:770-589-4000"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <RiWhatsappLine style={{ marginRight: 8 }} size={20} />
+        <MdOutlineCall style={{ marginRight: 8 }} size={20} />
         <Typography variant="button" sx={{ textTransform: "None" }}>
-          Whatsapp
+          Call Us
         </Typography>
       </Fab>
     </Tooltip>

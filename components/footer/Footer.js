@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import CopyRight from './CopyRight'
 import FooterGrid from './FooterGrid'
 import ColorModeContext from '@/theme/CustomThemeProvider'
+import CallUsButton from '../general/CallUsButton'
 
 export default function Footer() {
   const {isSmallScreen} = useContext(ColorModeContext)
@@ -18,6 +19,7 @@ export default function Footer() {
 
         </Box>
         <CopyRight />
+        <CallUsButton />
     </Box>
   )
 }
