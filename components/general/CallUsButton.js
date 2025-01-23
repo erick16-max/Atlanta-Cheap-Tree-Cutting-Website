@@ -11,7 +11,7 @@ import { MdOutlineCall } from "react-icons/md";
 
 export default function CallUsButton() {
   return (
-    <Tooltip title="Message us" arrow>
+    <Tooltip title="Call us" arrow>
       <Fab
         color="primary"
         aria-label="chat"

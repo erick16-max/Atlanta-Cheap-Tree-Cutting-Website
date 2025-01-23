@@ -14,6 +14,7 @@ import SidebarDrawer from "./SidebarDrawer";
 import UserAccount from "./UserAccount";
 import { FiMenu } from "react-icons/fi";
 import AppContext from "@/context/AppContext";
+import NotificationAlert from "../general/NotificationAlert";
 
 export default function CustomAppBar({ navBg, mainPage }) {
   const theme = useTheme();
@@ -77,6 +78,7 @@ export default function CustomAppBar({ navBg, mainPage }) {
           </Box>
         </Box>
         <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
+        <NotificationAlert />
       </Box>
     </AppBar>
   );

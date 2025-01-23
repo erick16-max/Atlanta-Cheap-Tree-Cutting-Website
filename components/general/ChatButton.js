@@ -8,7 +8,7 @@ import { RiWhatsappLine } from "react-icons/ri";
 
 export default function ChatFloatingButton() {
   return (
-    <Tooltip title="Message us" arrow>
+    <Tooltip title="Whatsapp us" arrow>
       <Fab
         color="primary"
         aria-label="chat"

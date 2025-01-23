@@ -3,12 +3,13 @@
 import PageLoader from "@/components/general/PageLoader";
 import AppContext from "@/context/AppContext";
 import { Alert, Box, useMediaQuery, Stack, useTheme } from "@mui/material";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
+import NotificationsCard from "./components/NotificationsCard";
 import CustomAppBar from "@/components/header/CustomAppBar";
-import ChatFloatingButton from "@/components/general/ChatButton";
 import CustomBreadcrumb from "@/components/general/CustomBreadcrumb";
+import Footer from "@/components/footer/Footer";
+import ChatFloatingButton from "@/components/general/ChatButton";
 
 export default function page() {
   const { user } = useContext(AppContext);
@@ -30,26 +31,29 @@ export default function page() {
 
   return (
     <Box
-      width={"100%"}
       display={"flex"}
       flexDirection={"column"}
+      justifyContent={"space-between"} // Ensures footer stays at the bottom
+      minHeight={"100vh"} // Ensures the Box covers the full viewport height
+      width={"100%"}
       maxWidth={"1700px"}
       margin={"auto"}
+      bgcolor={"#f9f9f9"}
     >
-      <Box width={"100%"}>
-        <CustomAppBar mainPage={true} />
-      </Box>
+      <CustomAppBar mainPage={true} />
+
       <Stack mt={"80px"} py={2} px={isSmallScreen ? 1 : 3}>
-        <Box px={isSmallScreen ? 1 : 5} width={"100%"}>
-            <CustomBreadcrumb current={'notifications'} nestedPath={'dashboard'} />
-          <Alert severity="info" sx={{ my: 2 }}>
-            Notifications page is under development
-          </Alert>
-          Hello, {isUser && user?.displayName ? user?.displayName : user?.email}
-          , <Link href={"/"}>Go home</Link>
-          <ChatFloatingButton />
-        </Box>
-      </Stack>
+               <CustomBreadcrumb current={'notifications'} nestedPath={'dashboard'} />
+              <Box  width={"100%"}>
+               <Stack py={2}>
+               <NotificationsCard />
+               </Stack>
+                <ChatFloatingButton />
+              </Box>
+            </Stack>
+
+      <Footer />
     </Box>
   );
 }
+  
