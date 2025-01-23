@@ -5,8 +5,10 @@ import {
   Menu,
   Box,
   Typography,
- Divider,
- Button,
+  Divider,
+  Button,
+  CircularProgress,
+  Alert,
 } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { MdOutlineDarkMode } from "react-icons/md";
@@ -25,11 +27,20 @@ import AppContext from "@/context/AppContext";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 import moment from "moment";
 import Link from "next/link";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import { deleteCollectionObj } from "@/firebase/Notifications";
+import { FaRegBellSlash } from "react-icons/fa6";
+
+
+
 
 export default function NotificationButton() {
   const { isMobile } = useContext(ColorModeContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [deletedNotification, setDeletedNotification] = useState("")
+  const [deleteLoading, setDeleteLoading] = useState(false)
+  const [isDeleted, setIsDeleted] = useState("")
   const { notifications, setNotifications, userProfile } =
     useContext(AppContext);
 
@@ -86,8 +97,27 @@ export default function NotificationButton() {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
-  const listLength = notifications?.length
+  const listLength = notifications?.length;
 
+  const handleDeleteNotification = async(documentId) => {
+    setDeletedNotification(documentId)
+    try {
+      setDeleteLoading(true)
+      const response = await deleteCollectionObj("notifications", documentId)
+      if(response === true){
+        setIsDeleted("deleted successfully")
+      }else{
+        setIsDeleted("error occured")
+      }
+
+    } catch (error) {
+      setIsDeleted("error occured")
+    }finally{
+      setTimeout(() => {
+        setIsDeleted("")
+      }, 3000)
+    }
+  }
 
   return (
     <Box>
@@ -112,10 +142,17 @@ export default function NotificationButton() {
           "aria-labelledby": "basic-button",
         }}
       >
+        <Box px={2}>
+          {isDeleted && <Alert severity="error">{isDeleted}</Alert>}
+        </Box>
         {notifications.map((notification, index) => {
-          
           return (
-            <Box width={240} px={2}  borderRadius={"12px"} key={notification?.id}>
+            <Box
+              width={240}
+              px={2}
+              borderRadius={"12px"}
+              key={notification?.id}
+            >
               <Box
                 display={"flex"}
                 width={"100%"}
@@ -123,14 +160,14 @@ export default function NotificationButton() {
                 gap={1}
                 alignItems="center"
               >
-                <Typography
+                {/* <Typography
                   variant="body2"
                   fontWeight={600}
                   gutterBottom
                   sx={{ color: "primary.main" }}
                 >
                   {"Notification"}
-                </Typography>
+                </Typography> */}
                 <Typography
                   variant="body2"
                   color={"text.secondary"}
@@ -138,8 +175,28 @@ export default function NotificationButton() {
                   fontWeight={400}
                   gutterBottom
                 >
-                 {moment.unix(notification?.timestamp?.seconds).fromNow()}
+                  {moment.unix(notification?.timestamp?.seconds).fromNow()}
                 </Typography>
+                <IconButton
+                  sx={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 1,
+                    backgroundColor: "#ffffff",
+                    color: 'secondary.main',
+                    fontSize: 16,
+                    ":hover": {
+                      backgroundColor: "red",
+                      color: "#f5f5f5",
+                    },
+                  }}
+                  onClick={() => handleDeleteNotification(notification?.id)}
+                >
+                  { deleteLoading && deletedNotification === notification?.id ? (
+                    <CircularProgress size={12} thickness={3} />
+                  ): "x"}
+                  
+                </IconButton>
               </Box>
               <Typography
                 variant="body2"
@@ -149,31 +206,52 @@ export default function NotificationButton() {
               >
                 {notification?.message}
               </Typography>
-             { listLength !== index + 1 &&  <Divider sx={{my: 2}}/> }
+              {listLength !== index + 1 && <Divider sx={{ my: 2 }} />}
             </Box>
           );
         })}
+         {notifications?.length === 0 && (
+                <Box
+                  width={240}
+                  py={3}
+                  display={'flex'}
+                  alignItems={'center'}
+                  justifyContent={"center"}
+                  color={'text.secondary'}
+                  flexDirection={'column'}
+                >
+                  <FaRegBellSlash fontSize={44} />
+                  <Typography
+                    textAlign={'center'}
+                    fontWeight={500}
+        
+        
+                  >
+                    No Notifications
+                  </Typography>
+                </Box>
+               )}
         <Box
-          width={'100%'}
-          display={'flex'}
-          alignItems={'center'}
-          justifyContent={'center'}
+          width={"100%"}
+          display={notifications?.length === 0 ? "none" : "flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
         >
-        <Button
-          color="secondary"
-          sx={{
-            fontSize: 12,
-            fontWeight: 500,
-            textTransform: 'none',
-            color: '#454545',
-            my: 1,
-            textDecoration: 'underline',
-          }}
-          LinkComponent={Link}
-          href="/dashboard/notifications"
-        >
-          See more
-        </Button>
+          <Button
+            color="secondary"
+            sx={{
+              fontSize: 12,
+              fontWeight: 500,
+              textTransform: "none",
+              color: "#454545",
+              my: 1,
+              textDecoration: "underline",
+            }}
+            LinkComponent={Link}
+            href="/dashboard/notifications"
+          >
+            See more
+          </Button>
         </Box>
       </Menu>
     </Box>
