@@ -40,4 +40,30 @@ export const GetUserBookings = async (email) => {
     }
   };
 
+
+// get user bookings
+export const GetAllUserBookings = async (email) => {
+  try {
+    // Reference the 'bookings' collection
+    const collectionRef = collection(db, "bookings");
+
+    // Create a query to filter bookings by email
+    const q = query(collectionRef);
+
+    // Execute the query
+    const querySnapshot = await getDocs(q);
+
+    // Map over the snapshot to get the booking data
+    const bookings = querySnapshot.docs.map((doc) => ({
+      id: doc.id, // Include the document ID if needed
+      ...doc.data(), // Spread the document data
+    }));
+
+    return bookings;
+  } catch (error) {
+    console.error("Error fetching bookings:", error);
+    return [];
+  }
+};
+
   

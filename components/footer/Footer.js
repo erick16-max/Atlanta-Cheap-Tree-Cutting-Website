@@ -4,9 +4,12 @@ import CopyRight from './CopyRight'
 import FooterGrid from './FooterGrid'
 import ColorModeContext from '@/theme/CustomThemeProvider'
 import CallUsButton from '../general/CallUsButton'
+import { usePathname } from 'next/navigation'
 
 export default function Footer() {
   const {isSmallScreen} = useContext(ColorModeContext)
+  const pathname = usePathname()
+  const isAdminPath = pathname.startsWith("/admin")
   return (
     <Box
         width={'100%'}
@@ -19,7 +22,7 @@ export default function Footer() {
 
         </Box>
         <CopyRight />
-        <CallUsButton />
+       {!isAdminPath &&  <CallUsButton />}
     </Box>
   )
 }
