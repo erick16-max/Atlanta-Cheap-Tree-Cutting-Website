@@ -77,7 +77,7 @@ export default function AvatarButton() {
               <Typography
                 variant="body2"
                 color={"text.primary"}
-                fontSize={13}
+                fontSize={11}
                 fontWeight={400}
               >
                 {truncateString(userProfile?.email || "", 30)}
