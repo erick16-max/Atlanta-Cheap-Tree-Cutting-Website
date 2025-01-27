@@ -78,7 +78,7 @@ export default function FooterGrid() {
             <Tooltip title="facebook" arrow>
               <IconButton
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'secondary.main',
                     '&:hover': {
                         backgroundColor: 'rgba(255, 255, 255, 0.5)'
                     }
@@ -91,7 +91,7 @@ export default function FooterGrid() {
             <Tooltip title="instagram" arrow>
               <IconButton
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'secondary.main',
                     '&:hover': {
                         backgroundColor: 'rgba(255, 255, 255, 0.5)'
                     }
@@ -104,13 +104,13 @@ export default function FooterGrid() {
             <Tooltip title="X formely twitter" arrow>
               <IconButton
                 sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: 'secondary.main',
                     '&:hover': {
                         backgroundColor: 'rgba(255, 255, 255, 0.5)'
                     }
                 }}
               >
-                <Image src={TwitterLogo} width={20} height={20} alt="X" />
+                <Image src={TwitterLogo} style={{backgroundColor: '#fff'}} width={20} height={20} alt="X" />
               </IconButton>
             </Tooltip>
           </Box>

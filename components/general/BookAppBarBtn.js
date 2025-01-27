@@ -18,38 +18,21 @@ export default function BookAppBarBtn() {
   return (
     <Button
       variant="contained"
+      color="primary"
       sx={{
         borderEndStartRadius: '12px',
         height: isMobile ? 36 : 40,
         px: isMobile ? '6px' : 2,
-        fontSize: isMobile ? 11 : 12,
-        fontWeight: "600",
-        color: "#fff",
+        fontSize: isMobile ? 12 : 13,
+        fontWeight: 600,
         position: "relative",
         overflow: "hidden",
         zIndex: 0,
-        backgroundColor: "#E10A12",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: "0",
-          left: "50%",
-          width: "100%",
-          height: "100%",
-          background: "linear-gradient(to bottom, #aa8c2c, #aa8c2c)",
-          transform: "translate(-50%, -100%)",
-          zIndex: -1,
-          transition: "transform 0.3s ease-in-out",
-        },
-        "&:hover::before": {
-          transform: "translate(-50%, 0)",
-        },
-        "&:hover": {
-          backgroundColor: "#aa8c2c", // Prevents default hover flash
-        },
+        textTransform: 'none',
+        
       }}
 
-      endIcon={<BsBookmarkPlus fontSize={12}/> }
+      endIcon={<BsBookmarkPlus fontSize={10}/> }
       onClick={() => {
         if(isUser){
           router.push('/booking')
@@ -58,9 +41,7 @@ export default function BookAppBarBtn() {
         }
       }}
     >
-     BOOK <span
-     style={{display: isMobile ? "none" : 'block'}}
-     >US</span>
+     Book
     </Button>
   );
 }
