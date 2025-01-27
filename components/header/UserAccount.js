@@ -24,6 +24,7 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
         </Stack>
       ):(
         <Stack direction={"row"} gap={1} alignItems={'center'}>
+
         <Button
           color="secondary"
           sx={{
