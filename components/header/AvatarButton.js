@@ -11,14 +11,14 @@ import ColorModeContext from "@/theme/CustomThemeProvider";
 export default function AvatarButton() {
   const [profile, setProfile] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  
+
   const { user, isUser, isUserProfile, userProfile } = useContext(AppContext);
   const { isMobile, isExtraMobile } = useContext(ColorModeContext);
-  
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
+
   const topText = user?.displayName || user?.email || "";
   const topTextProfile = userProfile?.displayName || userProfile?.email || "";
   const truncatedNumber = isMobile ? 5 : 10;
@@ -62,16 +62,28 @@ export default function AvatarButton() {
           )}
         </Avatar>
         <Stack direction={"row"} alignItems={"center"}>
-            <Typography
-              variant="body2"
-              color={"text.primary"}
-              fontSize={13}
-              fontWeight={400}
-            >
-              {isUserProfile
-                ? truncateString(topTextProfile, truncatedNumber)
-                : truncateString(topText, truncatedNumber)}
-            </Typography>
+          {!isMobile && (
+            <Stack>
+              <Typography
+                variant="body2"
+                color={"text.primary"}
+                fontSize={13}
+                fontWeight={400}
+              >
+                {isUserProfile
+                  ? truncateString(topTextProfile, truncatedNumber)
+                  : truncateString(topText, truncatedNumber)}
+              </Typography>
+              <Typography
+                variant="body2"
+                color={"text.primary"}
+                fontSize={13}
+                fontWeight={400}
+              >
+                {truncateString(userProfile?.email || "", 30)}
+              </Typography>
+            </Stack>
+          )}
           <RiArrowDropDownFill style={{ color: "#242424", fontSize: 16 }} />
         </Stack>
       </Box>

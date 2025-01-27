@@ -81,9 +81,7 @@ export default function Home() {
          <WhyUs />
      </Stack>
          <Footer />
-         <ChatFloatingButton />
          <FinishAccountModal />
-         <BookingModal />
         <SuccessSnackbarAlert 
           open={successAlert}
           setOpen={setSuccessAlert}

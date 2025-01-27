@@ -149,7 +149,6 @@ import ChatFloatingButton from "@/components/general/ChatButton";
           </Link>
   
         </Box>
-        <ChatFloatingButton />
 
       </Stack>
     );

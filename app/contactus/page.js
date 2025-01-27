@@ -59,7 +59,6 @@ export default function page() {
     >
         <CustomBreadcrumb current={'contact-us'}/>
         <ContactUsForm />
-        <ChatFloatingButton />
     </Box>
      </Stack>
      <Footer />

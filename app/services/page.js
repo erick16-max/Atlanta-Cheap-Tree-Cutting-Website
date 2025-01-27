@@ -47,7 +47,6 @@ export default function page() {
           <CustomBreadcrumb current={"services"} />
           
           <ServicePageCard />
-          <ChatFloatingButton />
         </Box>
       </Stack>
       <Footer />

@@ -16,6 +16,7 @@ import { FiMenu } from "react-icons/fi";
 import AppContext from "@/context/AppContext";
 import NotificationAlert from "../general/NotificationAlert";
 import { usePathname } from "next/navigation";
+import BookingModal from "@/app/booking/components/BookingModal";
 
 export default function CustomAppBar({ navBg, mainPage }) {
   const theme = useTheme();
@@ -85,6 +86,7 @@ export default function CustomAppBar({ navBg, mainPage }) {
         </Box>
         <SidebarDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
         <NotificationAlert />
+        <BookingModal />
       </Box>
     </AppBar>
   );

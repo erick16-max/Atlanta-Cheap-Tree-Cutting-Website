@@ -43,10 +43,9 @@ export default function AdminBookingDataTable() {
 
   useEffect(() => {
     fetchBookings();
-    console.log("User Bookings");
   }, [userProfile]);
 
-  console.log(bookingTableData)
+ 
 
   return (
     <Box

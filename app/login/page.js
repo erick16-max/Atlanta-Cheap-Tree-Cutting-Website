@@ -65,7 +65,6 @@ export default function Page() {
         </Stack>
         <LoginForm />
         
-        <ChatFloatingButton />
       </Card>
     </Box>
   )

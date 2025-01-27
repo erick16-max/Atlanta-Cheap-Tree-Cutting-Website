@@ -48,7 +48,6 @@ export default function page() {
                <Stack py={2}>
                <NotificationsCard />
                </Stack>
-                <ChatFloatingButton />
               </Box>
             </Stack>
 

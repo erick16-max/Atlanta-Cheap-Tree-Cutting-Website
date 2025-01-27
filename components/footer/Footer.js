@@ -5,6 +5,7 @@ import FooterGrid from './FooterGrid'
 import ColorModeContext from '@/theme/CustomThemeProvider'
 import CallUsButton from '../general/CallUsButton'
 import { usePathname } from 'next/navigation'
+import CustomSupportButton from '../general/CustomSupportButton'
 
 export default function Footer() {
   const {isSmallScreen} = useContext(ColorModeContext)
@@ -22,7 +23,7 @@ export default function Footer() {
 
         </Box>
         <CopyRight />
-       {!isAdminPath &&  <CallUsButton />}
+       {!isAdminPath &&  <CustomSupportButton />}
     </Box>
   )
 }

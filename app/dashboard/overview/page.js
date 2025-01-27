@@ -50,7 +50,6 @@ export default function page() {
              <OverviewGrid />
              <BookingTableGrid />
             </Stack>
-          <ChatFloatingButton />
         </Box>
       </Stack>
       <Footer />

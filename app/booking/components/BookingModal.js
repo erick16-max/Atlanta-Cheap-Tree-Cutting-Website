@@ -30,6 +30,8 @@ export default function BookingModal() {
             bgcolor={'rgba(0,0,0, 0.6)'}
             justifyContent={'center'}
             alignItems={'center'}
+            component={Button}
+            onClick={() => setIsBookingModalOpen(false)}
         >
           <Card
             sx={{

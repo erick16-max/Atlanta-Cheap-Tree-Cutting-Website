@@ -59,7 +59,6 @@ export default function page() {
             >
                 <CustomBreadcrumb current={'Dashboard'}/>
                 <DashboardGrid />
-                <ChatFloatingButton />
             </Box>
      </Stack>
      <Footer />

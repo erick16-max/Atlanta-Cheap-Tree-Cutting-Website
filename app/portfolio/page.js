@@ -57,7 +57,6 @@ export default function page() {
           </Typography>
           <PortfolioGrid />
 
-          <ChatFloatingButton />
         </Box>
       </Stack>
       <Footer />

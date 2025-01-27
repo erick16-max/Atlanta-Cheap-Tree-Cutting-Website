@@ -60,7 +60,6 @@ export default function Page() {
             <Typography fontWeight={600} variant='body1' color={'text.primary'}>Create an account</Typography>
         </Stack>
         <SignupForm />
-        <ChatFloatingButton />
       </Card>
     </Box>
   )

@@ -4,6 +4,7 @@ import AvatarButton from "./AvatarButton";
 import { FiMenu } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import NotificationButton from "./NotificationButton";
+import BookAppBarBtn from "../general/BookAppBarBtn";
 
 export default function UserAccount({isTablet, setOpenDrawer, user}) {
   const theme = useTheme()
@@ -18,6 +19,7 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
       user !==null && user && JSON.stringify(user) !== "{}" ? (
         <Stack direction={"row"} gap={1} alignItems={'center'}>
           <NotificationButton />
+          <BookAppBarBtn />
           <AvatarButton/>
         </Stack>
       ):(
