@@ -15,6 +15,6 @@ export const user = {
 
 export const bookingStatus = {
   PENDING: 'pending',
-  REJECTED: 'rejected',
+  REJECTED: 'canceled',
   COMPLETED: 'completed'
 }

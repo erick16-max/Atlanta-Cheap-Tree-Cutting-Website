@@ -24,7 +24,7 @@ export default function OverviewGrid() {
       },
       {
         icon: <MdDoNotDisturbAlt fontSize={28} />,
-        title: "Rejected Bookings",
+        title: "Canceled Bookings",
         count:  bookingTableData.filter(booking => booking.status === bookingStatus.REJECTED)?.length,
       },
       {
