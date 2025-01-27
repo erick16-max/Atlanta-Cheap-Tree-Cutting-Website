@@ -15,6 +15,7 @@ import UserAccount from "./UserAccount";
 import { FiMenu } from "react-icons/fi";
 import AppContext from "@/context/AppContext";
 import NotificationAlert from "../general/NotificationAlert";
+import { usePathname } from "next/navigation";
 
 export default function CustomAppBar({ navBg, mainPage }) {
   const theme = useTheme();
@@ -26,6 +27,9 @@ export default function CustomAppBar({ navBg, mainPage }) {
   const { user, setUser } = React.useContext(AppContext);
 
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const pathname = usePathname();
+  const isAdminPath = pathname.startsWith("/admin");
   return (
     <AppBar
       position="fixed"
@@ -34,18 +38,13 @@ export default function CustomAppBar({ navBg, mainPage }) {
         py: 1,
         px: isSmallScreen ? 1 : 3,
         backgroundColor: "#ffffff",
-        boxShadow: navBg  ? 3 : 0,
+        boxShadow: navBg ? 3 : 0,
         mt: navBg || mainPage ? 0 : "40px", // Adjust margin based on scroll
         transition: "margin-top 0.3s ease-in-out", // Smooth transition
-        border: mainPage ? "1px solid #eeeeee" : "none"
+        border: mainPage ? "1px solid #eeeeee" : "none",
       }}
     >
-      <Box
-        width={'100%'}
-        maxWidth={'1700px'}
-        display={'flex'}
-        margin={'auto'}
-      >
+      <Box width={"100%"} maxWidth={"1700px"} display={"flex"} margin={"auto"}>
         <Box
           display="flex"
           justifyContent="space-between"
@@ -55,7 +54,7 @@ export default function CustomAppBar({ navBg, mainPage }) {
           <Box sx={{ flexGrow: 0 }} display={"flex"} alignItems={"center"}>
             <IconButton
               sx={{
-                display: isTablet ? "block" : "none",
+                display: { xs: "block", sm: "block", md: "block", lg: "none" },
                 width: 50,
                 height: 50,
                 borderRadius: 25,
@@ -66,9 +65,16 @@ export default function CustomAppBar({ navBg, mainPage }) {
             </IconButton>
             <LogoBrand />
           </Box>
-          <Box sx={{ flexGrow: 0 }} display={!isTablet ? "flex" : "none"}>
-            <MenuList />
-          </Box>
+          {!isTablet && !isAdminPath && (
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: { xs: "none", sm: "none", md: "none", lg: "flex" },
+              }}
+            >
+              <MenuList />
+            </Box>
+          )}
           <Box sx={{ flexGrow: 0 }}>
             <UserAccount
               setOpenDrawer={setOpenDrawer}

@@ -44,14 +44,11 @@ export const menuItems = [
 
 export default function MenuList() {
   const theme = useTheme();
-  const isTabletisSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery("(max-width:900px)");
+  const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
 
   const pathName = usePathname()
 
   const {user, isUser} = useContext(AppContext)
-
-
 
  
   return (
@@ -59,7 +56,7 @@ export default function MenuList() {
         display={'flex'}
         width={'100%'}
         alignItems={'center'}
-        flexDirection={isTablet ? 'column' : 'row'}
+        flexDirection={!isTablet ? 'row' : 'column'}
         gap={isTablet ? 2 : 1}
         mt={isTablet ? 3 : 0}
     >

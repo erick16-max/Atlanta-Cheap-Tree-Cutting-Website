@@ -3,8 +3,12 @@ import { Drawer, Box, Typography, Stack, IconButton, Divider } from '@mui/materi
 import LogoBrand from '../general/LogoBrand'
 import { MdOutlineCancelPresentation } from "react-icons/md"
 import MenuList from './MenuList'
+import { usePathname } from 'next/navigation'
+import Sidebar from '@/app/admin/components/Sidebar'
 
 export default function SidebarDrawer({openDrawer, setOpenDrawer, isTablet}) {
+    const pathname = usePathname();
+      const isAdminPath = pathname.startsWith("/admin");
   return (
     <Drawer
         open={openDrawer}
@@ -39,7 +43,10 @@ export default function SidebarDrawer({openDrawer, setOpenDrawer, isTablet}) {
                 </IconButton>
            </Stack>
            <Divider />
-           <MenuList />
+           {
+            isAdminPath ? <Sidebar /> : <MenuList />
+           }
+           
         </Box>
     </Drawer>
   )
