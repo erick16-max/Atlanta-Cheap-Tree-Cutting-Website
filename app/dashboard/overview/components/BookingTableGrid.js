@@ -10,7 +10,6 @@ export default function BookingTableGrid() {
         sx={{
             width: '100%',
             p: 3,
-            height: 300
         }}
     >
         <Box

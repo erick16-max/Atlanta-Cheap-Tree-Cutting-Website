@@ -51,9 +51,10 @@ export default function AdminBookingDataTable() {
   return (
     <Box
       sx={{
-        height: 400,
+        minHeight: 200,
         width: "100%",
-        overflowX: "auto", // Enable horizontal scrolling
+        overflowX: "auto", 
+        height: 'auto',
       }}
     >
       <DataGrid
@@ -65,16 +66,17 @@ export default function AdminBookingDataTable() {
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
         disableColumnMenu
+        autoHeight
         loading={loading}
         sx={{
           "& .MuiDataGrid-root": {
-            border: "1px solid rgb(230, 25, 25)", // Outer border for the DataGrid
+            border: "1px solid #eeeeee", // Outer border for the DataGrid
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "1px solid #eeeeee", // Horizontal lines between rows
           },
           "& .MuiDataGrid-columnHeaders": {
-            borderBottom: "1px solid #bebebe", // Line below column headers
+            borderBottom: "1px solid #eeeeee", // Line below column headers
           },
           "& .MuiDataGrid-virtualScroller": {
             overflowX: "auto !important", // Allow horizontal scrolling for large content

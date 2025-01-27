@@ -27,7 +27,6 @@ export default function AdminBookingCard() {
         sx={{
             width: '100%',
             p: 3,
-            height: 300,
             my: 2,
         }}
     >

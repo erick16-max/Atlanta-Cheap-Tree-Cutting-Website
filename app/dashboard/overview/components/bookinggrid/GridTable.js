@@ -57,29 +57,40 @@ export default function BookingDataTable() {
  
 
   return (
-    <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={bookingTableData}
-        columns={bookingsColumns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-        disableSelectionOnClick
-        experimentalFeatures={{ newEditingApi: true }}
-        disableColumnMenu
-        loading={loading}
-        sx={{
-          "& .MuiDataGrid-root": {
-            border: "1px solid #e0e0e0", // Outer border for the DataGrid
-          },
-          "& .MuiDataGrid-cell": {
-            borderBottom: "1px solid #e0e0e0", // Horizontal lines between rows
-          },
-          "& .MuiDataGrid-columnHeaders": {
-            borderBottom: "1px solid #e0e0e0", // Line below column headers
-          },
-        }}
-      />
-  </Box>
+    <Box
+          sx={{
+            minHeight: 200,
+            width: "100%",
+            overflowX: "auto", 
+            height: 'auto',
+          }}
+        >
+          <DataGrid
+            rows={bookingTableData}
+            columns={bookingsColumns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+            disableSelectionOnClick
+            experimentalFeatures={{ newEditingApi: true }}
+            disableColumnMenu
+            autoHeight
+            loading={loading}
+            sx={{
+              "& .MuiDataGrid-root": {
+                border: "1px solid #eeeeee", // Outer border for the DataGrid
+              },
+              "& .MuiDataGrid-cell": {
+                borderBottom: "1px solid #eeeeee", // Horizontal lines between rows
+              },
+              "& .MuiDataGrid-columnHeaders": {
+                borderBottom: "1px solid #eeeeee", // Line below column headers
+              },
+              "& .MuiDataGrid-virtualScroller": {
+                overflowX: "auto !important", // Allow horizontal scrolling for large content
+              },
+            }}
+          />
+        </Box>
   );
 }
