@@ -19,13 +19,14 @@ export default function AdminBookingDataTable() {
           const transformedBookings = bookings.map((booking, index) => {
               const bookingObj = {
                 id: index + 1,
-                uid: booking.id,
+                uid: booking?.id,
                 fullname: booking?.contactInfo?.fullname,
-                budget: parseInt(booking.bookingInfo.budget, 10),
-                address: booking.bookingInfo.address,
-                surveyDate: booking.bookingInfo.surveyDate,
-                surveyTime: booking.bookingInfo.surveyTime,
-                status: booking.status,
+                budget: parseInt(booking?.bookingInfo?.budget, 10),
+                address: booking?.bookingInfo?.address,
+                surveyDate: booking?.bookingInfo?.surveyDate,
+                surveyTime: booking?.bookingInfo?.surveyTime,
+                status: booking?.status,
+                user : booking?.user
               };
 
               return bookingObj;

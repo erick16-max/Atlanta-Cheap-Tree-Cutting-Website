@@ -71,7 +71,6 @@ export const adminBookingsColumns = [
     sortable: false,
     width: 180,
     renderCell: (params) => {
-      console.log("params", params.value)
       const chipColor = params.value === bookingStatus.PENDING 
                           ? "warning.main" 
                           : params.value === bookingStatus.COMPLETED
