@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { GetAllUserBookings } from "@/firebase/Booking";
 import AppContext from "@/context/AppContext";
 import { user } from "@/constants/AppConstants";
+import { Toolbar } from "../../users/components/UsersDataTable";
 
 export default function AdminBookingDataTable() {
   const [loading, setLoading] = useState(false);
@@ -68,6 +69,12 @@ export default function AdminBookingDataTable() {
         disableColumnMenu
         autoHeight
         loading={loading}
+         slots={{ toolbar: Toolbar }}
+                slotProps={{
+                  toolbar: {
+                    showQuickFilter: true,
+                  },
+                }}
         sx={{
           "& .MuiDataGrid-root": {
             border: "1px solid #eeeeee", // Outer border for the DataGrid

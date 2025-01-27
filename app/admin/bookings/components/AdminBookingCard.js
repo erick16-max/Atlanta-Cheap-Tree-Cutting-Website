@@ -54,7 +54,7 @@ export default function AdminBookingCard() {
                    All your bookings events.
                 </Typography>
             </Stack>
-            <Button
+            {/* <Button
             color='secondary'
                 sx={{
                     backgroundColor: '#f5f5f5',
@@ -68,7 +68,7 @@ export default function AdminBookingCard() {
                 endIcon={<MdOutlineFilterAlt />}
             >
                 Filter
-            </Button>
+            </Button> */}
         </Box>
         <AdminBookingDataTable/>
     </Card>

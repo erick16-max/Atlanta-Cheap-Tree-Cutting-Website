@@ -1,23 +1,47 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
-import { GetAllUserBookings } from "@/firebase/Booking";
+import {
+  DataGrid,
+  GridToolbar,
+  GridToolbarFilterButton,
+  GridToolbarExport,
+  GridToolbarQuickFilter,
+} from "@mui/x-data-grid";
 import AppContext from "@/context/AppContext";
 import { GetAllUsers } from "@/firebase/FirebaseUser";
 import { usersTableColumns } from "./UsersTableColumns";
 
+export function Toolbar() {
+  return (
+    <Box
+      width={"100%"}
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+      gap={2}
+      py={1}
+    >
+      <Box width={"100%"} display={"flex"} alignItems={"center"} gap={2}>
+        <GridToolbarFilterButton />
+        <GridToolbarExport />
+      </Box>
+      <GridToolbarQuickFilter />
+    </Box>
+  );
+}
+
 export default function UserDataTableGrid() {
   const [loading, setLoading] = useState(false);
-  const { userProfile, usersTableData, setUsersTableData } = useContext(AppContext);
+  const { userProfile, usersTableData, setUsersTableData } =
+    useContext(AppContext);
 
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const users = await GetAllUsers()
-      if(users){
-        setUsersTableData(users)
+      const users = await GetAllUsers();
+      if (users) {
+        setUsersTableData(users);
       }
-      
     } catch (error) {
       console.log(error);
     } finally {
@@ -29,15 +53,13 @@ export default function UserDataTableGrid() {
     fetchUsers();
   }, [userProfile]);
 
- 
-
   return (
     <Box
       sx={{
         minHeight: 200,
         width: "100%",
-        overflowX: "auto", 
-        height: 'auto',
+        overflowX: "auto",
+        height: "auto",
       }}
     >
       <DataGrid
@@ -51,6 +73,12 @@ export default function UserDataTableGrid() {
         disableColumnMenu
         autoHeight
         loading={loading}
+        slots={{ toolbar: Toolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+          },
+        }}
         sx={{
           "& .MuiDataGrid-root": {
             border: "1px solid #eeeeee", // Outer border for the DataGrid

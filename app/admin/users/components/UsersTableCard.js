@@ -41,7 +41,7 @@ export default function UsersTableCard() {
                    List of all users with their profile details.
                 </Typography>
             </Stack>
-            <Button
+            {/* <Button
             color='secondary'
                 sx={{
                     backgroundColor: '#f5f5f5',
@@ -55,7 +55,7 @@ export default function UsersTableCard() {
                 endIcon={<MdOutlineFilterAlt />}
             >
                 Filter
-            </Button>
+            </Button> */}
         </Box>
         <UserDataTableGrid/>
     </Card>
