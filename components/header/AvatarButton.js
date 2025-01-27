@@ -12,7 +12,7 @@ export default function AvatarButton() {
   const [profile, setProfile] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const { user, isUser, isUserProfile, userProfile } = useContext(AppContext);
+  const { user, isUser, isUserProfile, userProfile, isAdmin } = useContext(AppContext);
   const { isMobile, isExtraMobile } = useContext(ColorModeContext);
 
   const handleClick = (event) => {
@@ -62,12 +62,12 @@ export default function AvatarButton() {
           )}
         </Avatar>
         <Stack direction={"row"} alignItems={"center"}>
-          {!isMobile && (
+          {!isMobile ? (
             <Stack>
               <Typography
                 variant="body2"
                 color={"text.primary"}
-                fontSize={13}
+                fontSize={12}
                 fontWeight={400}
               >
                 {isUserProfile
@@ -79,12 +79,22 @@ export default function AvatarButton() {
                 color={"text.primary"}
                 fontSize={11}
                 fontWeight={400}
+                component={'div'}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  width: '100%'
+                }}
               >
-                {truncateString(userProfile?.email || "", 30)}
+                {isAdmin ? "admin" : truncateString(userProfile?.email || "", 30)}
+                <RiArrowDropDownFill style={{ color: "#242424", fontSize: 16 }} />
+
               </Typography>
             </Stack>
-          )}
+          ):(
+
           <RiArrowDropDownFill style={{ color: "#242424", fontSize: 16 }} />
+          )}
         </Stack>
       </Box>
       <MenuDropDown

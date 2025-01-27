@@ -10,7 +10,6 @@ import { TiTick} from "react-icons/ti";
 
 export default function OverviewGrid() {
   const {bookingTableData} = useContext(AppContext)
-  console.log(bookingTableData)
   const overviewList = [
     {
       icon: <FaThList fontSize={28} />,

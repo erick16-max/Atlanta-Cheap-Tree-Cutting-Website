@@ -10,7 +10,6 @@ export default function BookingsOverviewCard() {
   const { isMobile } = useContext(ColorModeContext);
   const { bookingTableData } = useContext(AppContext);
 
-  console.log(bookingTableData)
 
   // all bookings
   const authenticatedBookings = bookingTableData

@@ -12,6 +12,7 @@ import { GetAllUsers } from "@/firebase/FirebaseUser";
 import { usersTableColumns } from "./UsersTableColumns";
 
 export function Toolbar() {
+    const {isMobile} = useContext(AppContext)
   return (
     <Box
       width={"100%"}
@@ -20,12 +21,14 @@ export function Toolbar() {
       justifyContent={"space-between"}
       gap={2}
       py={1}
+      height={'100%'}
     >
-      <Box width={"100%"} display={"flex"} alignItems={"center"} gap={2}>
+      <Box width={"100%"} p={1} display={"flex"} alignItems={"center"} gap={2}>
         <GridToolbarFilterButton />
-        <GridToolbarExport />
+        {/* <GridToolbarExport /> */}
       </Box>
       <GridToolbarQuickFilter />
+      
     </Box>
   );
 }

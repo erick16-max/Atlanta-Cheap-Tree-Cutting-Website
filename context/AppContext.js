@@ -5,6 +5,8 @@ import { getUserByEmail } from "@/firebase/FirebaseUser";
 import { useInternetStatus } from "@/hooks/useInternetStatus";
 import { useRouter } from "next/navigation";
 import { steps } from "@/constants/AppConstants";
+import { GetAllUserAdmins } from "@/firebase/FirebaseUser";
+import { FaGalacticSenate } from "react-icons/fa6";
 
 const AppContext = createContext();
 
@@ -16,6 +18,7 @@ export const AppContextProvider = ({ children }) => {
   const [guestUserModal, setGuestUserModal] = useState(false);
    const [bookingTableData, setBookingTableData ] = useState([])
    const [usersTableData, setUsersTableData ] = useState([])
+   const [userAdminsData, setUserAdminsData ] = useState([])
 
   const [borkingServiceList, setBorkingServiceList] = useState([]);
 
@@ -57,6 +60,9 @@ export const AppContextProvider = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(user));
         setUser(user);
 
+        const admins = await GetAllUserAdmins()
+        setUserAdminsData(admins[0]?.admins)
+
         try {
           const profile = await getUserByEmail(user?.email);
           if (profile) {
@@ -88,12 +94,15 @@ export const AppContextProvider = ({ children }) => {
   const isUser = user !== null && user && Object.keys(user).length > 0;
   const isUserProfile =
     userProfile !== null && isUser && Object.keys(userProfile).length > 0;
+  
+   const isAdmin = userAdminsData?.length > 0 ? userAdminsData?.includes(auth?.currentUser?.email) : false
 
   const data = {
     user,
     setUser,
     isUser,
     isUserProfile,
+    isAdmin,
     userProfile,
     setUserProfile,
     finishAccount,
@@ -124,7 +133,8 @@ export const AppContextProvider = ({ children }) => {
     email, setEmail,
     notifications, setNotifications,
     bookingTableData, setBookingTableData,
-    usersTableData, setUsersTableData
+    usersTableData, setUsersTableData,
+    userAdminsData, setUserAdminsData
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

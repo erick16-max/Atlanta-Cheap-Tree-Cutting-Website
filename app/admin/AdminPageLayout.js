@@ -8,6 +8,7 @@ import ColorModeContext from "@/theme/CustomThemeProvider";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/general/PageLoader";
+import { auth } from "@/firebase.config";
 
 export default function AdminPageLayout({children}) {
     const [loading, setLoading] = React.useState(true);
@@ -15,7 +16,7 @@ export default function AdminPageLayout({children}) {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { isTablet } = useContext(ColorModeContext);
-  const {user, isUser} = useContext(AppContext)
+  const {user, isUser, userAdminsData,} = useContext(AppContext)
   const router = useRouter()
 
   
@@ -33,6 +34,8 @@ export default function AdminPageLayout({children}) {
     router.push("/")
     return 
   }
+
+  
 
 
   return (

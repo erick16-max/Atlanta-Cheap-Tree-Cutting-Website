@@ -51,7 +51,33 @@ export const GetAllUsers = async () => {
 
     return users;
   } catch (error) {
-    console.error("Error fetching bookings:", error);
+    console.error("Error fetching users:", error);
+    return [];
+  }
+};
+
+
+// get user bookings
+export const GetAllUserAdmins = async () => {
+  try {
+    // Reference the 'bookings' collection
+    const collectionRef = collection(db, "attribute");
+
+    // Create a query to filter bookings by email
+    const q = query(collectionRef);
+
+    // Execute the query
+    const querySnapshot = await getDocs(q);
+
+    // Map over the snapshot to get the booking data
+    const admins = querySnapshot.docs.map((doc) => ({
+      id: doc.id, // Include the document ID if needed
+      ...doc.data(), // Spread the document data
+    }));
+
+    return admins;
+  } catch (error) {
+    console.error("Error fetching admins:", error);
     return [];
   }
 };
