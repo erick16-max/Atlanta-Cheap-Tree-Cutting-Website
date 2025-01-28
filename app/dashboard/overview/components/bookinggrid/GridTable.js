@@ -52,7 +52,6 @@ export default function BookingDataTable() {
 
   useEffect(() => {
       fetchBookings()
-      console.log("User Bookings")
   },[userProfile])
 
  

@@ -16,7 +16,7 @@ export default function AdminPageLayout({children}) {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isLargeScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { isTablet } = useContext(ColorModeContext);
-  const {user, isUser, userAdminsData,} = useContext(AppContext)
+  const {user, isUser, isAdmin} = useContext(AppContext)
   const router = useRouter()
 
   
@@ -33,6 +33,11 @@ export default function AdminPageLayout({children}) {
   if(!isUser && user !== null){
     router.push("/")
     return 
+  }
+
+  if(!isAdmin) {
+    router.push("/")
+    return
   }
 
   

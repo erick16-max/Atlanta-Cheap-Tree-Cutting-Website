@@ -20,7 +20,7 @@ export default function SuccessBookingModal({open, setOpen}) {
   const { setActiveStep } = useContext(AppContext);
   const {isMobile} = useContext(ColorModeContext)
 
-  console.log("Modal open state:", open);
+
 
 
   return (

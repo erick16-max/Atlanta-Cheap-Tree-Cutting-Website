@@ -88,10 +88,8 @@ export default function ConfirmBeforeSubmit() {
     try {
       setLoading(true);
       const response = await SubmitBooking(bookingData);
-      console.log("SubmitBooking response:", response); // Log response
       if (response === "success") {
         setOpen(true);
-        console.log("Modal open state set to true");
         // Clear other states
         setAddress("");
         setNotes("");

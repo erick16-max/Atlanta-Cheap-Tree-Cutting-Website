@@ -65,6 +65,7 @@ export const AppContextProvider = ({ children }) => {
 
         try {
           const profile = await getUserByEmail(user?.email);
+          localStorage.removeItem("finishaccount");
           if (profile) {
             setUserProfile(profile);
           } else {
@@ -88,7 +89,7 @@ export const AppContextProvider = ({ children }) => {
     });
 
     return unsubscribe;
-  }, [router]);
+  }, []);
 
   // Determine if a user is authenticated
   const isUser = user !== null && user && Object.keys(user).length > 0;

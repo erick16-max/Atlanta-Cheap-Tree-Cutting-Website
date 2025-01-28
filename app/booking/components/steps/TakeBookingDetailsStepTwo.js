@@ -67,7 +67,7 @@ export default function TakeBookingDetailsStepTwo() {
   
   const isDisabled = !address || !surveyTime || !surveyDate || !budget
   
-  console.log(isDisabled)
+
 
 
 

@@ -8,18 +8,7 @@ import AppContext from '@/context/AppContext';
 export default function AdminBookingCard() {
     const {userProfile} = useContext(AppContext)
 
-    // useEffect(() => {
-    //      const fetchBookings = async() => {
-    //         const bookings = await GetAllUserBookings(userProfile?.email);
-    //         console.log(bookings)
-    //      }
 
-    //      try {
-    //         fetchBookings()
-    //      } catch (error) {
-    //         console.log(error)
-    //      }
-    // }, [])
 
   return (
     <Card
