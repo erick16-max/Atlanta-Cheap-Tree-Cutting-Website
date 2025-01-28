@@ -1,5 +1,4 @@
 'use client'
-
 import PageLoader from '@/components/general/PageLoader'
 import AppContext from '@/context/AppContext'
 import { Alert, Box, useMediaQuery, Stack, useTheme } from '@mui/material'

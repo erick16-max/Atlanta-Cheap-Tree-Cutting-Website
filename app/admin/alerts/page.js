@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import AdminPageLayout from '../AdminPageLayout'
 import { useRouter } from 'next/navigation'
