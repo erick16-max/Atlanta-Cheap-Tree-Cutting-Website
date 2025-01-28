@@ -1,4 +1,4 @@
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, addDoc} from "firebase/firestore";
 
 import { db } from "@/firebase.config";
 
@@ -81,6 +81,20 @@ export const GetAllUserAdmins = async () => {
     return [];
   }
 };
+
+
+// submit user feedback or message
+export const SubmitMessage = async(data) => {
+    try {
+        const collectionRef = collection(db, "messages")
+        const collectionDoc = await addDoc(collectionRef, data)
+        return "success"
+    } catch (error) {
+        console.error("Error posting booking:", error);
+        return error.message || "Failed to save message/feedback information";
+    }
+}
+
 
 
 

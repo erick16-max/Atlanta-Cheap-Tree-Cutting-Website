@@ -18,3 +18,9 @@ export const bookingStatus = {
   REJECTED: 'canceled',
   COMPLETED: 'completed'
 }
+
+
+export const alertList = {
+  MESSAGE: 'Message',
+  FEEDBACK: 'Feedback',
+}
