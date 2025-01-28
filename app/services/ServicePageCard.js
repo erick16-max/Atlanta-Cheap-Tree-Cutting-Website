@@ -17,11 +17,16 @@ import TreeTrimmingIcon from "../../public/services/treetrimming.png";
 import YardCleaningIcon from "../../public/services/sweeping.png";
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import ColorModeContext from "@/theme/CustomThemeProvider";
+import AppContext from "@/context/AppContext";
+import { useRouter } from "next/navigation";
 
 export default function ServicePageCard() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const { isTablet, isMobile } = useContext(ColorModeContext);
+  const {isUser, setIsBookingModalOpen } = useContext(AppContext)
+
+  const router = useRouter()
 
   const icons = [
     {
@@ -127,14 +132,21 @@ export default function ServicePageCard() {
                   sx={{
                     textTransform: "none",
                     height: 50,
-                    color: "primary.dark",
                     width: 150,
                     fontWeight: 600,
+                    color: "primary.dark",
                     backgroundColor: "rgba(50, 110, 54, 0.15)",
                     borderEndStartRadius: "12px",
                     mt: 1,
                   }}
                   endIcon={<BsFillBookmarkPlusFill />}
+                  onClick={() => {
+                    if(isUser){
+                      router.push('/booking')
+                    }else{
+                      setIsBookingModalOpen(true)
+                    }
+                  }}
                 >
                   Book service
                 </Button>

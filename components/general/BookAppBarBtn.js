@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Button } from "@mui/material";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/navigation";
-import { BsBookmarkPlus } from "react-icons/bs";
+import { BsBookmarkPlus, BsBookmarkPlusFill } from "react-icons/bs";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 import { FcAdvertising } from "react-icons/fc";
 import { IoIosAdd } from "react-icons/io";
@@ -32,7 +32,7 @@ export default function BookAppBarBtn() {
         
       }}
 
-      endIcon={<BsBookmarkPlus fontSize={10}/> }
+      endIcon={<BsBookmarkPlusFill fontSize={10}/> }
       onClick={() => {
         if(isUser){
           router.push('/booking')

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Button } from "@mui/material";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/navigation";
-import { BsBookmarkPlus } from "react-icons/bs";
+import { BsBookmarkPlus, BsBookmarkPlusFill } from "react-icons/bs";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 
 
@@ -49,7 +49,7 @@ export default function HoverEffectButton({ isSmallScreen, dashboardText }) {
         },
       }}
 
-      endIcon={<BsBookmarkPlus fontSize={16}/>}
+      endIcon={<BsBookmarkPlusFill fontSize={16}/>}
       onClick={() => {
         if(isUser){
           router.push('/booking')
