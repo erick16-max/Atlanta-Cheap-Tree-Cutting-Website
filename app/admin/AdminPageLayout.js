@@ -22,6 +22,13 @@ export default function AdminPageLayout({children}) {
   
     React.useEffect(() => {
       setLoading(false);
+      if(!isUser && user !== null){
+        router.push("/")
+      }
+    
+      if(!isAdmin && user !== null ) {
+        router.push("/")
+      }
     }, []);
 
   
@@ -30,15 +37,7 @@ export default function AdminPageLayout({children}) {
     }
   
 
-  if(!isUser && user !== null){
-    router.push("/")
-    return 
-  }
-
-  if(!isAdmin) {
-    router.push("/")
-    return
-  }
+ 
 
   
 

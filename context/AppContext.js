@@ -98,6 +98,7 @@ export const AppContextProvider = ({ children }) => {
   
    const isAdmin = userAdminsData?.length > 0 ? userAdminsData?.includes(auth?.currentUser?.email) : false
 
+
   const data = {
     user,
     setUser,

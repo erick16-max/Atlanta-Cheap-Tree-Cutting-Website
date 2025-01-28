@@ -17,11 +17,11 @@ const portfolioItems = [
   { type: "image", src: PortfolioImageThree, title: "Project 3" },
   { type: "video", src: "/portfolio/vid.mp4", title: "Portfolio Video" },
   { type: "image", src: PortfolioImageFour, title: "Project 4" },
-  { type: "image", src: PortfolioImageFive, title: "Project 5" },
-  { type: "image", src: PortfolioImageFive, title: "Project 6" },
-  { type: "image", src: PortfolioImageSeven, title: "Project 7" },
-  { type: "image", src: PortfolioImageEight, title: "Project 8" },
-  { type: "image", src: PortfolioImageNine, title: "Project 9" },
+  // { type: "image", src: PortfolioImageFive, title: "Project 5" },
+  // { type: "image", src: PortfolioImageFive, title: "Project 6" },
+  // { type: "image", src: PortfolioImageSeven, title: "Project 7" },
+  // { type: "image", src: PortfolioImageEight, title: "Project 8" },
+  // { type: "image", src: PortfolioImageNine, title: "Project 9" },
 ];
 
 const PortfolioGrid = () => {
