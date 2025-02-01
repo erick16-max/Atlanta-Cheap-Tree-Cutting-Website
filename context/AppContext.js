@@ -40,6 +40,11 @@ export const AppContextProvider = ({ children }) => {
   const [bookingDetails, setBookingDetails] = useState({});
   const [notifications, setNotifications] = useState([])
 
+  const [selectedItemId, setSelectedItemId] = useState(null)
+
+  const [openDelete, setOpenDelete] = useState(false);
+  
+
   const isOnline = useInternetStatus();
   const router = useRouter();
 
@@ -136,7 +141,9 @@ export const AppContextProvider = ({ children }) => {
     notifications, setNotifications,
     bookingTableData, setBookingTableData,
     usersTableData, setUsersTableData,
-    userAdminsData, setUserAdminsData
+    userAdminsData, setUserAdminsData,
+    selectedItemId, setSelectedItemId,
+    openDelete, setOpenDelete
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

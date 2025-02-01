@@ -15,10 +15,12 @@ import { FcAcceptDatabase } from "react-icons/fc";
 import AppContext from "@/context/AppContext";
 import { steps } from "@/constants/AppConstants";
 import ColorModeContext from "@/theme/CustomThemeProvider";
+import { useRouter } from "next/navigation";
 
 export default function SuccessBookingModal({open, setOpen}) {
   const { setActiveStep } = useContext(AppContext);
   const {isMobile} = useContext(ColorModeContext)
+  const router = useRouter()
 
 
 
@@ -79,13 +81,12 @@ export default function SuccessBookingModal({open, setOpen}) {
                 },
               }}
               onClick={() => {
-                setOpen(false)
                 setActiveStep(steps.step1)
-                router.push("/")
+                router.push("/dashboard/bookings")
 
               }}
             >
-               Done
+               View Bookings
             </Button>
          
         </Box>

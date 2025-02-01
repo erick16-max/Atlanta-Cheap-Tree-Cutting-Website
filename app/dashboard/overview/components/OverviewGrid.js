@@ -1,5 +1,6 @@
 import { bookingStatus } from "@/constants/AppConstants";
 import AppContext from "@/context/AppContext";
+import useBookings from "@/hooks/useBookings";
 import { isArray } from "@/util/LogicFunctions";
 import { Box, Card, Grid, Stack, Typography } from "@mui/material";
 import React, { useContext } from "react";
@@ -9,7 +10,8 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import { TiTick} from "react-icons/ti";
 
 export default function OverviewGrid() {
-  const {bookingTableData} = useContext(AppContext)
+  const {userProfile} = useContext(AppContext)
+  const  {bookings: bookingTableData} = useBookings(userProfile)
   const overviewList = [
     {
       icon: <FaThList fontSize={28} />,

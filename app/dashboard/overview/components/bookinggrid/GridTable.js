@@ -6,53 +6,56 @@ import { GetUserBookings } from "@/firebase/Booking";
 import AppContext from "@/context/AppContext";
 import { user } from "@/constants/AppConstants";
 import { Toolbar } from "@/app/admin/users/components/UsersDataTable";
+import useBookings from "@/hooks/useBookings";
+import { isArray } from "@/util/LogicFunctions";
 
 
 export default function BookingDataTable() {
   
-  const [loading, setLoading] = useState(false)
-  const {userProfile, bookingTableData, setBookingTableData} = useContext(AppContext)
+  const {bookings, loading} = useBookings()
 
 
-  const fetchBookings = async () => {
-    try {
-      setLoading(true)
-      if(userProfile){
+
+
+  // const fetchBookings = async () => {
+  //   try {
+  //     setLoading(true)
+  //     if(userProfile){
         
-        const bookings = await GetUserBookings(userProfile?.email);
-        if(bookings){
-        const transformedBookings = bookings.map((booking, index) => {
-          if(booking.user === user.AUTHENTICATED){
-            const bookingObj = {
-              id: index + 1, 
-              uid: booking.id,
-              budget: parseInt(booking.bookingInfo.budget, 10),
-              address: booking.bookingInfo.address,
-              surveyDate: booking.bookingInfo.surveyDate,
-              surveyTime: booking.bookingInfo.surveyTime,
-              status: booking.status
-            }
+  //       const bookings = await GetUserBookings(userProfile?.email);
+  //       if(bookings){
+  //       const transformedBookings = bookings.map((booking, index) => {
+  //         if(booking.user === user.AUTHENTICATED){
+  //           const bookingObj = {
+  //             id: booking.id, 
+  //             uid: booking.id,
+  //             budget: parseInt(booking.bookingInfo.budget, 10),
+  //             address: booking.bookingInfo.address,
+  //             surveyDate: booking.bookingInfo.surveyDate,
+  //             surveyTime: booking.bookingInfo.surveyTime,
+  //             status: booking.status
+  //           }
   
-            return bookingObj
-          }else{
-            return {}
-          }
+  //           return bookingObj
+  //         }else{
+  //           return {}
+  //         }
           
-        });
-        setBookingTableData(transformedBookings)
-       }
+  //       });
+  //       setBookingTableData(transformedBookings)
+  //      }
   
-      }
-    } catch (error) {
-      console.log(error)
-    }finally{
-      setLoading(false)
-    }
-  }
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }finally{
+  //     setLoading(false)
+  //   }
+  // }
 
-  useEffect(() => {
-      fetchBookings()
-  },[userProfile])
+  // useEffect(() => {
+  //     fetchBookings()
+  // },[userProfile])
 
  
 
@@ -66,7 +69,7 @@ export default function BookingDataTable() {
           }}
         >
           <DataGrid
-            rows={bookingTableData}
+            rows={isArray(bookings) ? bookings : []}
             columns={bookingsColumns}
             pageSize={10}
             rowsPerPageOptions={[5]}

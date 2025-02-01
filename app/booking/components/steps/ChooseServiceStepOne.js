@@ -98,7 +98,9 @@ export default function ChooseServiceStepOne() {
                   "&:hover": {
                     backgroundColor: "#e0e0e0",
                   },
+                  
                 }}
+                onClick={() => handleCheckboxChange(icon)}
               >
                 <Stack>
                   <Typography
@@ -116,7 +118,7 @@ export default function ChooseServiceStepOne() {
                 </Stack>
                 <Checkbox
                   checked={isSelected}
-                  onChange={() => handleCheckboxChange(icon)}
+                  // onChange={() => handleCheckboxChange(icon)}
                 />
               </Card>
             </Grid>

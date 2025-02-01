@@ -66,4 +66,14 @@ export const GetAllUserBookings = async (email) => {
   }
 };
 
+// export const deleteBooking = async (bookingId) => {
+//   try {
+//     await deleteDoc(doc(db, "bookings", bookingId));
+//     return "success"
+//   } catch (error) {
+//     console.error("Error deleting booking:", error);
+//     return error?.message || error
+//   }
+// };
+
   

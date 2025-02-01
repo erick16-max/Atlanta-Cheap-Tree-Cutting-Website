@@ -113,9 +113,8 @@ export default function ConfirmBeforeSubmit() {
       setLoading(false);
       setTimeout(() => {
         setActiveStep(steps.step1);
-        router.push("/")
         setOpen(false)
-      }, 5000)
+      }, 8000)
     }
   };
   

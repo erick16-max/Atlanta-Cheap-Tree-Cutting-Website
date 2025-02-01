@@ -10,6 +10,9 @@ import {
 } from "@mui/material";
 import { IoIosMore } from "react-icons/io";
 import { bookingStatus } from "@/constants/AppConstants";
+import ActionMenu from "./ActionMenu";
+import AppContext from "@/context/AppContext";
+import DeleteDialogModal from "./DeleteDialogModal";
 
 export const bookingsColumns = [
   {
@@ -92,13 +95,40 @@ export const bookingsColumns = [
     ),
     width: 180,
     renderCell: (params) => {
+      const { id } = params.row;
+      const [anchorEl, setAnchorEl] = React.useState(null);
+      const [loading, setLoading] = React.useState(false)
+      const {selectedItemId, setSelectedItemId, openDelete, setOpenDelete} = React.useContext(AppContext)
+      // handle menuitem click
+      const handleClick = (event, id) => {
+        setAnchorEl(event.currentTarget);
+        setSelectedItemId(id);
+      }
+       // handle action btn click
+       const handleActionBtnClick = (event) => {
+        event.stopPropagation(); 
+        setAnchorEl(event.currentTarget)
+        handleClick(event, id);
+      }
+
       return (
         <Box>
           <Tooltip title="actions">
-            <IconButton aria-haspopup="true" aria-label="action button">
+            <IconButton onClick={handleActionBtnClick} aria-haspopup="true" aria-label="action button">
               <IoIosMore />
             </IconButton>
           </Tooltip>
+          <ActionMenu 
+            anchorEl={anchorEl}
+            setAnchorEl={setAnchorEl}
+            id={id}
+            setOpenDelete={setOpenDelete}
+          />
+          <DeleteDialogModal 
+            open={openDelete}
+            setOpen={setOpenDelete}
+            bookingId={selectedItemId}
+          />
         </Box>
       );
     },
