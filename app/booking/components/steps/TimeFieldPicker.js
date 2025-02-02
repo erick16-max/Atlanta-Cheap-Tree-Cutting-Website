@@ -7,7 +7,7 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import AppContext from '@/context/AppContext';
 import dayjs from 'dayjs';
 
-export default function TimeFieldPicker({formattedTime, setFormattedTime}) {
+export default function TimeFieldPicker({formattedTime, setFormattedTime, label}) {
 
   const [rawTime, setRawTime] = React.useState()
 
@@ -21,7 +21,7 @@ export default function TimeFieldPicker({formattedTime, setFormattedTime}) {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <TimePicker
-        label="Time for Survey"
+        label={label ? label : "Time for Survey"}
         value={rawTime || formattedTime}
         onChange={(newValue) => {
           if (newValue) {

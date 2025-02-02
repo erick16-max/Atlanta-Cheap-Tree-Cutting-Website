@@ -13,6 +13,7 @@ import { bookingStatus } from "@/constants/AppConstants";
 import ActionMenu from "./ActionMenu";
 import AppContext from "@/context/AppContext";
 import DeleteDialogModal from "./DeleteDialogModal";
+import UpdateBookingModal from "./UpdateBookingModal";
 
 export const bookingsColumns = [
   {
@@ -98,7 +99,7 @@ export const bookingsColumns = [
       const { id } = params.row;
       const [anchorEl, setAnchorEl] = React.useState(null);
       const [loading, setLoading] = React.useState(false)
-      const {selectedItemId, setSelectedItemId, openDelete, setOpenDelete} = React.useContext(AppContext)
+      const {selectedItemId, setSelectedItemId, openDelete, setOpenDelete, openUpdate, setOpenUpdate} = React.useContext(AppContext)
       // handle menuitem click
       const handleClick = (event, id) => {
         setAnchorEl(event.currentTarget);
@@ -123,11 +124,16 @@ export const bookingsColumns = [
             setAnchorEl={setAnchorEl}
             id={id}
             setOpenDelete={setOpenDelete}
+            setOpenUpdate={setOpenUpdate}
           />
           <DeleteDialogModal 
             open={openDelete}
             setOpen={setOpenDelete}
             bookingId={selectedItemId}
+          />
+          <UpdateBookingModal
+            open={openUpdate}
+            setOpen={setOpenUpdate}
           />
         </Box>
       );

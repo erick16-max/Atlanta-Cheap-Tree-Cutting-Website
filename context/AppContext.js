@@ -43,8 +43,10 @@ export const AppContextProvider = ({ children }) => {
   const [selectedItemId, setSelectedItemId] = useState(null)
 
   const [openDelete, setOpenDelete] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);
 
   const [bookings, setBookings] = useState([]);
+  const [bookingObj, setBookingObj] = useState({})
 
   
 
@@ -147,7 +149,9 @@ export const AppContextProvider = ({ children }) => {
     userAdminsData, setUserAdminsData,
     selectedItemId, setSelectedItemId,
     openDelete, setOpenDelete,
-    bookings, setBookings
+    bookings, setBookings,
+    openUpdate, setOpenUpdate,
+    bookingObj, setBookingObj
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
