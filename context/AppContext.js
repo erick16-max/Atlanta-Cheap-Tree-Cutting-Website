@@ -43,6 +43,9 @@ export const AppContextProvider = ({ children }) => {
   const [selectedItemId, setSelectedItemId] = useState(null)
 
   const [openDelete, setOpenDelete] = useState(false);
+
+  const [bookings, setBookings] = useState([]);
+
   
 
   const isOnline = useInternetStatus();
@@ -143,7 +146,8 @@ export const AppContextProvider = ({ children }) => {
     usersTableData, setUsersTableData,
     userAdminsData, setUserAdminsData,
     selectedItemId, setSelectedItemId,
-    openDelete, setOpenDelete
+    openDelete, setOpenDelete,
+    bookings, setBookings
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

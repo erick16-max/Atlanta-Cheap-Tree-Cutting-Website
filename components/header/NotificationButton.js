@@ -128,7 +128,7 @@ export default function NotificationButton() {
         onClick={handleClick}
       >
         <Tooltip title="notification">
-          <Badge badgeContent={unreadCount} color="error">
+          <Badge badgeContent={unreadCount} max={5} color="error">
             <FiBell />
           </Badge>
         </Tooltip>

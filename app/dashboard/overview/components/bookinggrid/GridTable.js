@@ -14,50 +14,7 @@ export default function BookingDataTable() {
   
   const {bookings, loading} = useBookings()
 
-
-
-
-  // const fetchBookings = async () => {
-  //   try {
-  //     setLoading(true)
-  //     if(userProfile){
-        
-  //       const bookings = await GetUserBookings(userProfile?.email);
-  //       if(bookings){
-  //       const transformedBookings = bookings.map((booking, index) => {
-  //         if(booking.user === user.AUTHENTICATED){
-  //           const bookingObj = {
-  //             id: booking.id, 
-  //             uid: booking.id,
-  //             budget: parseInt(booking.bookingInfo.budget, 10),
-  //             address: booking.bookingInfo.address,
-  //             surveyDate: booking.bookingInfo.surveyDate,
-  //             surveyTime: booking.bookingInfo.surveyTime,
-  //             status: booking.status
-  //           }
   
-  //           return bookingObj
-  //         }else{
-  //           return {}
-  //         }
-          
-  //       });
-  //       setBookingTableData(transformedBookings)
-  //      }
-  
-  //     }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }finally{
-  //     setLoading(false)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //     fetchBookings()
-  // },[userProfile])
-
- 
 
   return (
     <Box
@@ -69,6 +26,7 @@ export default function BookingDataTable() {
           }}
         >
           <DataGrid
+            key={bookings?.length}
             rows={isArray(bookings) ? bookings : []}
             columns={bookingsColumns}
             pageSize={10}

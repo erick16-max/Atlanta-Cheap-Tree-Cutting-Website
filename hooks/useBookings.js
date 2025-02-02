@@ -7,11 +7,12 @@ import AppContext from "@/context/AppContext";
 
 
 const useBookings = () => {
-  const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
   const [actionLoading, setActionLoading] = useState(false)
 
-  const {openDelete, setOpenDelete, userProfile} = useContext(AppContext)
+  const {openDelete, setOpenDelete, userProfile, bookings, setBookings} = useContext(AppContext)
+
+  console.log("hook bookings", bookings)
 
   // Function to fetch bookings
   const fetchBookings = useCallback(async () => {
