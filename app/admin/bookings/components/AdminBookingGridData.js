@@ -9,7 +9,8 @@ import { Toolbar } from "../../users/components/UsersDataTable";
 
 export default function AdminBookingDataTable() {
   const [loading, setLoading] = useState(false);
-  const { userProfile, bookingTableData, setBookingTableData } = useContext(AppContext);
+  const { userProfile, bookingTableData, setBookingTableData } =
+    useContext(AppContext);
 
   const fetchBookings = async () => {
     try {
@@ -18,20 +19,24 @@ export default function AdminBookingDataTable() {
         const bookings = await GetAllUserBookings(userProfile?.email);
         if (bookings) {
           const transformedBookings = bookings.map((booking, index) => {
-              const bookingObj = {
-                id: index + 1,
-                uid: booking?.id,
-                fullname: booking?.contactInfo?.fullname,
-                budget: parseInt(booking?.bookingInfo?.budget, 10),
-                address: booking?.bookingInfo?.address,
-                surveyDate: booking?.bookingInfo?.surveyDate,
-                surveyTime: booking?.bookingInfo?.surveyTime,
-                status: booking?.status,
-                user : booking?.user
-              };
+            const bookingObj = {
+              id: booking.id,
+              uid: booking.id,
+              fullname: booking?.contactInfo?.fullname,
+              budget: parseInt(booking?.bookingInfo?.budget, 10),
+              address: booking?.bookingInfo?.address,
+              surveyDate: booking?.bookingInfo?.surveyDate,
+              surveyTime: booking?.bookingInfo?.surveyTime,
+              status: booking?.status,
+              user: booking?.user,
+              status: booking.status,
+              email: booking?.contactInfo?.email,
+              fullname: booking?.contactInfo?.fullname,
+              phoneNumber: booking?.contactInfo?.phoneNumber,
+              notes: booking?.bookingInfo?.notes,
+            };
 
-              return bookingObj;
-           
+            return bookingObj;
           });
           setBookingTableData(transformedBookings);
         }
@@ -47,15 +52,13 @@ export default function AdminBookingDataTable() {
     fetchBookings();
   }, [userProfile]);
 
- 
-
   return (
     <Box
       sx={{
         minHeight: 200,
         width: "100%",
-        overflowX: "auto", 
-        height: 'auto',
+        overflowX: "auto",
+        height: "auto",
       }}
     >
       <DataGrid
@@ -69,12 +72,12 @@ export default function AdminBookingDataTable() {
         disableColumnMenu
         autoHeight
         loading={loading}
-         slots={{ toolbar: Toolbar }}
-                slotProps={{
-                  toolbar: {
-                    showQuickFilter: true,
-                  },
-                }}
+        slots={{ toolbar: Toolbar }}
+        slotProps={{
+          toolbar: {
+            showQuickFilter: true,
+          },
+        }}
         sx={{
           "& .MuiDataGrid-root": {
             border: "1px solid #eeeeee", // Outer border for the DataGrid

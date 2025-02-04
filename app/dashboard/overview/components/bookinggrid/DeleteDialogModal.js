@@ -9,8 +9,8 @@ import { Alert, CircularProgress } from "@mui/material";
 import useBookings from "@/hooks/useBookings";
 import AppContext from "@/context/AppContext";
 
-export default function DeleteDialogModal({ open, setOpen, bookingId}) {
-  const {actionLoading, deleteBooking} = useBookings()
+export default function DeleteDialogModal({ open, setOpen, bookingId, type}) {
+  const {actionLoading, deleteBooking, AdminDeleteBooking} = useBookings()
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -66,7 +66,7 @@ export default function DeleteDialogModal({ open, setOpen, bookingId}) {
             }}
             onClick={() => {
               handleClose()
-              deleteBooking(bookingId)}}
+              type === 'admin' ? AdminDeleteBooking(bookingId) : deleteBooking(bookingId)}}
             autoFocus
             disabled={actionLoading}
           >

@@ -10,18 +10,21 @@ import {
 } from "@mui/material";
 import { IoIosMore } from "react-icons/io";
 import { bookingStatus } from "@/constants/AppConstants";
+import AppContext from "@/context/AppContext";
+import AdminActionMenu from "./AdminActionMenu";
+import DeleteDialogModal from "@/app/dashboard/overview/components/bookinggrid/DeleteDialogModal";
 
 export const adminBookingsColumns = [
-    {
-        field: "fullname",
-        sortable: false,
-        width: 200,
-        renderHeader: () => (
-          <Typography variant="body2" color={"text.primary"} fontWeight={600}>
-            Who booked?
-          </Typography>
-        ),
-      },
+  {
+    field: "fullname",
+    sortable: false,
+    width: 200,
+    renderHeader: () => (
+      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+        Who booked?
+      </Typography>
+    ),
+  },
   {
     field: "address",
     sortable: false,
@@ -71,27 +74,28 @@ export const adminBookingsColumns = [
     sortable: false,
     width: 180,
     renderCell: (params) => {
-      const chipColor = params.value === bookingStatus.PENDING 
-                          ? "warning.main" 
-                          : params.value === bookingStatus.COMPLETED
-                          ? "success.main"
-                          : params.value === bookingStatus.REJECTED
-                          ? "error.main" : "secondary.main"
+      const chipColor =
+        params.value === bookingStatus.PENDING
+          ? "warning.main"
+          : params.value === bookingStatus.COMPLETED
+          ? "success.main"
+          : params.value === bookingStatus.REJECTED
+          ? "error.main"
+          : "secondary.main";
       return (
-        <Chip 
-        label={params?.value}
-         size="small"
-        sx={{
-          borderRadius: 1,
-          backgroundColor: '#f5f5f5',
-          color: chipColor,
-          fontWeight: 500,
-        }}
+        <Chip
+          label={params?.value}
+          size="small"
+          sx={{
+            borderRadius: 1,
+            backgroundColor: "#f5f5f5",
+            color: chipColor,
+            fontWeight: 500,
+          }}
         />
       );
     },
   },
-
 
   {
     field: "action",
@@ -102,13 +106,54 @@ export const adminBookingsColumns = [
     ),
     width: 180,
     renderCell: (params) => {
+      const { id } = params.row;
+      const [anchorEl, setAnchorEl] = React.useState(null);
+      const [loading, setLoading] = React.useState(false);
+      const {
+        selectedItemId,
+        setSelectedItemId,
+        openDelete,
+        setOpenDelete,
+        openUpdate,
+        setOpenUpdate,
+      } = React.useContext(AppContext);
+
+      // handle menuitem click
+      const handleClick = (event, id) => {
+        setAnchorEl(event.currentTarget);
+        setSelectedItemId(id);
+      };
+      // handle action btn click
+      const handleActionBtnClick = (event) => {
+        event.stopPropagation();
+        setAnchorEl(event.currentTarget);
+        handleClick(event, id);
+      };
+
       return (
         <Box>
           <Tooltip title="actions">
-            <IconButton aria-haspopup="true" aria-label="action button">
+            <IconButton
+              onClick={handleActionBtnClick}
+              aria-haspopup="true"
+              aria-label="action button"
+            >
               <IoIosMore />
             </IconButton>
           </Tooltip>
+          <AdminActionMenu
+            anchorEl={anchorEl}
+            setAnchorEl={setAnchorEl}
+            id={id}
+            setOpenDelete={setOpenDelete}
+            setOpenUpdate={setOpenUpdate}
+          />
+          <DeleteDialogModal
+            open={openDelete}
+            setOpen={setOpenDelete}
+            bookingId={selectedItemId}
+            type='admin'
+          />
         </Box>
       );
     },

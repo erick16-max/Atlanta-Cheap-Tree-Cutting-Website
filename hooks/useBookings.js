@@ -10,7 +10,7 @@ const useBookings = () => {
   const [loading, setLoading] = useState(false);
   const [actionLoading, setActionLoading] = useState(false)
 
-  const {openDelete, setOpenDelete, userProfile, bookings, setBookings} = useContext(AppContext)
+  const {openDelete, setOpenDelete, userProfile, bookings, setBookings, bookingTableData, setBookingTableData} = useContext(AppContext)
 
  
 
@@ -20,7 +20,6 @@ const useBookings = () => {
       setLoading(true);
       if (userProfile) {
         const bookings = await GetUserBookings(userProfile?.email);
-        console.log(bookings)
          if(bookings){
                const transformedBookings = bookings.map((booking, index) => {
                  if(booking.user === user.AUTHENTICATED){
@@ -69,6 +68,24 @@ const useBookings = () => {
     }
   };
 
+  const AdminDeleteBooking = async (bookingId) => {
+    try {
+      setActionLoading(true)
+      await deleteDoc(doc(db, "bookings", bookingId));
+      // Optimistically update state instead of refetching
+      setBookingTableData((prev) => prev.filter((booking) => booking.id !== bookingId));
+      setOpenDelete(false)
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+    }finally{
+      setActionLoading(false)
+    }
+  };
+
+
+ 
+  
+
   // Function to update a booking
   const updateBooking = async (bookingId, updatedBookingData) => {
     try {
@@ -104,7 +121,7 @@ const useBookings = () => {
     fetchBookings();
   }, [fetchBookings]);
 
-  return { bookings, loading, actionLoading, fetchBookings, deleteBooking, updateBooking };
+  return { bookings, loading, actionLoading, fetchBookings, deleteBooking, updateBooking, AdminDeleteBooking };
 };
 
 export default useBookings;

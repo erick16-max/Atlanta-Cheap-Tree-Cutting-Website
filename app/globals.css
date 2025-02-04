@@ -31,26 +31,7 @@ body {
 }
 
 
-@media only screen and (min-width:901px) {
-    /* Scrollbar css */
- 
- ::-webkit-scrollbar {
-   width: 12px;
-   height: 2px;
- }
- 
- ::-webkit-scrollbar-track {
-   background-color: #e0e0e0;
- }
- 
- ::-webkit-scrollbar-thumb {
-   background-color: #bebebe;
- }
- 
- ::-webkit-scrollbar-thumb:hover{
-   background-color: #999;
- }
- }
+
  
  @media only screen and (max-width:1198px) {
    .loginImageSection, .summaryGrid {
