@@ -14,6 +14,7 @@ import AppContext from "@/context/AppContext";
 import DateFieldPicker from "@/app/booking/components/steps/DateFieldPicker";
 import TimeFieldPicker from "@/app/booking/components/steps/TimeFieldPicker";
 import useBookings from "@/hooks/useBookings";
+import ColorModeContext from "@/theme/CustomThemeProvider";
 const CustomTextField = ({
   label,
   type,
@@ -77,6 +78,7 @@ export default function UpdateBookingModal({ open, setOpen }) {
     surveyDate,
     setSurveyDate,
   } = useContext(AppContext);
+  const {isMobile} = useContext(ColorModeContext)
 
   const {updateBooking, actionLoading} = useBookings()
 
@@ -113,7 +115,7 @@ export default function UpdateBookingModal({ open, setOpen }) {
       }}
     >
       <Box
-        width={600}
+        width={isMobile ? "94%" : 600}
         maxHeight="90vh" // Ensures modal doesn't overflow screen height
         bgcolor={"#ffffff"}
         borderRadius={2}

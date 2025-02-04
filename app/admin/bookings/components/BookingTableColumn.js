@@ -13,6 +13,7 @@ import { bookingStatus } from "@/constants/AppConstants";
 import AppContext from "@/context/AppContext";
 import AdminActionMenu from "./AdminActionMenu";
 import DeleteDialogModal from "@/app/dashboard/overview/components/bookinggrid/DeleteDialogModal";
+import UpdateStatusModal from "./UpdateStatusModal";
 
 export const adminBookingsColumns = [
   {
@@ -152,8 +153,9 @@ export const adminBookingsColumns = [
             open={openDelete}
             setOpen={setOpenDelete}
             bookingId={selectedItemId}
-            type='admin'
+            type="admin"
           />
+          <UpdateStatusModal open={openUpdate} setOpen={setOpenUpdate} />
         </Box>
       );
     },

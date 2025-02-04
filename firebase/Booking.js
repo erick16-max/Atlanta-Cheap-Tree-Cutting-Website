@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query, where, } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where, doc, updateDoc} from "firebase/firestore";
 import { db } from "@/firebase.config";
 
 
@@ -63,6 +63,23 @@ export const GetAllUserBookings = async (email) => {
   } catch (error) {
     console.error("Error fetching bookings:", error);
     return [];
+  }
+};
+
+//update status
+export const updateBookingStatus = async (bookingId, newStatus, setBookingTableData) => {
+  try {
+    const bookingRef = doc(db, "bookings", bookingId); 
+    await updateDoc(bookingRef, { status: newStatus }); 
+    // Update local state without refetching
+    setBookingTableData((prevBookings) =>
+      prevBookings.map((booking) =>
+        booking.id === bookingId ? { ...booking, status: newStatus } : booking
+      )
+    );
+    return "success"
+  } catch (error) {
+    console.error("Error updating booking status:", error);
   }
 };
 
