@@ -47,6 +47,7 @@ export const AppContextProvider = ({ children }) => {
 
   const [bookings, setBookings] = useState([]);
   const [bookingObj, setBookingObj] = useState({})
+  const [userObj, setUserObj] = useState({})
 
   
 
@@ -151,7 +152,8 @@ export const AppContextProvider = ({ children }) => {
     openDelete, setOpenDelete,
     bookings, setBookings,
     openUpdate, setOpenUpdate,
-    bookingObj, setBookingObj
+    bookingObj, setBookingObj,
+    userObj, setUserObj
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

@@ -38,6 +38,7 @@ export default function UserDataTableGrid() {
   const { userProfile, usersTableData, setUsersTableData } =
     useContext(AppContext);
 
+
   const fetchUsers = async () => {
     try {
       setLoading(true);

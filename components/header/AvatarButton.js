@@ -86,7 +86,7 @@ export default function AvatarButton() {
                   width: '100%'
                 }}
               >
-                {isAdmin ? "admin" : truncateString(userProfile?.email || "", 30)}
+                {userProfile?.isAdmin === true ? "admin" : truncateString(userProfile?.email || "", 30)}
                 <RiArrowDropDownFill style={{ color: "#242424", fontSize: 16 }} />
 
               </Typography>

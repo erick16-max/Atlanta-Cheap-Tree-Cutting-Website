@@ -1,4 +1,4 @@
-import { collection, query, where, getDocs, addDoc} from "firebase/firestore";
+import { collection, query, where, getDocs, addDoc, doc, updateDoc, arrayUnion, setDoc, getDoc} from "firebase/firestore";
 
 import { db } from "@/firebase.config";
 
@@ -94,6 +94,50 @@ export const SubmitMessage = async(data) => {
         return error.message || "Failed to save message/feedback information";
     }
 }
+
+
+
+export const updateUserStatus = async (userId, email, newStatus, setUsersTableData) => {
+  try {
+    const userRef = doc(db, "users", userId);
+
+    if (newStatus === "Admin") {
+      const adminRef = doc(db, "attribute", "k3urLcvW0BZuo2YIrS5s "); // Document storing admin users
+      
+      // Check if the admins document exists
+      const adminDoc = await getDoc(adminRef);
+      if (!adminDoc.exists()) {
+        // Create the document with the first admin if it doesn't exist
+        await setDoc(adminRef, { admins: [email] });
+      } else {
+        // Add the email to the list of admins
+        await updateDoc(adminRef, {
+          admins: arrayUnion(email),
+        });
+      }
+
+      // Update the user to isAdmin: true
+      await updateDoc(userRef, { isAdmin: true });
+      console.log(`User ${email} is now an admin`);
+    } else {
+      // If not Admin, only update the status
+      await updateDoc(userRef, { isAdmin: false });
+    }
+    
+    // Update the user status
+    await updateDoc(userRef, { status: newStatus });
+    // **Update local state without refetching**
+    setUsersTableData((prevUsers) =>
+      prevUsers.map((user) =>
+        user.id === userId ? { ...user, isAdmin: newStatus === "Admin" ? true : false, } : user
+      )
+    );
+    return "success"
+
+  } catch (error) {
+    console.error("Error updating user status:", error);
+  }
+};
 
 
 
