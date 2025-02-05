@@ -48,8 +48,8 @@ export default function AdminActionMenu({
         <MenuItem
           onClick={handleOpenUpdate}
         >
-          <LuView style={{ fontSize: 18, marginRight: 5 }} />
-          View
+          <BiEditAlt style={{ fontSize: 18, marginRight: 5 }} />
+          Update
         </MenuItem>
         <MenuItem onClick={handleDeleteOpen}>
           <MdDeleteOutline style={{ fontSize: 18, marginRight: 5 }} />

@@ -66,6 +66,16 @@ export const adminBookingsColumns = [
     width: 160,
   },
   {
+    field: "user",
+    renderHeader: () => (
+      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+        Type
+      </Typography>
+    ),
+    sortable: false,
+    width: 160,
+  },
+  {
     field: "status",
     renderHeader: () => (
       <Typography variant="body2" color={"text.primary"} fontWeight={600}>
