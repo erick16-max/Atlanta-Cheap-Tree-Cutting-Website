@@ -20,6 +20,8 @@ import {
   where,
   query,
   collection,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 import { db, auth } from "@/firebase.config";
 import { PiSpeakerSimpleHighFill } from "react-icons/pi";
@@ -50,9 +52,14 @@ export default function NotificationButton() {
     if (!user) return;
 
     // Listen to all notifications for the current user
+    // const notificationsRef = query(
+    //   collection(db, "notifications"),
+    //   where("email", "==", user.email)
+    // );
     const notificationsRef = query(
       collection(db, "notifications"),
-      where("email", "==", user.email)
+      where("email", "==", user.email),
+      orderBy("timestamp", "desc"), // Order by timestamp descending (newest first)
     );
 
     const unsubscribe = onSnapshot(
@@ -128,7 +135,7 @@ export default function NotificationButton() {
         onClick={handleClick}
       >
         <Tooltip title="notification">
-          <Badge badgeContent={unreadCount} max={5} color="error">
+          <Badge badgeContent={unreadCount} max={4} color="error">
             <FiBell />
           </Badge>
         </Tooltip>
@@ -143,9 +150,10 @@ export default function NotificationButton() {
         }}
       >
         <Box px={2}>
-          {isDeleted && <Alert severity="error">{isDeleted}</Alert>}
+          <Typography gutterBottom color={'text.secondary'} sx={{textDecoration: 'underline'}} fontWeight={600} variant="body1">Notifications</Typography>
+          {/* {isDeleted && <Alert severity="error">{isDeleted}</Alert>} */}
         </Box>
-        {notifications.map((notification, index) => {
+        {notifications?.slice(0,5)?.map((notification, index) => {
           return (
             <Box
               width={240}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { addDoc, onSnapshot, collection, where, query } from "firebase/firestore";
 import { Snackbar, Alert } from "@mui/material";
 import { db, auth } from "@/firebase.config";
+import { sendEmail } from "@/util/sendEmail";
 
 export default function NotificationAlert() {
   const [notification, setNotification] = useState(null);
@@ -44,13 +45,13 @@ export default function NotificationAlert() {
     let message;
     switch (status) {
       case "pending":
-        message = "Your booking was send successfully";
+        message = "Your booking was saved successfully. You will receive an email once booking status is updated";
         break;
       case "rejected":
         message = "Your booking has been Cancelled.";
         break;
       case "completed":
-        message = "Your booking has been completed.";
+        message = "Your booking has been approved for survey.";
         break;
       default:
         return; // Ignore other statuses
@@ -74,6 +75,7 @@ export default function NotificationAlert() {
     try {
       const notificationsRef = collection(db, "notifications");
       await addDoc(notificationsRef, notification);
+      await sendEmail(notification?.email, notification?.message)
     } catch (error) {
       console.error("Error saving notification:", error);
     }

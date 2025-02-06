@@ -12,6 +12,9 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
   const isExtraMobileScreen = useMediaQuery("(max-width:446px)");
   const router = useRouter()
 
+  
+  
+
 
   return (
     <Box width={"100%"}>
@@ -24,6 +27,7 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
         </Stack>
       ):(
         <Stack direction={"row"} gap={1} alignItems={'center'}>
+
 
         <Button
           color="secondary"
