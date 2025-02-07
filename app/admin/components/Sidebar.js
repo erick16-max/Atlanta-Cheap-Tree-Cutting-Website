@@ -18,6 +18,7 @@ import { GrOverview } from "react-icons/gr";
 import { MdOutlineSettings, MdOutlineLibraryBooks } from "react-icons/md";
 import { TbSpeakerphone } from "react-icons/tb";
 import { LuUsers } from "react-icons/lu";
+import AppContext from "@/context/AppContext";
 
 const menuList = [
   {
@@ -51,6 +52,7 @@ export default function Sidebar() {
   const isAdminPath = pathName.startsWith("/admin");
   const theme = useTheme();
     const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
+    const {userProfile} = useContext(AppContext)
 
   return (
     <Box width={"100%"} display={"flex"} flexDirection={"column"}>
@@ -65,6 +67,7 @@ export default function Sidebar() {
               href={item.path}
               style={{
                 textDecoration: "none",
+                display: userProfile?.isSuperAdmin === true ? "block" : 'none'
               }}
             >
               <ListItem sx={{ px: 0 }}>
