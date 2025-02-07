@@ -48,6 +48,8 @@ export const AppContextProvider = ({ children }) => {
   const [bookings, setBookings] = useState([]);
   const [bookingObj, setBookingObj] = useState({})
   const [userObj, setUserObj] = useState({})
+  const [error, setError] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   
 
@@ -153,7 +155,9 @@ export const AppContextProvider = ({ children }) => {
     bookings, setBookings,
     openUpdate, setOpenUpdate,
     bookingObj, setBookingObj,
-    userObj, setUserObj
+    userObj, setUserObj,
+    error, setError,
+    success, setSuccess
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

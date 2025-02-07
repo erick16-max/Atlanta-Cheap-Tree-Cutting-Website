@@ -139,6 +139,28 @@ export const updateUserStatus = async (userId, email, newStatus, setUsersTableDa
   }
 };
 
+export const updateUserInfo = async (userId, displayName, email, phoneNumber) => {
+  try {
+    // Update Firestore users collection
+    const userRef = doc(db, "users", userId);
+    const userSnap = await getDoc(userRef);
 
+    let updateData = { displayName, phoneNumber };
+
+    // If secondary email does not exist, create it
+    if (!userSnap.exists() || !userSnap.data().secondaryEmail) {
+      updateData.secondaryEmail = email;
+    }
+
+    // Update Firestore users collection
+    await updateDoc(userRef, updateData);
+
+    console.log("User updated successfully!");
+    return "success";
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return { success: false, error: error.message };
+  }
+};
 
 

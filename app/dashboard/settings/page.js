@@ -13,7 +13,7 @@ import UserProfileCard from "./components/UserProfileCard";
 import Footer from "@/components/footer/Footer";
 
 export default function page() {
-  const { user } = useContext(AppContext);
+  const { user, isUserProfile, isUser} = useContext(AppContext);
   const router = useRouter();
   const [loading, setLoading] = React.useState(true);
   const theme = useTheme();
@@ -21,14 +21,17 @@ export default function page() {
 
   React.useEffect(() => {
     setLoading(false);
-  }, []);
+    if(!isUser && user !== null){
+      router.push('/')
+    }
+  }, [user]);
 
-  const isUser =
-    user !== null && user && Object?.keys(user).length > 0 ? true : false;
+
 
   if (loading || user === null) {
     return <PageLoader />;
   }
+  
 
   return (
     <Box

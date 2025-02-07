@@ -10,13 +10,21 @@ import {
   Divider,
   Button,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
+import ResetPasswordDialog from "./ResetPasswordDialog";
+import { signOutUser } from "@/firebase/Firebase";
+import UpdateUserInfoModal from "./UpdateUserInfoModal";
 
 export default function UserProfileCard() {
   const { user, isUser, isUserProfile, userProfile } = useContext(AppContext);
   const { isMobile, isExtraMobile } = useContext(ColorModeContext);
+  const [open, setOpen] = React.useState(false);
+  const [openUpdate, setOpenUpdate] = React.useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [error, setError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const topText = user?.displayName || user?.email || "";
   const topTextProfile = userProfile?.displayName || userProfile?.email || "";
@@ -90,6 +98,9 @@ export default function UserProfileCard() {
             <Typography variant="body1" gutterBottom textAlign={"center"}>
               <strong>Email:</strong> {userProfile?.email}
             </Typography>
+           { userProfile?.secondaryEmail && <Typography variant="body1" gutterBottom textAlign={"center"}>
+              <strong>Secondary Email:</strong> {userProfile?.secondaryEmail}
+            </Typography>}
             <Typography variant="body1" gutterBottom textAlign={"center"}>
               <strong>Phone Number:</strong> {userProfile?.phoneNumber}
             </Typography>
@@ -98,8 +109,11 @@ export default function UserProfileCard() {
               sx={{
                 maxWidth: 140,
                 fontWeight: 600,
+                textTransform: "none",
               }}
               icon={<FaEdit />}
+              component={Button}
+              onClick={() => setOpenUpdate(true)}
             />
           </Stack>
         </Card>
@@ -121,8 +135,8 @@ export default function UserProfileCard() {
               fontWeight: 600,
               mt: 2,
               px: 3,
-
             }}
+            onClick={() => setOpen(true)}
           >
             Reset Password
           </Button>
@@ -137,11 +151,14 @@ export default function UserProfileCard() {
               mt: 1,
               px: 3,
             }}
+            onClick={signOutUser}
           >
             Logout
           </Button>
         </Box>
-       
+        <ResetPasswordDialog open={open} setOpen={setOpen} />
+
+        <UpdateUserInfoModal open={openUpdate} setOpen={setOpenUpdate} />
       </Card>
     </Box>
   );

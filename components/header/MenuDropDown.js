@@ -7,11 +7,14 @@ import { LuLogOut, LuLayoutDashboard } from "react-icons/lu";
 import { IoSettingsOutline } from "react-icons/io5";
 import { signOutUser } from '@/firebase/Firebase';
 import { useRouter } from 'next/navigation';
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import AppContext from '@/context/AppContext';
 
 
 export default function MenuDropDown({
     anchorEl, setAnchorEl, handleClick
 }) {
+    const {userProfile} = React.useContext(AppContext)
 
     const router = useRouter()
 
@@ -44,6 +47,20 @@ export default function MenuDropDown({
         >
             <Box width={180}>
 
+               {
+                userProfile?.isAdmin === true && (
+                    <MenuItem onClick={() => {
+                        router.push('/admin')
+                        handleClose()
+                    }}>
+                        <ListItemIcon>
+                            <MdOutlineAdminPanelSettings fontSize="small" />
+                        </ListItemIcon>
+                        <Typography variant="inherit">Admin Console</Typography>
+                    </MenuItem>
+                )
+               }
+
                 <MenuItem onClick={() => {
                     router.push('/dashboard')
                     handleClose()
@@ -51,7 +68,9 @@ export default function MenuDropDown({
                     <ListItemIcon>
                         <LuLayoutDashboard fontSize="small" />
                     </ListItemIcon>
-                    <Typography variant="inherit">Dashboard</Typography>
+                    <Typography variant="inherit">
+                        {  userProfile?.isAdmin === true ? 'User Dashboard' : "Dashboard"}
+                    </Typography>
                 </MenuItem>
                
                 <MenuItem onClick={() => {
