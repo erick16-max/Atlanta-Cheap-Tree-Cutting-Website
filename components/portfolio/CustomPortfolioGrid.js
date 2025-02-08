@@ -1,11 +1,27 @@
-import React from "react";
-import { Grid, Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import React, { useContext, useEffect } from "react";
+import { Grid, Box, Typography, useMediaQuery, useTheme, IconButton } from "@mui/material";
 import Image from "next/image";
+import AppContext from "@/context/AppContext";
+import { GetAllPortfolio } from "@/firebase/Content";
+import { MdDelete } from "react-icons/md";
 
-const CustomPortfolioGrid = ({ images }) => {
+
+
+const CustomPortfolioGrid = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const {portfolioData: images, setPortfolioData, userProfile} = useContext(AppContext)
+
+    useEffect(() => {
+      const fetchPortfolio = async() => {
+        const response = await GetAllPortfolio()
+        setPortfolioData(response)
+      }
+      fetchPortfolio()
+    }, [])
+
 
   return (
     <Grid container spacing={1} mt={3}>
@@ -21,8 +37,8 @@ const CustomPortfolioGrid = ({ images }) => {
           }}
         >
           <Image
-            src={images[0].src}
-            alt={images[0].title}
+            src={images[0]?.images[0]}
+            alt={images[0]?.title}
             layout="fill"
             objectFit="cover"
             priority
@@ -50,11 +66,18 @@ const CustomPortfolioGrid = ({ images }) => {
               color: "white",
               padding: 1,
               textAlign: "center",
+              display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: 2,
             }}
           >
             <Typography variant="h5" fontWeight={700} component="h3">
-              {images[0].title}
+              {images[0]?.title}
             </Typography>
+            <IconButton >
+                    <MdDelete color="#f5f5f5" fontSize={20}/>
+                  </IconButton>
           </Box>
         </Box>
       </Grid>
@@ -79,7 +102,7 @@ const CustomPortfolioGrid = ({ images }) => {
                 }}
               >
                 <Image
-                  src={image.src}
+                  src={image.images[0]}
                   alt={image.title}
                   layout="fill"
                   objectFit="cover"
@@ -109,6 +132,11 @@ const CustomPortfolioGrid = ({ images }) => {
                     color: "white",
                     padding: 1,
                     textAlign: "center",
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: 2,
+                    
                   }}
                 >
                   <Typography
@@ -119,6 +147,13 @@ const CustomPortfolioGrid = ({ images }) => {
                   >
                     {image.title}
                   </Typography>
+                 {
+                  userProfile?.isAdmin && (
+                    <IconButton >
+                    <MdDelete color="#f5f5f5" fontSize={20}/>
+                  </IconButton>
+                  )
+                 }
                 </Box>
               </Box>
             </Grid>

@@ -18,6 +18,7 @@ import { GrOverview } from "react-icons/gr";
 import { MdOutlineSettings, MdOutlineLibraryBooks } from "react-icons/md";
 import { TbSpeakerphone } from "react-icons/tb";
 import { LuUsers } from "react-icons/lu";
+import { BiBookContent } from "react-icons/bi";
 import AppContext from "@/context/AppContext";
 
 const menuList = [
@@ -35,6 +36,11 @@ const menuList = [
     title: "Feedbacks & Messages",
     icon: <TbSpeakerphone fontSize={20} />,
     path: "/admin/alerts",
+  },
+  {
+    title: "Content",
+    icon: <BiBookContent fontSize={20} />,
+    path: "/admin/content",
   },
   {
     title: "Users",

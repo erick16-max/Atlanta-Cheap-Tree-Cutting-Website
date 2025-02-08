@@ -53,6 +53,7 @@ export const AppContextProvider = ({ children }) => {
   const [success, setSuccess] = useState(false)
 
   const [feedbackTableData, setFeedbackTableData] = useState([])
+  const [portfolioData, setPortfolioData] = useState([])
 
   
 
@@ -162,7 +163,8 @@ export const AppContextProvider = ({ children }) => {
     error, setError,
     success, setSuccess,
     feedbackTableData, setFeedbackTableData,
-    alertObj, setAlertObj
+    alertObj, setAlertObj,
+    portfolioData, setPortfolioData
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
