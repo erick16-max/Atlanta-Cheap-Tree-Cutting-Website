@@ -14,7 +14,8 @@ export default function ContactUsForm() {
         phone: "",
         address: "",
         rate: "",
-        message: ""
+        message: "",
+        isApproved: false,
       }
       const [phoneNumber, setPhoneNumber] = useState("")
       const [loading, setLoading] = useState(false)
@@ -34,6 +35,7 @@ export default function ContactUsForm() {
           if(response === "success"){
             setSuccess(`${value} submitted successfully!`)
             setData(initialData)
+            setPhoneNumber("")
           }else{
             setError("Something went wrong -- try again!")
           }

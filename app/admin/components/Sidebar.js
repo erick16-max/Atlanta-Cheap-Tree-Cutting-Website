@@ -31,11 +31,11 @@ const menuList = [
     icon: <MdOutlineLibraryBooks fontSize={20} />,
     path: "/admin/bookings",
   },
-  // {
-  //   title: "Alerts",
-  //   icon: <TbSpeakerphone fontSize={20} />,
-  //   path: "/admin/alerts",
-  // },
+  {
+    title: "Feedbacks & Messages",
+    icon: <TbSpeakerphone fontSize={20} />,
+    path: "/admin/alerts",
+  },
   {
     title: "Users",
     icon: <LuUsers fontSize={20} />,

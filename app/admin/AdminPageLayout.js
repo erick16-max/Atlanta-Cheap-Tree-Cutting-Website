@@ -32,9 +32,6 @@ export default function AdminPageLayout({children}) {
      
     }, [userProfile]);
 
-    console.log(userProfile?.isAdmin)
-
-
   
     if (loading || user === null) {
       return <PageLoader />;

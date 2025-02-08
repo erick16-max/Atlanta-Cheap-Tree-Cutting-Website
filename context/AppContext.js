@@ -48,8 +48,11 @@ export const AppContextProvider = ({ children }) => {
   const [bookings, setBookings] = useState([]);
   const [bookingObj, setBookingObj] = useState({})
   const [userObj, setUserObj] = useState({})
+  const [alertObj, setAlertObj] = useState({})
   const [error, setError] = useState(false)
   const [success, setSuccess] = useState(false)
+
+  const [feedbackTableData, setFeedbackTableData] = useState([])
 
   
 
@@ -157,7 +160,9 @@ export const AppContextProvider = ({ children }) => {
     bookingObj, setBookingObj,
     userObj, setUserObj,
     error, setError,
-    success, setSuccess
+    success, setSuccess,
+    feedbackTableData, setFeedbackTableData,
+    alertObj, setAlertObj
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;

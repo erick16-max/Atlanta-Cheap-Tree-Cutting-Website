@@ -1,8 +1,13 @@
+"use client"
+
 import React from 'react'
 import AdminPageLayout from '../AdminPageLayout'
+import AdminAlertCard from './components/AlertTableCard'
 
 export default function page() {
   return (
-    <AdminPageLayout>admin alerts page</AdminPageLayout>
+    <AdminPageLayout>
+      <AdminAlertCard />
+    </AdminPageLayout>
   )
 }

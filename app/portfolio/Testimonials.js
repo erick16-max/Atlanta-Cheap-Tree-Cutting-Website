@@ -1,3 +1,4 @@
+import { fetchApprovedMessages } from "@/firebase/Feedbacks";
 import {
   Avatar,
   Box,
@@ -7,9 +8,17 @@ import {
   Typography,
   Rating,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Testimonials() {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const fetchMessages = async() => {
+      const response = await fetchApprovedMessages()
+      setData(response)
+    }
+    fetchMessages()
+  }, [])
   const testimonialList = [
     {
       name: "Sarah M., Homeowner",
@@ -27,6 +36,8 @@ export default function Testimonials() {
       rate: 3.9,
     },
   ];
+
+  console.log(data)
   return (
     <Card
       //   variant="outlined"
@@ -49,7 +60,7 @@ export default function Testimonials() {
         </Typography>
       </Stack>
       <Grid container spacing={3}>
-        {testimonialList.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
               <Card
@@ -71,7 +82,7 @@ export default function Testimonials() {
                       fontWeight: 600,
                     }}
                   >
-                    {item.name.charAt(0)}
+                    {item?.fullname?.charAt(0)}
                   </Avatar>
                   <Typography
                     variant="body1"
@@ -79,7 +90,7 @@ export default function Testimonials() {
                     fontWeight={600}
                     gutterBottom
                   >
-                   - {item.name}
+                   - {item?.fullname}
                   </Typography>
                   <Typography
                     variant="body2"
@@ -87,9 +98,9 @@ export default function Testimonials() {
                     fontWeight={400}
                     gutterBottom
                   >
-                    {item.body}
+                    {item.message}
                   </Typography>
-                  <Rating name={item.name} value={item.rate} />
+                  <Rating name={item.fullname} value={item.rate} />
                 </Stack>
               </Card>
             </Grid>
