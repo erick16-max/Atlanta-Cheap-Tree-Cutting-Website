@@ -20,7 +20,6 @@ export default function page() {
       fetchPortfolio()
     }, [])
   
-    console.log(portfolioData)
   return (
     <Box
         display={'flex'}

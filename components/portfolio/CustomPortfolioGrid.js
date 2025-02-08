@@ -75,9 +75,13 @@ const CustomPortfolioGrid = () => {
             <Typography variant="h5" fontWeight={700} component="h3">
               {images[0]?.title}
             </Typography>
-            <IconButton >
+            {
+                  userProfile?.isAdmin === true && (
+                    <IconButton >
                     <MdDelete color="#f5f5f5" fontSize={20}/>
                   </IconButton>
+                  )
+                 }
           </Box>
         </Box>
       </Grid>
@@ -148,7 +152,7 @@ const CustomPortfolioGrid = () => {
                     {image.title}
                   </Typography>
                  {
-                  userProfile?.isAdmin && (
+                  userProfile?.isAdmin === true && (
                     <IconButton >
                     <MdDelete color="#f5f5f5" fontSize={20}/>
                   </IconButton>

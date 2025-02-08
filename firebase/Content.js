@@ -20,10 +20,9 @@ export const GetAllPortfolio = async (email) => {
         ...doc.data(), // Spread the document data
       }));
 
-  
       return messages;
     } catch (error) {
-      console.error("Error fetching bookings:", error);
+      console.error("Error fetching portfolio:", error);
       return [];
     }
   };
