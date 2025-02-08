@@ -1,9 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import { Grid, Box, Typography, useMediaQuery, useTheme, IconButton } from "@mui/material";
+import { Grid, Box, Typography, useMediaQuery, useTheme, IconButton, Button } from "@mui/material";
 import Image from "next/image";
 import AppContext from "@/context/AppContext";
 import { GetAllPortfolio } from "@/firebase/Content";
 import { MdDelete } from "react-icons/md";
+
+import { db } from "@/firebase.config";
+import { deleteDoc, doc, } from "firebase/firestore";
 
 
 
@@ -21,6 +24,20 @@ const CustomPortfolioGrid = () => {
       }
       fetchPortfolio()
     }, [])
+
+
+    const handleDelete = async (id) => {
+      try {
+        const docRef = doc(db, "portfolio", id);
+        await deleteDoc(docRef);
+        setPortfolioData((prevData) => prevData.filter((item) => item.id !== id));
+        alert("Portfolio item deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting portfolio: ", error);
+        alert("Failed to delete the portfolio item.");
+      }
+    };
+
 
 
   return (
@@ -77,7 +94,7 @@ const CustomPortfolioGrid = () => {
             </Typography>
             {
                   userProfile?.isAdmin === true && (
-                    <IconButton >
+                    <IconButton onClick={() => handleDelete(images[0]?.id)}>
                     <MdDelete color="#f5f5f5" fontSize={20}/>
                   </IconButton>
                   )
@@ -153,7 +170,7 @@ const CustomPortfolioGrid = () => {
                   </Typography>
                  {
                   userProfile?.isAdmin === true && (
-                    <IconButton >
+                    <IconButton onClick={() => handleDelete(image.id)}>
                     <MdDelete color="#f5f5f5" fontSize={20}/>
                   </IconButton>
                   )

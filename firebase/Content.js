@@ -26,3 +26,25 @@ export const GetAllPortfolio = async (email) => {
       return [];
     }
   };
+
+
+
+  export const handleDeleteContent = async (id, collectionName) => {
+    try {
+      // Get a reference to the specific document in the portfolio collection
+      const docRef = doc(db, collectionName, id);
+  
+      // Delete the document
+      await deleteDoc(docRef);
+      
+      // Optionally, remove the deleted item from local state
+      setPortfolioData((prevData) => prevData.filter((item) => item.id !== id));
+
+      return "success"
+      
+    } catch (error) {
+      console.error("Error deleting portfolio: ", error);
+      return error
+    }
+  };
+  
