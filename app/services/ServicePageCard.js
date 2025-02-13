@@ -10,16 +10,16 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import React, { useContext } from "react";
-import TreePrunningIcon from "../../public/services/treeprunning.png";
-import TreeCuttingIcon from "../../public/services/treecuttingtwo.png";
-import TreeRemovingIcon from "../../public/services/treeremoving.png";
-import TreeTrimmingIcon from "../../public/services/treetrimming.png";
-import YardCleaningIcon from "../../public/services/sweeping.png";
+
 import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import ColorModeContext from "@/theme/CustomThemeProvider";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/navigation";
-
+import TreePrunningIcon from  '../../public/services/treeprunningai.webp'
+import TreeCuttingIcon from  '../../public/services/treecuttingai.webp'
+import TreeRemovingIcon from  '../../public/services/treeremovalai.webp'
+import TreeTrimmingIcon from  '../../public/services/treetrimmingai.webp'
+import YardCleaningIcon from  '../../public/services/yardcleanup.webp'
 export default function ServicePageCard() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -92,9 +92,9 @@ export default function ServicePageCard() {
                 justifyContent={"center"}
                 alignItems={"center"}
                 sx={{
-                  width: "100%",
+                  width: 200,
                   height: isTablet ? 200 : "100%",
-                  backgroundColor: "#f5f5f5",
+                  backgroundColor: "#fff",
                   borderRadius: "12px",
                   display: "flex",
                   flexDirection: "column",
@@ -105,8 +105,9 @@ export default function ServicePageCard() {
                 <Image
                   src={icon.src}
                   alt={icon.title}
-                  width={120}
-                  height={120}
+                  width={200}
+                  height={160}
+                  style={{borderRadius: '12px'}}
                 />
               </Box>
             </Grid>
