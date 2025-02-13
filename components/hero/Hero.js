@@ -88,7 +88,7 @@ const HeroSection = () => {
                       fontWeight: 700,
                     }}
                   >
-                    Your Trusted Family-Owned Tree Service
+                   Your Trusted, Licensed & Insured Family-Owned Tree Service
                   </Typography>
                   <Typography
                     sx={{

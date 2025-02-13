@@ -10,7 +10,7 @@ export default function WhyUs() {
   const whyUsList = [
     {
       image: HandsImage,
-      title: "Family-Owned & Operated",
+      title: "Licensed, Insured & Family-Owned",
       info: "As a family business, we value the relationships we build with our customers and strive to provide personalized service.",
     },
     {

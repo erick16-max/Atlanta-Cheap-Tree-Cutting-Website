@@ -8,6 +8,9 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FcSms } from "react-icons/fc";
 import { FcCallback } from "react-icons/fc";
 
+
+
+
 export default function CustomSupportButton() {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -31,7 +34,7 @@ export default function CustomSupportButton() {
             bottom: 16,
             right: 16,
             zIndex: 1000,
-            width: 120,
+            width: 160,
             height: 48,
             borderRadius: 4,
             display: 'flex',
@@ -41,8 +44,10 @@ export default function CustomSupportButton() {
             backgroundColor: 'primary.dark',
             textTransform: 'none',
           }}
+          
         >
-            Contact Us
+         
+            Get Free Quote
           {Boolean(anchorEl) ? (
             <IoMdArrowDropup style={{ marginLeft: 8, color: '#f5f5f5' }} size={16} />
           ) : (

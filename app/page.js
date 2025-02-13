@@ -17,6 +17,7 @@ import OnlineStatusModal from "@/components/general/OnlineStatusModal";
 import WhyUs from "@/components/whyus/WhyUs";
 import Footer from "@/components/footer/Footer";
 import BookingModal from "./booking/components/BookingModal";
+import Location from "@/components/location/Location";
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
@@ -79,6 +80,7 @@ export default function Home() {
          <AboutUs />
          <Services />
          <WhyUs />
+         <Location />
      </Stack>
          <Footer />
          <FinishAccountModal />

@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import NotificationButton from "./NotificationButton";
 import BookAppBarBtn from "../general/BookAppBarBtn";
+import { FaPhoneVolume } from "react-icons/fa";
 
 export default function UserAccount({isTablet, setOpenDrawer, user}) {
   const theme = useTheme()
@@ -29,7 +30,7 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
         <Stack direction={"row"} gap={1} alignItems={'center'}>
 
 
-        <Button
+        {/* <Button
           color="secondary"
           sx={{
             borderRadius: "12px",
@@ -55,6 +56,21 @@ export default function UserAccount({isTablet, setOpenDrawer, user}) {
 
         >
           Sign Up
+        </Button> */}
+        <Button
+          variant="contained"
+          sx={{
+            borderRadius: "12px",
+            px: isExtraMobileScreen ? 1 : 3,
+            py: 1,
+            textTransform: "none",
+            fontWeight: 600,
+          }}
+          onClick={() => router.push("/contactus")}
+          startIcon={<FaPhoneVolume />}
+
+        >
+          Get Free Qoute
         </Button>
       
       </Stack>

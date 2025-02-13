@@ -6,6 +6,7 @@ import { BsClockHistory } from "react-icons/bs";
 import { MdMiscellaneousServices } from "react-icons/md";
 import { MdOutlineContactPage } from "react-icons/md";
 import { RiContactsLine } from "react-icons/ri";
+import GoogleMapEmbed from "@/components/about/GoogleMap";
 
 
 
@@ -102,6 +103,7 @@ export default function AboutUsCard() {
           a homeowner, business owner, or property manager, we are here to
           provide the solutions you need.
         </Typography>
+        <GoogleMapEmbed />
       </Stack>
       <Stack width={"100%"} gap={2}>
         <Box width={"100%"} display={"flex"} alignItems={"center"} gap={1}>

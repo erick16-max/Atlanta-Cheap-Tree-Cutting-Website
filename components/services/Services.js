@@ -15,11 +15,11 @@ import { FcSupport } from "react-icons/fc";
 import { FcFullTrash } from "react-icons/fc";
 import { FcFeedIn } from "react-icons/fc";
 
-import TreePrunningIcon from  '../../public/services/treeprunning.png'
-import TreeCuttingIcon from  '../../public/services/treecuttingtwo.png'
-import TreeRemovingIcon from  '../../public/services/treeremoving.png'
-import TreeTrimmingIcon from  '../../public/services/treetrimming.png'
-import YardCleaningIcon from  '../../public/services/sweeping.png'
+import TreePrunningIcon from  '../../public/services/treeprunningai.webp'
+import TreeCuttingIcon from  '../../public/services/treecuttingai.webp'
+import TreeRemovingIcon from  '../../public/services/treeremovalai.webp'
+import TreeTrimmingIcon from  '../../public/services/treetrimmingai.webp'
+import YardCleaningIcon from  '../../public/services/yardcleanup.webp'
 import Link from 'next/link'
 
 export default function Services() {

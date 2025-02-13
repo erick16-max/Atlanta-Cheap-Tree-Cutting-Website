@@ -43,8 +43,11 @@ const ServiceCard = ({ images }) => {
                  <Image 
                 src={images[0].src}
                 alt={images[0].title}
-                width={50}
-                height={50}
+                width= {isSmallScreen ? 100 : 150}
+                height={ isSmallScreen ? 100 : 150}
+                style={{
+                  borderRadius: isSmallScreen ? 50 : 75
+                }}
               />
             </Box>
             <Typography
@@ -97,8 +100,11 @@ const ServiceCard = ({ images }) => {
               <Image 
                 src={image.src}
                 alt={image.title}
-                width={50}
-                height={50}
+                width={100}
+                height={100}
+                style={{
+                  borderRadius: 50
+                }}
               />
             </Box>
             <Typography

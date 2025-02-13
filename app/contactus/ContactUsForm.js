@@ -83,7 +83,7 @@ export default function ContactUsForm() {
             fontSize: 14,
           }}
         >
-          Leave some feedback or message us
+          Write to us to get a free quote or leave some feedback 
         </span>
       </Stack>
           <Stack component={'form'} onSubmit={handleSubmit} width={'100%'} gap={3}>

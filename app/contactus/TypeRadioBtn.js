@@ -24,7 +24,7 @@ export default function TypeRadioBtn({value, setValue}) {
         onChange={handleChange}
         row
       >
-        <FormControlLabel value={alertList.MESSAGE} control={<Radio size='small'/>} label={alertList.MESSAGE} />
+        <FormControlLabel value={alertList.MESSAGE} control={<Radio size='small'/>} label={"Get Free Quote"} />
         <FormControlLabel value={alertList.FEEDBACK} control={<Radio size='small'/>} label={alertList.FEEDBACK} />
       </RadioGroup>
     </FormControl>
