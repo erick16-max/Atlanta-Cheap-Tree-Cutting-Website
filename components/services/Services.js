@@ -37,7 +37,7 @@ const icons = [
     { src: TreePrunningIcon, title: "Tree Pruning" },
     { src: TreeTrimmingIcon, title: "Tree Trimming" },
     { src: TreeRemovingIcon, title: "Tree Removal" },
-    { src: YardCleaningIcon, title: "Yard Cleanup" },
+    { src: YardCleaningIcon, title: "Yard Clearing & Afterstorm Cleanup" },
 ]
 
   return (
