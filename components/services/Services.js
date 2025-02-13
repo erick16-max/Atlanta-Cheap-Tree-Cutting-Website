@@ -72,7 +72,7 @@ const icons = [
             </Typography>
         </Stack>
 
-            <ServiceCard images={icons} />
+            <ServiceImageGrid images={icons} />
             <Button
                 variant='contained'
                 sx={{

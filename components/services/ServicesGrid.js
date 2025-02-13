@@ -61,7 +61,7 @@ const ServiceImageGrid = ({ images }) => {
 
       {/* Remaining images: grid layout */}
       <Grid item xs={12} md={6}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} >
           {images.slice(1, 5).map((image, index) => (
             <Grid
               item
