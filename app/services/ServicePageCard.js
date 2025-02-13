@@ -51,7 +51,7 @@ export default function ServicePageCard() {
     },
     {
       src: YardCleaningIcon,
-      title: "Yard Cleanup",
+      title: "Yard Clearing & Afterstorm Cleanup",
       info: "We provide thorough yard cleaning services to leave your outdoor space spotless and well-maintained. From leaf removal to debris clearing, we help you reclaim a clean and inviting yard for relaxation or further landscaping.",
     },
   ];
