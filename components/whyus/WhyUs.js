@@ -50,7 +50,7 @@ export default function WhyUs() {
                   boxShadow: 0,
                   height: 300,
                   width: "100%",
-                  backgroundColor: "rgba(170, 140, 44, 0.1)",
+                  backgroundColor: "rgba(244, 67, 54, 1)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -62,7 +62,7 @@ export default function WhyUs() {
                 <Image src={item.image} alt="holding" width={100} />
                 <Typography
                   variant="h6"
-                  color={"text.primary"}
+                  color={"#ffffff"}
                   fontWeight={600}
                   textAlign={"center"}
                 >
@@ -70,7 +70,7 @@ export default function WhyUs() {
                 </Typography>
                 <Typography
                   variant="body1"
-                  color={"text.secondary"}
+                  color={"#f5f5f5"}
                   fontWeight={400}
                   textAlign={"center"}
                 >
