@@ -25,7 +25,7 @@ import PortfolioImageNine from "../../public/portfolio/portfolio9.jpg";
 import CustomPortfolioGrid from "@/components/portfolio/CustomPortfolioGrid";
 import Testimonials from "./Testimonials";
 
-const portfolioItems = [
+export const portfolioItems = [
   { type: "image", src: PortfolioImageOne, title: "Project 1" },
   { type: "image", src: PortfolioImageTwo, title: "Project 2" },
   { type: "image", src: PortfolioImageThree, title: "Project 3" },

@@ -1,7 +1,7 @@
 "use client"
 import React, { useContext } from "react";
 import CustomAppBar from "@/components/header/CustomAppBar";
-import { Box, Card, Stack, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Card, Stack, useMediaQuery, useTheme, Typography } from "@mui/material";
 import Image from "next/image";
 import HeroSection from "@/components/hero/Hero";
 import TopBar from "@/components/header/TopBar";
@@ -18,6 +18,11 @@ import WhyUs from "@/components/whyus/WhyUs";
 import Footer from "@/components/footer/Footer";
 import BookingModal from "./booking/components/BookingModal";
 import Location from "@/components/location/Location";
+import Testimonials from "./portfolio/Testimonials";
+import { portfolioItems } from "./portfolio/page";
+import CustomPortfolioGrid from "@/components/portfolio/CustomPortfolioGrid";
+import ContactUsForm from "./contactus/ContactUsForm";
+
 
 export default function Home() {
   const [navBg, setNavBg] = React.useState(false);
@@ -80,7 +85,20 @@ export default function Home() {
          <AboutUs />
          <Services />
          <WhyUs />
+         <Typography
+            variant="h5"
+            color={"text.primary"}
+            fontWeight={600}
+            gutterBottom
+            my={1}
+          >
+            View Our Portfolio
+          </Typography>
+          {/* <PortfolioGrid /> */}
+          <CustomPortfolioGrid images={portfolioItems} />
+         <Testimonials />
          <Location />
+         <ContactUsForm />
      </Stack>
          <Footer />
          <FinishAccountModal />
