@@ -16,6 +16,13 @@ import { amber } from '@mui/material/colors';
 export default function BackTopButton() {
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Add smooth scrolling behavior
+    });
+  };
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -28,9 +35,9 @@ export default function BackTopButton() {
     <>
       <Tooltip title="back to top" arrow>
         <Fab
-          color="primary"
+          color="secondary"
           aria-label="chat"
-          onClick={handleClick}
+          onClick={scrollToTop}
           sx={{
             position: 'fixed',
             bottom: 70,
@@ -43,7 +50,6 @@ export default function BackTopButton() {
             justifyContent: 'center',
             alignItems: 'center',
             fontSize: '14px',
-            backgroundColor: amber[800],
             textTransform: 'none',
           }}
           

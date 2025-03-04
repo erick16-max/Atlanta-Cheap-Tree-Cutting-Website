@@ -39,14 +39,14 @@ export default function AcceptedPayments() {
                     <Image 
 
                         src={DerivLogoImage}
-                        height={isMobile ? 40 : 100}
+                        height={100}
                         alt='deriv logo'
                         
                     />
                     <Image 
 
                         src={MpesaLogoImage}
-                        height={isMobile ? 50 : 100}
+                        height={ 100}
                         style={{marginTop: 25}}
                         alt='mpesa logo'
                         
