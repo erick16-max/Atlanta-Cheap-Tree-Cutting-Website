@@ -6,11 +6,16 @@ import ColorModeContext from '@/theme/CustomThemeProvider'
 import CallUsButton from '../general/CallUsButton'
 import { usePathname } from 'next/navigation'
 import CustomSupportButton from '../general/CustomSupportButton'
+import BackTopButton from '../general/BackTopButton'
+import AppContext from '@/context/AppContext'
 
 export default function Footer() {
   const {isSmallScreen} = useContext(ColorModeContext)
+  const {navBg} = useContext(AppContext)
   const pathname = usePathname()
   const isAdminPath = pathname.startsWith("/admin")
+
+
   return (
     <Box
         width={'100%'}
@@ -23,6 +28,7 @@ export default function Footer() {
 
         </Box>
         <CopyRight />
+      {navBg && <BackTopButton />}
        {!isAdminPath &&  <CustomSupportButton />}
     </Box>
   )

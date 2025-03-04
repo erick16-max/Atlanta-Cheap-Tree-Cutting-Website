@@ -22,14 +22,15 @@ import Testimonials from "./portfolio/Testimonials";
 import { portfolioItems } from "./portfolio/page";
 import CustomPortfolioGrid from "@/components/portfolio/CustomPortfolioGrid";
 import ContactUsForm from "./contactus/ContactUsForm";
+import AcceptedPayments from "@/components/payments/AcceptedPayments";
 
 
 export default function Home() {
-  const [navBg, setNavBg] = React.useState(false);
+ 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [loading,setLoading]  = React.useState(true)
-  const {user, isUserProfile, successAlert, setSuccessAlert} = useContext(AppContext)
+  const {user, isUserProfile, successAlert, setSuccessAlert, navBg, setNavBg} = useContext(AppContext)
 
   const isOnline = useInternetStatus()
 
@@ -96,6 +97,7 @@ export default function Home() {
           </Typography>
           {/* <PortfolioGrid /> */}
           <CustomPortfolioGrid images={portfolioItems} />
+          <AcceptedPayments />
          <Testimonials />
          <Location />
          <ContactUsForm />

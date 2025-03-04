@@ -55,6 +55,8 @@ export const AppContextProvider = ({ children }) => {
   const [feedbackTableData, setFeedbackTableData] = useState([])
   const [portfolioData, setPortfolioData] = useState([])
 
+   const [navBg, setNavBg] = useState(false);
+
   
 
   const isOnline = useInternetStatus();
@@ -164,7 +166,8 @@ export const AppContextProvider = ({ children }) => {
     success, setSuccess,
     feedbackTableData, setFeedbackTableData,
     alertObj, setAlertObj,
-    portfolioData, setPortfolioData
+    portfolioData, setPortfolioData,
+    navBg, setNavBg
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
