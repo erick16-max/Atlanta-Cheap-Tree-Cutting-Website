@@ -38,7 +38,7 @@ export default function AboutUs() {
           fontWeight={700}
           gutterBottom
         >
-          ESTABLISHED 2014
+          ESTABLISHED 2019
         </Typography>
         <Typography
             variant="body1"
