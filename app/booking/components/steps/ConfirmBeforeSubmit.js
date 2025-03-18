@@ -76,7 +76,7 @@ export default function ConfirmBeforeSubmit() {
         notes,
         surveyDate,
         surveyTime,
-        budget,
+        // budget,
       },
       services: borkingServiceList?.map((item) => item.title),
       status: 'pending',

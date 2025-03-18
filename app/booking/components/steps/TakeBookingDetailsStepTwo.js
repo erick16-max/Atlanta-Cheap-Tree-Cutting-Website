@@ -65,7 +65,7 @@ export default function TakeBookingDetailsStepTwo() {
   
   const { setActiveStep, address, setAddress, budget, notes, setNotes, setBudget, surveyTime, setSurveyTime, surveyDate, setSurveyDate} = useContext(AppContext);
   
-  const isDisabled = !address || !surveyTime || !surveyDate || !budget
+  const isDisabled = !address || !surveyTime || !surveyDate 
   
 
 
@@ -75,7 +75,7 @@ export default function TakeBookingDetailsStepTwo() {
   return (
     <Stack width={"100%"} component={"div"} gap={4}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <CustomTextField
             value={address}
             setValue={setAddress}
@@ -84,7 +84,7 @@ export default function TakeBookingDetailsStepTwo() {
             placeholder={"Enter location"}
           />
         </Grid>
-        <Grid item  xs={12} sm={12} md={6} lg={6}>
+        {/* <Grid item  xs={12} sm={12} md={6} lg={6}>
           <CustomTextField
             value={budget}
             setValue={setBudget}
@@ -92,7 +92,7 @@ export default function TakeBookingDetailsStepTwo() {
             label={"What's your Budget?"}
             placeholder={"Enter amount in USD here.."}
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} sm={12} md={6} lg={6}>
           <DateFieldPicker value={surveyDate} setValue={setSurveyDate} />
         </Grid>

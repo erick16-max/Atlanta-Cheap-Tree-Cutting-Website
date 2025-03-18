@@ -14,6 +14,9 @@ export default function BookingDataTable() {
   
   const {bookings, loading} = useBookings()
 
+  console.log(bookings)
+
+  const cleanedRows = isArray(bookings) && bookings?.length > 0 ? bookings.filter(row => Object.keys(row).length !== 0) : [];
   
 
   return (
@@ -27,7 +30,7 @@ export default function BookingDataTable() {
         >
           <DataGrid
             key={bookings?.length}
-            rows={isArray(bookings) ? bookings : []}
+            rows={cleanedRows}
             columns={bookingsColumns}
             pageSize={10}
             rowsPerPageOptions={[5]}
