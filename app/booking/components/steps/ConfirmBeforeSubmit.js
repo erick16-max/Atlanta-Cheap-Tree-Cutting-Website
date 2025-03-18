@@ -53,7 +53,8 @@ export default function ConfirmBeforeSubmit() {
     fullname, setFullname,
     email, setEmail,
     phoneNumber, setPhoneNumber,
-    isUserProfile
+    isUserProfile,
+    activeLabel, setActiveLabel
   } = useContext(AppContext);
 
   const serviceCount = isArray(borkingServiceList)
@@ -266,7 +267,7 @@ export default function ConfirmBeforeSubmit() {
           <strong> Address:</strong>
           {address}
         </Typography>
-        <Typography
+        {/* <Typography
           variant="body2"
           fontWeight={400}
           color={"text.secondary"}
@@ -280,7 +281,7 @@ export default function ConfirmBeforeSubmit() {
         >
           <strong>Budget Estimate:</strong>
           {usdFormatter.format(budget)}
-        </Typography>
+        </Typography> */}
         <Typography
           variant="body2"
           fontWeight={400}
@@ -312,7 +313,7 @@ export default function ConfirmBeforeSubmit() {
           {surveyTime}
         </Typography>
         <Stack>
-          <Typography variant="body2" fontWeight={400} color={"text.secondary"}>
+          <Typography display={notes ? '' : 'none'} variant="body2" fontWeight={400} color={"text.secondary"}>
             <strong> Additional Notes:</strong>
           </Typography>
           {notes && (

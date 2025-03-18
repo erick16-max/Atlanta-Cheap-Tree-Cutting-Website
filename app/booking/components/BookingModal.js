@@ -99,7 +99,7 @@ export default function BookingModal() {
                 Continue as Guest User
             </Button>
 
-            <CopyRight bgColor='#ffffff' />
+            {/* <CopyRight bgColor='#ffffff' /> */}
           </Card>
         </Box>
     </Modal>

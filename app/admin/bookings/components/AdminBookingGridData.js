@@ -6,11 +6,24 @@ import { GetAllUserBookings } from "@/firebase/Booking";
 import AppContext from "@/context/AppContext";
 import { user } from "@/constants/AppConstants";
 import { Toolbar } from "../../users/components/UsersDataTable";
+import UpdateStatusModal from "./UpdateStatusModal";
+import DeleteDialogModal from "@/app/dashboard/overview/components/bookinggrid/DeleteDialogModal";
+import ViewBookingModal from "./ViewBookingModal";
 
 export default function AdminBookingDataTable() {
   const [loading, setLoading] = useState(false);
-  const { userProfile, bookingTableData, setBookingTableData } =
-    useContext(AppContext);
+  const {
+    userProfile,
+    bookingTableData,
+    setBookingTableData,
+    setOpenUpdate,
+    openUpdate,
+    selectedItemId,
+    openDelete,
+    setOpenDelete,
+    openView,
+    setOpenView
+  } = useContext(AppContext);
 
   const fetchBookings = async () => {
     try {
@@ -38,6 +51,7 @@ export default function AdminBookingDataTable() {
 
             return bookingObj;
           });
+
           setBookingTableData(transformedBookings);
         }
       }
@@ -47,6 +61,9 @@ export default function AdminBookingDataTable() {
       setLoading(false);
     }
   };
+
+  
+
 
   useEffect(() => {
     fetchBookings();
@@ -93,6 +110,14 @@ export default function AdminBookingDataTable() {
           },
         }}
       />
+      <UpdateStatusModal open={openUpdate} setOpen={setOpenUpdate} />
+      <DeleteDialogModal
+        open={openDelete}
+        setOpen={setOpenDelete}
+        bookingId={selectedItemId}
+        type="admin"
+      />
+      <ViewBookingModal open={openView} setOpen={setOpenView} setOpenUpdate={setOpenUpdate}/>
     </Box>
   );
 }

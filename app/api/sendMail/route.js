@@ -12,7 +12,7 @@
       const response = await resend.emails.send({
         from: "Atlanta Cheet Tree Cutting Solutions <onboarding@resend.dev>",
         to: [to],
-        subject: "Atlanta Tree Cutting Booking Updates" ,
+        subject: "Atlanta Tree Cutting Booking Alerts" ,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
             <img src=${imageLogoUrl} alt="Company Logo" style="max-width: 150px; display: block; margin: 0 auto 20px;">

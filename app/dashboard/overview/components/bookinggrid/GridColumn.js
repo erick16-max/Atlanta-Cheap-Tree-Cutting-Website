@@ -26,15 +26,15 @@ export const bookingsColumns = [
       </Typography>
     ),
   },
-  {
-    field: "budget",
-    renderHeader: () => (
-      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
-        Your Budget Estimate
-      </Typography>
-    ),
-    width: 200,
-  },
+  // {
+  //   field: "budget",
+  //   renderHeader: () => (
+  //     <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+  //       Your Budget Estimate
+  //     </Typography>
+  //   ),
+  //   width: 200,
+  // },
   {
     field: "surveyTime",
     renderHeader: () => (

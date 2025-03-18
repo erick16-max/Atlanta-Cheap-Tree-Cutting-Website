@@ -4,6 +4,8 @@ import { BiEditAlt } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
 import AppContext from "@/context/AppContext";
 import { LuView } from "react-icons/lu";
+import { HiOutlineViewGrid } from "react-icons/hi";
+import { timeRanges } from "@/constants/AppConstants";
 
 export default function AdminActionMenu({
   anchorEl,
@@ -12,7 +14,16 @@ export default function AdminActionMenu({
   setOpenDelete,
   setOpenUpdate,
 }) {
-  const {bookings, bookingObj, setBookingObj} = useContext(AppContext)
+  const {
+    bookings,
+    bookingObj,
+    activeLabel,
+    setActiveLabel,
+    setBookingObj,
+    openView,
+    setOpenView,
+    bookingTableData,
+  } = useContext(AppContext);
   // close the action menu component
   const handleClose = () => {
     setAnchorEl(null);
@@ -26,9 +37,23 @@ export default function AdminActionMenu({
   const handleOpenUpdate = () => {
     setAnchorEl(null);
     setOpenUpdate(true);
-    const updateBooking = bookings?.find(booking => booking?.id === id)
-    setBookingObj(updateBooking)
-  }
+    const updateBooking = bookingTableData?.find(
+      (booking) => booking?.id === id
+    );
+    const activeTimeLabelId = timeRanges.find(time => time.name === updateBooking?.surveyTime)?.id
+    setActiveLabel(activeTimeLabelId)
+    setBookingObj(updateBooking);
+  };
+
+
+  const handleOpenView = () => {
+    setAnchorEl(null);
+    setOpenView(true);
+    const updateBooking = bookingTableData?.find(
+      (booking) => booking?.id === id
+    );
+    setBookingObj(updateBooking);
+  };
 
   return (
     <Box width={"100%"}>
@@ -45,9 +70,11 @@ export default function AdminActionMenu({
           },
         }}
       >
-        <MenuItem
-          onClick={handleOpenUpdate}
-        >
+        <MenuItem onClick={handleOpenView}>
+          <HiOutlineViewGrid style={{ fontSize: 18, marginRight: 5 }} />
+          View
+        </MenuItem>
+        <MenuItem onClick={handleOpenUpdate}>
           <BiEditAlt style={{ fontSize: 18, marginRight: 5 }} />
           Update
         </MenuItem>

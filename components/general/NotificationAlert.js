@@ -12,6 +12,7 @@ export default function NotificationAlert() {
     const user = auth.currentUser;
 
     if (!user) return;
+
     // filter users bookings
     const userBookingsRef = query(
         collection(db, "bookings"),
@@ -45,10 +46,10 @@ export default function NotificationAlert() {
     let message;
     switch (status) {
       case "pending":
-        message = "Your booking was saved successfully. You will receive an email once booking status is updated";
+        message = "Your booking was saved/updated successfully!";
         break;
       case "rejected":
-        message = "Your booking has been Cancelled.";
+        message = "Your booking has been Cancelled/Rejected.Call us for more enquiry.";
         break;
       case "completed":
         message = "Your booking has been approved for survey.";
@@ -75,7 +76,7 @@ export default function NotificationAlert() {
     try {
       const notificationsRef = collection(db, "notifications");
       await addDoc(notificationsRef, notification);
-      await sendEmail(notification?.email, notification?.message)
+      // await sendEmail(notification?.email, notification?.message)
     } catch (error) {
       console.error("Error saving notification:", error);
     }

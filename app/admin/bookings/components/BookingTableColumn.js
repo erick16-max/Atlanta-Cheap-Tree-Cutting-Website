@@ -36,45 +36,45 @@ export const adminBookingsColumns = [
       </Typography>
     ),
   },
-  {
-    field: "budget",
-    renderHeader: () => (
-      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
-        Budget
-      </Typography>
-    ),
-    width: 100,
-  },
-  {
-    field: "surveyTime",
-    renderHeader: () => (
-      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
-        Survey Time
-      </Typography>
-    ),
-    sortable: false,
-    width: 140,
-  },
-  {
-    field: "surveyDate",
-    renderHeader: () => (
-      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
-        Date of Survey
-      </Typography>
-    ),
-    sortable: false,
-    width: 160,
-  },
-  {
-    field: "user",
-    renderHeader: () => (
-      <Typography variant="body2" color={"text.primary"} fontWeight={600}>
-        Type
-      </Typography>
-    ),
-    sortable: false,
-    width: 160,
-  },
+  // {
+  //   field: "budget",
+  //   renderHeader: () => (
+  //     <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+  //       Budget
+  //     </Typography>
+  //   ),
+  //   width: 100,
+  // },
+  // {
+  //   field: "surveyTime",
+  //   renderHeader: () => (
+  //     <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+  //       Survey Time
+  //     </Typography>
+  //   ),
+  //   sortable: false,
+  //   width: 140,
+  // },
+  // {
+  //   field: "surveyDate",
+  //   renderHeader: () => (
+  //     <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+  //       Date of Survey
+  //     </Typography>
+  //   ),
+  //   sortable: false,
+  //   width: 160,
+  // },
+  // {
+  //   field: "user",
+  //   renderHeader: () => (
+  //     <Typography variant="body2" color={"text.primary"} fontWeight={600}>
+  //       Type
+  //     </Typography>
+  //   ),
+  //   sortable: false,
+  //   width: 160,
+  // },
   {
     field: "status",
     renderHeader: () => (
@@ -101,7 +101,7 @@ export const adminBookingsColumns = [
             borderRadius: 1,
             backgroundColor: "#f5f5f5",
             color: chipColor,
-            fontWeight: 500,
+            fontWeight: 600,
           }}
         />
       );
@@ -159,13 +159,8 @@ export const adminBookingsColumns = [
             setOpenDelete={setOpenDelete}
             setOpenUpdate={setOpenUpdate}
           />
-          <DeleteDialogModal
-            open={openDelete}
-            setOpen={setOpenDelete}
-            bookingId={selectedItemId}
-            type="admin"
-          />
-          <UpdateStatusModal open={openUpdate} setOpen={setOpenUpdate} />
+         
+        
         </Box>
       );
     },

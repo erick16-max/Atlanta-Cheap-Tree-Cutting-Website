@@ -17,6 +17,7 @@ import DateFieldPicker from "./DateFieldPicker";
 import TimeFieldPicker from "./TimeFieldPicker";
 import AppContext from "@/context/AppContext";
 import { steps } from "@/constants/AppConstants";
+import TimeRangePicker from "./TimeRangePicker";
 
 
 const CustomTextField = ({ label, type, setValue, value, placeholder }) => (
@@ -63,7 +64,7 @@ const CustomTextField = ({ label, type, setValue, value, placeholder }) => (
 export default function TakeBookingDetailsStepTwo() {
 
   
-  const { setActiveStep, address, setAddress, budget, notes, setNotes, setBudget, surveyTime, setSurveyTime, surveyDate, setSurveyDate} = useContext(AppContext);
+  const { activeLabel, setActiveLabel, setActiveStep, address, setAddress, budget, notes, setNotes, setBudget, surveyTime, setSurveyTime, surveyDate, setSurveyDate} = useContext(AppContext);
   
   const isDisabled = !address || !surveyTime || !surveyDate 
   
@@ -93,11 +94,12 @@ export default function TakeBookingDetailsStepTwo() {
             placeholder={"Enter amount in USD here.."}
           />
         </Grid> */}
-        <Grid item xs={12} sm={12} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <DateFieldPicker value={surveyDate} setValue={setSurveyDate} />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={6}>
-          <TimeFieldPicker formattedTime={surveyTime} setFormattedTime={setSurveyTime} />
+          {/* <TimeFieldPicker formattedTime={surveyTime} setFormattedTime={setSurveyTime} /> */}
+          <TimeRangePicker activeLabel={activeLabel} setActiveLabel={setActiveLabel} />
         </Grid>
         <Grid item xs={12}>
           <TextField

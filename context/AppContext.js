@@ -44,6 +44,10 @@ export const AppContextProvider = ({ children }) => {
 
   const [openDelete, setOpenDelete] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
+  const [openView, setOpenView] = useState(false);
+
+  const [activeLabel, setActiveLabel] = useState("")
+
 
   const [bookings, setBookings] = useState([]);
   const [bookingObj, setBookingObj] = useState({})
@@ -167,7 +171,9 @@ export const AppContextProvider = ({ children }) => {
     feedbackTableData, setFeedbackTableData,
     alertObj, setAlertObj,
     portfolioData, setPortfolioData,
-    navBg, setNavBg
+    navBg, setNavBg,
+    activeLabel, setActiveLabel,
+    openView, setOpenView
   };
 
   return <AppContext.Provider value={data}>{children}</AppContext.Provider>;
