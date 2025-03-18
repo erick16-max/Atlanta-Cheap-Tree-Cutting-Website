@@ -20,6 +20,8 @@ import TreeCuttingIcon from  '../../public/services/treecuttingai.webp'
 import TreeRemovingIcon from  '../../public/services/treeremovalai.webp'
 import TreeTrimmingIcon from  '../../public/services/treetrimmingai.webp'
 import YardCleaningIcon from  '../../public/services/yardcleanup.webp'
+import { images } from "@/components/services/Services";
+
 export default function ServicePageCard() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -30,27 +32,27 @@ export default function ServicePageCard() {
 
   const icons = [
     {
-      src: TreeCuttingIcon,
+      src: images[0].src,
       title: "Tree Cutting",
       info: "Our tree cutting service focuses on safely and efficiently removing trees that are dead, diseased, or posing a risk to your property. Using advanced equipment and techniques, we ensure minimal impact on your surrounding landscape.",
     },
     {
-      src: TreePrunningIcon,
+      src: images[1].src,
       title: "Tree Pruning",
       info: "Tree pruning promotes healthy growth by removing dead or overgrown branches, improving the tree’s structure and appearance. This service helps reduce hazards and enhances air circulation and sunlight penetration for your trees.",
     },
     {
-      src: TreeTrimmingIcon,
+      src: images[2].src,
       title: "Tree Trimming",
       info: "Our tree trimming service is designed to maintain your trees’ shape and ensure proper growth patterns. By carefully cutting excess branches, we improve the overall aesthetic and structural integrity of your trees.",
     },
     {
-      src: TreeRemovingIcon,
+      src: images[3].src,
       title: "Tree Removal",
       info: "When a tree becomes a safety hazard or needs to make way for new projects, our expert tree removal service is here to help. We carefully assess and remove trees while ensuring safety and preventing damage to your property.",
     },
     {
-      src: YardCleaningIcon,
+      src: images[4].src,
       title: "Yard Clearing & Afterstorm Cleanup",
       info: "We provide thorough yard cleaning services to leave your outdoor space spotless and well-maintained. From leaf removal to debris clearing, we help you reclaim a clean and inviting yard for relaxation or further landscaping.",
     },
