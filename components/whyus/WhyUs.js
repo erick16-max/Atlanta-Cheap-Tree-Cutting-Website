@@ -58,7 +58,8 @@ export default function WhyUs() {
                   flexDirection: "column",
                   gap: 3,
                   p: 3,
-                  borderTop: '3px solid #ffc400',
+                  borderTop: '6px solid #D4AF37',
+                  borderRadius: 2,
                 }}
               >
                 <Image src={item.image} alt="holding" width={100} />
