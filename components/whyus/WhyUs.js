@@ -46,17 +46,19 @@ export default function WhyUs() {
           return (
             <Grid item xs={12} sm={12} md={6} lg={6} xl={6} key={index}>
               <Card
+                variant="outlined"
                 sx={{
                   boxShadow: 0,
                   height: 300,
                   width: "100%",
-                  backgroundColor: "rgba(244, 67, 54, 0.2)",
+                  backgroundColor: "#ffffff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   flexDirection: "column",
                   gap: 3,
                   p: 3,
+                  borderTop: '3px solid #ffc400',
                 }}
               >
                 <Image src={item.image} alt="holding" width={100} />
