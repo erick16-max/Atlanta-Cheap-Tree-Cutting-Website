@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import TypeRadioBtn from "./TypeRadioBtn";
 import RatingField from "./RatingField";
 import { SubmitMessage } from "@/firebase/FirebaseUser";
+import { sendCustomSms } from "@/util/sendSms";
 
 export default function ContactUsForm() {
       const initialData = {
@@ -26,15 +27,25 @@ export default function ContactUsForm() {
          const [rateValue, setRateValue] = React.useState(2);
         const [data, setData] = useState(initialData)
 
+    
 
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
           setLoading(true)
+         
           const response = await SubmitMessage(data)
           if(response === "success"){
+            try {
+              if (data.type !== alertList.MESSAGE) return
+              const customMessage = `Fullname: ${data.fullname}, Phone Number: ${data.phone}, email: ${data.email}, message: ${data.message}`
+              
+              await sendCustomSms(customMessage, process.env.NEXT_PUBLIC_SMS_PHONE_NUMBER)
+            } catch (error) {
+              
+            }
             setSuccess(`${value} submitted successfully!`)
-            setData(initialData)
+            setTimeout(()=> {setData(initialData)}, 4000)
             setPhoneNumber("")
           }else{
             setError("Something went wrong -- try again!")
