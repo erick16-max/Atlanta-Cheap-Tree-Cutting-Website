@@ -1,4 +1,5 @@
   const imageLogoUrl = "https://atlanta-cheap-tree-cutting-website.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.0d91f4e9.png&w=256&q=75" 
+import { NextResponse } from "next/server";
   import { Resend } from "resend";
 
   const resend = new Resend(process.env.RESEND_KEY);
@@ -7,10 +8,13 @@
     try {
       const { to, subject } = await req.json();
       const imageLogoUrl = "https://atlanta-cheap-tree-cutting-website.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.0d91f4e9.png&w=256&q=75" 
+    if(!to || !subject){
+      return NextResponse.json({message: "all fields required!"})
+    }
 
   
       const response = await resend.emails.send({
-        from: "Atlanta Cheet Tree Cutting Solutions <onboarding@resend.dev>",
+        from: "Atlanta Cheet Tree Cutting Solutions <info@atlantacheaptreesolutions.com>",
         to: [to],
         subject: "Atlanta Tree Cutting Booking Alerts" ,
         html: `

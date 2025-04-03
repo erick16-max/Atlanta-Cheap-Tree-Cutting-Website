@@ -55,7 +55,6 @@ export default function UpdateStatusModal({ open, setOpen }) {
       : status === bookingStatus?.REJECTED
       ? "Your booking was rejected, please call us for further information"
       : "Your booking is still under review. We promise to provide feedback as soon as possible";
-    console.log(surveyDate)
   const handleUpdateStatus = async () => {
     try {
       setLoading(true);

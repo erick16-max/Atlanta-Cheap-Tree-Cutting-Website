@@ -11,7 +11,7 @@ export async function POST(req) {
       "https://atlanta-cheap-tree-cutting-website.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.0d91f4e9.png&w=256&q=75";
 
     const response = await resend.emails.send({
-      from: "Atlanta Cheet Tree Cutting Solutions <onboarding@resend.dev>",
+      from: "Atlanta Cheet Tree Cutting Solutions <info@atlantacheaptreesolutions.com>",
       to: [to],
       subject: "Atlanta Tree Cutting Booking Alerts",
       html: `

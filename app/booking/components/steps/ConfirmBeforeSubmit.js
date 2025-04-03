@@ -25,6 +25,7 @@ import PageLoader from "@/components/general/PageLoader";
 import { FaBedPulse } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { serverTimestamp } from "firebase/firestore";
+import { sendCustomEmail, sendEmail } from "@/util/sendEmail";
 
 export default function ConfirmBeforeSubmit() {
   const [error, setError] = useState("");
@@ -90,6 +91,18 @@ export default function ConfirmBeforeSubmit() {
       setLoading(true);
       const response = await SubmitBooking(bookingData);
       if (response === "success") {
+       try {
+        sendCustomEmail(process.env.NEXT_PUBLIC_ADMIN_EMAIL, notes, surveyTime, surveyDate, "", address);
+       } catch (error) {
+        console.log("custom email error", error)
+       }
+
+       try {
+        sendEmail(email, "your booking was send successfully")
+       } catch (error) {
+        console.log("email error", error)
+       }
+        
         setOpen(true);
         // Clear other states
         setAddress("");
