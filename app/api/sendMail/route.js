@@ -36,7 +36,7 @@ import { NextResponse } from "next/server";
   
       return Response.json({ success: true, response }, { status: 200 });
     } catch (error) {
-      console.error("Email send error:", error);
+      console.error("Email send errors:", error);
       return Response.json({ success: false, error: error.message }, { status: 500 });
     }
   }
