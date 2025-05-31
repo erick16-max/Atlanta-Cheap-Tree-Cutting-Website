@@ -10,6 +10,8 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import HeroImage from "../../public/treecuttingone.jpg";
 import HeroImageTwo from "../../public/treeup1.jpg";
 import AboutUsImage from "../../public/aboutustwo.jpg"
+import HeroImageThree from "../../public/hero_2.jpg"
+import HeroImageOne from "../../public/hero_1.jpg"
 import HoverEffectButton from "../general/HoverEffectButton";
 import GoToDashboardBtn from "../general/GoToDashboardBtn";
 import { useContext, useState } from "react";
@@ -44,7 +46,7 @@ const HeroSection = () => {
           loop={true}
           style={{ width: "100%", height: "100%" }}
         >
-          {[HeroImage, HeroImageTwo, AboutUsImage].map((image, index) => (
+          {[HeroImageOne, HeroImageThree, HeroImage].map((image, index) => (
             <SwiperSlide key={index}>
               <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
                 <Image
