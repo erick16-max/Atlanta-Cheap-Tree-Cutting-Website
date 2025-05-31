@@ -79,9 +79,7 @@ export default function PortfolioManager() {
 
   return (
     <>
-      <Typography variant="h4" gutterBottom>
-        My Portfolio
-      </Typography>
+      
 
       {loading ? (
         <CircularProgress />
