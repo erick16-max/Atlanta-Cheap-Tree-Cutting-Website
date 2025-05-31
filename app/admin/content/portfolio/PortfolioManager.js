@@ -13,6 +13,8 @@ import {
   DialogContent,
   DialogTitle,
   CircularProgress,
+  Tooltip,
+  Box,
 } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import {
@@ -32,7 +34,8 @@ export default function PortfolioManager() {
   const [editTitle, setEditTitle] = useState("");
   const [editContent, setEditContent] = useState("");
   const [updating, setUpdating] = useState(false);
-  const {userProfile}  = useContext(AppContext)
+  const { userProfile } = useContext(AppContext);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const fetchPortfolio = async () => {
     setLoading(true);
@@ -79,20 +82,48 @@ export default function PortfolioManager() {
 
   return (
     <>
-      
-
       {loading ? (
-        <CircularProgress />
+        <Box display="flex" justifyContent="center" my={5}>
+          <CircularProgress />
+        </Box>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={4} mt={1}>
           {portfolioItems.map((item) => (
             <Grid item xs={12} md={6} lg={4} key={item.id}>
-              <Card>
+              <Card
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  borderRadius: 3,
+                  boxShadow: 4,
+                  transition: "0.3s",
+                  "&:hover": {
+                    boxShadow: 6,
+                  },
+                }}
+              >
                 <CardContent>
-                  <Typography variant="h6">{item.title}</Typography>
-                  <Typography variant="body2" gutterBottom>
-                    {item.content}
+                  <Typography variant="h6" fontWeight={600} gutterBottom>
+                    {item.title}
                   </Typography>
+
+                  <Tooltip title={item.content} placement="top">
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        maxHeight: 60,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        WebkitLineClamp: 3,
+                        WebkitBoxOrient: "vertical",
+                        mb: 2,
+                      }}
+                    >
+                      {item.content}
+                    </Typography>
+                  </Tooltip>
 
                   <Grid container spacing={1}>
                     {item.media?.map((media, index) => (
@@ -101,7 +132,12 @@ export default function PortfolioManager() {
                           <video
                             src={media.url}
                             controls
-                            style={{ width: "100%", borderRadius: 4 }}
+                            style={{
+                              width: "100%",
+                              borderRadius: 10,
+                              objectFit: "cover",
+                              height: 150,
+                            }}
                           />
                         ) : (
                           <CardMedia
@@ -109,37 +145,39 @@ export default function PortfolioManager() {
                             height="140"
                             image={media.url}
                             alt={`media-${index}`}
-                            sx={{ borderRadius: 1 }}
+                            sx={{ borderRadius: 1, cursor: "pointer" }}
+                            onClick={() => setSelectedImage(media.url)}
                           />
                         )}
                       </Grid>
                     ))}
                   </Grid>
 
-                 {
-                     userProfile?.isAdmin === true && (
-                         <Grid
-                    container
-                    spacing={1}
-                    justifyContent="flex-end"
-                    sx={{ mt: 1 }}
-                  >
-                    <Grid item>
-                      <IconButton onClick={() => handleEdit(item)} color="primary">
-                        <Edit />
-                      </IconButton>
+                  {userProfile?.isAdmin === true && (
+                    <Grid
+                      container
+                      justifyContent="flex-end"
+                      spacing={1}
+                      mt={2}
+                    >
+                      <Grid item>
+                        <IconButton
+                          onClick={() => handleEdit(item)}
+                          color="primary"
+                        >
+                          <Edit />
+                        </IconButton>
+                      </Grid>
+                      <Grid item>
+                        <IconButton
+                          onClick={() => handleDelete(item.id)}
+                          color="error"
+                        >
+                          <Delete />
+                        </IconButton>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <IconButton
-                        onClick={() => handleDelete(item.id)}
-                        color="error"
-                      >
-                        <Delete />
-                      </IconButton>
-                    </Grid>
-                  </Grid>
-                     )
-                 }
+                  )}
                 </CardContent>
               </Card>
             </Grid>
@@ -148,7 +186,12 @@ export default function PortfolioManager() {
       )}
 
       {/* Edit Dialog */}
-      <Dialog open={!!editItem} onClose={() => setEditItem(null)} fullWidth>
+      <Dialog
+        open={!!editItem}
+        onClose={() => setEditItem(null)}
+        fullWidth
+        maxWidth="sm"
+      >
         <DialogTitle>Edit Portfolio</DialogTitle>
         <DialogContent>
           <TextField
@@ -156,19 +199,19 @@ export default function PortfolioManager() {
             fullWidth
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
-            margin="normal"
+            margin="dense"
           />
           <TextField
             label="Content"
             fullWidth
             value={editContent}
             onChange={(e) => setEditContent(e.target.value)}
-            margin="normal"
+            margin="dense"
             multiline
-            rows={3}
+            rows={4}
           />
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ px: 3, pb: 2 }}>
           <Button onClick={() => setEditItem(null)}>Cancel</Button>
           <Button
             onClick={handleUpdate}
@@ -179,6 +222,17 @@ export default function PortfolioManager() {
             {updating ? <CircularProgress size={20} /> : "Update"}
           </Button>
         </DialogActions>
+      </Dialog>
+      <Dialog
+        open={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        maxWidth="md"
+      >
+        <img
+          src={selectedImage}
+          alt="Preview"
+          style={{ width: "100%", maxHeight: "80vh", objectFit: "contain" }}
+        />
       </Dialog>
     </>
   );
