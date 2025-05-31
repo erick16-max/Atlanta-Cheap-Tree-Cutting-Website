@@ -24,6 +24,7 @@ import PortfolioImageEight from "../../public/portfolio/portfolio8.jpg";
 import PortfolioImageNine from "../../public/portfolio/portfolio9.jpg";
 import CustomPortfolioGrid from "@/components/portfolio/CustomPortfolioGrid";
 import Testimonials from "./Testimonials";
+import PortfolioManager from "../admin/content/portfolio/PortfolioManager";
 
 export const portfolioItems = [
   { type: "image", src: PortfolioImageOne, title: "Project 1" },
@@ -84,7 +85,7 @@ export default function page() {
             View Our Portfolio
           </Typography>
           {/* <PortfolioGrid /> */}
-          <CustomPortfolioGrid images={portfolioItems} />
+          <PortfolioManager/>
           <Testimonials />
 
         </Box>

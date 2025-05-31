@@ -7,6 +7,7 @@ import AppContext from '@/context/AppContext';
 import { GetAllPortfolio } from '@/firebase/Content';
 import CustomPortfolioGrid from '@/components/portfolio/CustomPortfolioGrid';
 import Link from 'next/link';
+import PortfolioManager from './PortfolioManager';
 
 export default function page() {
     const [open, setOpen] = React.useState(false);
@@ -77,7 +78,8 @@ export default function page() {
                     Add
                 </Button>
             </Box>
-                    <CustomPortfolioGrid />
+            <PortfolioManager />
+                    {/* <CustomPortfolioGrid /> */}
             <AddPortfolioModal 
                 open={open}
                 setOpen={setOpen}

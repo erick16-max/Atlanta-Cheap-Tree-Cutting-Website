@@ -23,6 +23,7 @@ import { portfolioItems } from "./portfolio/page";
 import CustomPortfolioGrid from "@/components/portfolio/CustomPortfolioGrid";
 import ContactUsForm from "./contactus/ContactUsForm";
 import AcceptedPayments from "@/components/payments/AcceptedPayments";
+import PortfolioManager from "./admin/content/portfolio/PortfolioManager";
 
 
 export default function Home() {
@@ -96,7 +97,8 @@ export default function Home() {
             View Our Portfolio
           </Typography>
           {/* <PortfolioGrid /> */}
-          <CustomPortfolioGrid images={portfolioItems} />
+          {/* <CustomPortfolioGrid images={portfolioItems} /> */}
+          <PortfolioManager />
           <AcceptedPayments />
          <Testimonials />
          <Location />
